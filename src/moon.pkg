@@ -1,5 +1,10 @@
 import {
   "howtomakeaname/sumi/internal",
+  "howtomakeaname/sumi/primitives",
+  "howtomakeaname/sumi/feedback",
+  "howtomakeaname/sumi/layout",
+  "howtomakeaname/sumi/forms",
+  "howtomakeaname/sumi/overlays",
   "moonbit-community/rabbita/html",
 }
 
