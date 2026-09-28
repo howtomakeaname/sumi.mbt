@@ -1,0 +1,6 @@
+import {
+  "howtomakeaname/sumi/internal",
+  "moonbit-community/rabbita/html",
+}
+
+supported_targets = "js+native+wasm"
