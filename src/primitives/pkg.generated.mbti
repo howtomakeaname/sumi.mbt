@@ -1,0 +1,112 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "howtomakeaname/sumi/primitives"
+
+import {
+  "moonbit-community/rabbita/cmd",
+  "moonbit-community/rabbita/html",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn avatar(src? : String, fallback? : String, size? : Int, alt? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
+pub fn badge(value? : Int, dot? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
+pub fn[C : @html.IsChildren] button(variant? : ButtonVariant, size? : ButtonSize, disabled? : Bool, pressed? : Bool, loading? : Bool, type_? : String, id? : String, class? : String, title? : String, name? : String, value? : String, autofocus? : Bool, on_click? : @cmd.Cmd, attrs? : @html.Attrs, style? : Array[String], C) -> @html.Html
+
+pub fn credits(value~ : Int, original_value? : Int, muted? : Bool, on_click? : @cmd.Cmd, id? : String, class? : String, title? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
+pub fn icon(String, size? : Int, stroke_width? : Int, style? : Array[String]) -> @html.Html
+
+pub fn icon_adjust(size? : Int) -> @html.Html
+
+pub fn icon_arrow_down(size? : Int) -> @html.Html
+
+pub fn icon_arrow_up(size? : Int) -> @html.Html
+
+pub fn icon_button(@html.Html, variant? : ButtonVariant, size? : ButtonSize, disabled? : Bool, pressed? : Bool, id? : String, class? : String, title? : String, aria_label? : String, on_click? : @cmd.Cmd, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
+pub fn icon_check(size? : Int) -> @html.Html
+
+pub fn icon_chevron_down(size? : Int) -> @html.Html
+
+pub fn icon_chevron_left(size? : Int) -> @html.Html
+
+pub fn icon_chevron_right(size? : Int) -> @html.Html
+
+pub fn icon_chevron_up(size? : Int) -> @html.Html
+
+pub fn icon_clock(size? : Int) -> @html.Html
+
+pub fn icon_crop(size? : Int) -> @html.Html
+
+pub fn icon_download(size? : Int) -> @html.Html
+
+pub fn icon_expand(size? : Int) -> @html.Html
+
+pub fn icon_grid(size? : Int) -> @html.Html
+
+pub fn icon_image(size? : Int) -> @html.Html
+
+pub fn icon_layers(size? : Int) -> @html.Html
+
+pub fn icon_minus(size? : Int) -> @html.Html
+
+pub fn icon_more(size? : Int) -> @html.Html
+
+pub fn icon_play(size? : Int) -> @html.Html
+
+pub fn icon_plus(size? : Int) -> @html.Html
+
+pub fn icon_ratio(width~ : Int, height~ : Int, size? : Int) -> @html.Html
+
+pub fn icon_reset(size? : Int) -> @html.Html
+
+pub fn icon_scissors(size? : Int) -> @html.Html
+
+pub fn icon_search(size? : Int) -> @html.Html
+
+pub fn icon_sparkle(size? : Int) -> @html.Html
+
+pub fn icon_upload(size? : Int) -> @html.Html
+
+pub fn icon_x(size? : Int) -> @html.Html
+
+pub fn kbd(String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
+pub fn[C : @html.IsChildren] tag(variant? : TagVariant, on_remove? : @cmd.Cmd, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String], C) -> @html.Html
+
+// Errors
+
+// Types and methods
+pub(all) enum ButtonSize {
+  Default
+  Sm
+  Icon
+  IconSm
+} derive(Eq, @debug.Debug)
+pub fn ButtonSize::equal(Self, Self) -> Bool
+pub fn ButtonSize::not_equal(Self, Self) -> Bool
+pub fn ButtonSize::to_repr(Self) -> @debug.Repr
+
+pub(all) enum ButtonVariant {
+  Primary
+  Secondary
+  Ghost
+} derive(Eq, @debug.Debug)
+pub fn ButtonVariant::equal(Self, Self) -> Bool
+pub fn ButtonVariant::not_equal(Self, Self) -> Bool
+pub fn ButtonVariant::to_repr(Self) -> @debug.Repr
+
+pub(all) enum TagVariant {
+  Default
+  Brand
+  Outline
+} derive(Eq, @debug.Debug)
+pub fn TagVariant::equal(Self, Self) -> Bool
+pub fn TagVariant::not_equal(Self, Self) -> Bool
+pub fn TagVariant::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

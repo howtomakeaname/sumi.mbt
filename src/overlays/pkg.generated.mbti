@@ -1,0 +1,82 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "howtomakeaname/sumi/overlays"
+
+import {
+  "moonbit-community/rabbita/cmd",
+  "moonbit-community/rabbita/html",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn[C : @html.IsChildren] context_menu(entries~ : Array[MenuEntry], open~ : Bool, on_open_change? : @cmd.Emit[Bool], selected? : String, on_select? : @cmd.Emit[String], id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String], menu_style? : Array[String], C) -> @html.Html
+
+pub fn[C : @html.IsChildren] dialog(id~ : String, title_text? : String, description? : String, show_close? : Bool, spacious? : Bool, closedby? : String, on_close? : @cmd.Emit[String], on_cancel? : @cmd.Cmd, class? : String, attrs? : @html.Attrs, style? : Array[String], C) -> @html.Html
+
+pub fn dropdown_menu(items~ : Array[MenuEntry], trigger~ : @html.Html, open~ : Bool, on_open_change? : @cmd.Emit[Bool], selected? : String, on_select? : @cmd.Emit[String], align? : MenuAlign, side? : MenuSide, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String], trigger_style? : Array[String], menu_style? : Array[String]) -> @html.Html
+
+pub fn menu_chevron(size? : Int) -> @html.Html
+
+pub fn[C : @html.IsChildren] popover(trigger~ : @html.Html, open~ : Bool, on_open_change? : @cmd.Emit[Bool], align? : MenuAlign, side? : MenuSide, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String], panel_style? : Array[String], C) -> @html.Html
+
+pub fn toast(message~ : String, open~ : Bool, variant? : ToastVariant, on_close? : @cmd.Cmd, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
+pub fn[C : @html.IsChildren] tooltip(content~ : String, side? : TooltipSide, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String], C) -> @html.Html
+
+// Errors
+
+// Types and methods
+pub(all) enum MenuAlign {
+  Start
+  End
+} derive(Eq, @debug.Debug)
+pub fn MenuAlign::equal(Self, Self) -> Bool
+pub fn MenuAlign::not_equal(Self, Self) -> Bool
+pub fn MenuAlign::to_repr(Self) -> @debug.Repr
+
+pub(all) enum MenuEntry {
+  Item(MenuItem)
+  Separator
+  SectionLabel(String)
+}
+pub fn MenuEntry::items(Array[MenuItem]) -> Array[Self]
+
+pub(all) struct MenuItem {
+  value : String
+  label : String
+  description : String?
+  icon : @html.Html?
+  shortcut : String?
+  disabled : Bool
+}
+pub fn MenuItem::new(String, String, description? : String, icon? : @html.Html, shortcut? : String, disabled? : Bool) -> Self
+
+pub(all) enum MenuSide {
+  Bottom
+  Top
+} derive(Eq, @debug.Debug)
+pub fn MenuSide::equal(Self, Self) -> Bool
+pub fn MenuSide::not_equal(Self, Self) -> Bool
+pub fn MenuSide::to_repr(Self) -> @debug.Repr
+
+pub(all) enum ToastVariant {
+  Info
+  Success
+  Error
+} derive(Eq, @debug.Debug)
+pub fn ToastVariant::equal(Self, Self) -> Bool
+pub fn ToastVariant::not_equal(Self, Self) -> Bool
+pub fn ToastVariant::to_repr(Self) -> @debug.Repr
+
+pub(all) enum TooltipSide {
+  Top
+  Bottom
+  Left
+  Right
+} derive(Eq, @debug.Debug)
+pub fn TooltipSide::equal(Self, Self) -> Bool
+pub fn TooltipSide::not_equal(Self, Self) -> Bool
+pub fn TooltipSide::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
