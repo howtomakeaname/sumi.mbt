@@ -1,0 +1,9 @@
+# MoonBit build output
+_build/
+target/
+
+# Local package cache (fetched from mooncakes on demand)
+.mooncakes/
+
+# macOS
+.DS_Store
