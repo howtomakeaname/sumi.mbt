@@ -1,6 +1,8 @@
 import {
   "howtomakeaname/sumi/internal",
+  "howtomakeaname/sumi/feedback",
   "moonbit-community/rabbita/html",
+  "moonbit-community/rabbita/cmd",
   "moonbit-community/rabbita/svg",
 }
 
