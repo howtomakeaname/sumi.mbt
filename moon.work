@@ -1,1 +1,4 @@
-members = [ "src" ]
+members = [
+  "src",
+  "examples/gallery",
+]

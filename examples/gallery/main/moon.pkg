@@ -1,0 +1,11 @@
+import {
+  "howtomakeaname/sumi",
+  "moonbit-community/rabbita",
+  "moonbit-community/rabbita/html",
+  "moonbit-community/rabbita/cmd",
+  "moonbit-community/rabbita/dialog",
+}
+
+supported_targets = "js"
+
+pkgtype(kind: "executable")
