@@ -1,0 +1,34 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "howtomakeaname/sumi/layout"
+
+import {
+  "moonbit-community/rabbita/cmd",
+  "moonbit-community/rabbita/html",
+}
+
+// Values
+pub fn[C : @html.IsChildren] card(id? : String, class? : String, title? : String, attrs? : @html.Attrs, style? : Array[String], C) -> @html.Html
+
+pub fn[C : @html.IsChildren] card_section(header~ : @html.Html, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String], C) -> @html.Html
+
+pub fn divider(id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
+pub fn tabs(items~ : Array[TabEntry], selected~ : String, on_select? : @cmd.Emit[String], id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
+pub fn[C : @html.IsChildren] toolbar(id? : String, class? : String, title? : String, attrs? : @html.Attrs, style? : Array[String], C) -> @html.Html
+
+pub fn toolbar_divider(style? : Array[String]) -> @html.Html
+
+// Errors
+
+// Types and methods
+pub(all) struct TabEntry {
+  value : String
+  label : String
+  icon : @html.Html?
+}
+pub fn TabEntry::new(String, String, icon? : @html.Html) -> Self
+
+// Type aliases
+
+// Traits
