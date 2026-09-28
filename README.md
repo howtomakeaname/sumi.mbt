@@ -91,6 +91,11 @@ Wrap the app root once with `theme(mode=…)`:
 
 ## Documentation
 
+**[howtomakeaname.github.io/sumi.mbt](https://howtomakeaname.github.io/sumi.mbt/)**
+(中文：[/zh/](https://howtomakeaname.github.io/sumi.mbt/zh/)) — live
+interactive demos, usage examples and API tables for every component,
+rebuilt from this repo on every version tag.
+
 [DESIGN.md](./DESIGN.md) is the source of truth for visuals and
 interaction behavior: motion tiers, token palettes and light-mode mapping
 rules, focus-ring policy, layering, and per-component specs.
