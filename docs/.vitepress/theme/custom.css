@@ -1,0 +1,33 @@
+/* Sumi demo blocks: live stage on top (always the dark canvas, matching the
+   components' design surface), usage code directly below. */
+.sumi-demo {
+  margin: 16px 0 24px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.sumi-demo-stage {
+  background: #0d0d0d;
+  min-height: 64px;
+}
+
+/* Let fixed-position overlays (menus, tooltips) measure against the stage
+   without clipping; the stage's own radius comes from the card. */
+.sumi-demo-stage:empty::after {
+  content: 'Demo loads with the built bundle — run `npm run demos:build`.';
+  display: block;
+  padding: 28px 24px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.sumi-demo-code > div[class*='language-'] {
+  margin: 0;
+  border-radius: 0;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.sumi-demo-code > div[class*='language-'] pre {
+  padding: 20px 24px;
+}

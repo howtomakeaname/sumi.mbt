@@ -7,3 +7,11 @@ target/
 
 # macOS
 .DS_Store
+
+# Docs toolchain
+node_modules/
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+
+# Built demo bundle (rebuilt by docs/scripts/build-demos.sh, also in CI)
+docs/public/demos/
