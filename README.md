@@ -7,7 +7,7 @@ properties.
 
 ## Features
 
-- **28+ components** — actions, forms, overlays, feedback, display
+- **40+ components** — actions, forms, overlays, feedback, display
 - **Dark & light palettes** — one token set, two themes; `System` follows
   the OS setting live via `prefers-color-scheme`
 - **Overlay motion built in** — menus, tooltips, dialogs and toasts animate
@@ -83,11 +83,11 @@ Wrap the app root once with `theme(mode=…)`:
 
 | Group | Components |
 |---|---|
-| Actions | `button` · `icon_button` · `toolbar` |
-| Forms | `input` · `textarea` · `select` · `stepper` · `switch` · `checkbox` · `slider` · `segmented` · `prompt_box` |
-| Overlays | `dropdown_menu` · `context_menu` · `popover` · `tooltip` · `dialog` · `toast` |
-| Feedback | `spinner` · `progress` · `skeleton` · `badge` · `empty_state` |
-| Display | `avatar` · `tag` · `kbd` · `card` · `tabs` · `credits` · icon set |
+| Actions | `button` · `icon_button` · `favorite_toggle` · `add_tile` · `toolbar` |
+| Forms | `input` · `textarea` · `select` · `stepper` · `switch` · `checkbox` · `chip` · `attachment_strip` · `slider` · `segmented` · `prompt_box` · `editable_text` · `send_button` |
+| Overlays | `dropdown_menu` · `checkbox_menu` · `context_menu` · `popover` · `tooltip` · `dialog` · `toast` |
+| Feedback | `spinner` · `status_badge` · `progress` · `skeleton` · `badge` · `empty_state` · `alert` |
+| Display | `avatar` · `tag` · `kbd` · `card` · `tabs` · `pagination` · `shortcuts_panel` · `credits` · icon set |
 
 ## Documentation
 
@@ -109,13 +109,15 @@ src/                    the library module (howtomakeaname/sumi)
 ├── alias.mbt           public façade: re-exports every component so
 │                       callers keep a single flat `@sumi.*` import
 ├── internal/           shared style helpers + static interaction/event layers
-├── primitives/         icons · button · tag · badge · kbd · avatar · credits
-├── feedback/           spinner · progress · skeleton · empty_state
-├── layout/             card · toolbar · tabs
-├── forms/              input · textarea · switch · checkbox · slider ·
-│                       segmented · stepper · select · prompt_box
-└── overlays/           dropdown_menu · context_menu · popover · tooltip ·
-                        dialog · toast
+├── primitives/         icons · button · favorite_toggle · add_tile · tag ·
+│                       badge · kbd · avatar · credits · spinner
+├── feedback/           alert · progress · skeleton · status_badge · empty_state
+├── layout/             card · toolbar · tabs · pagination · shortcuts_panel
+├── forms/              input · textarea · switch · checkbox · chip · slider ·
+│                       attachment_strip · segmented · stepper · select ·
+│                       prompt_box · editable_text · send_button
+└── overlays/           dropdown_menu · checkbox_menu · context_menu ·
+                        popover · tooltip · dialog · toast
 examples/gallery/       the demo app
 ```
 
