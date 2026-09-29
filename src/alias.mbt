@@ -23,8 +23,10 @@ pub using @primitives {
   icon_check,
   icon_check_fill,
   icon_chevron_down,
+  icon_chevron_down_fill,
   icon_chevron_left,
   icon_chevron_right,
+  icon_chevron_right_fill,
   icon_chevron_up,
   icon_chevron_up_fill,
   icon_clock,
@@ -87,8 +89,10 @@ pub using @feedback {
   skeleton_lines,
   skeleton_tile,
   status_badge,
+  tool_call_row,
   type AlertVariant,
   type StatusBadgeState,
+  type ToolCallState,
 }
 
 ///|

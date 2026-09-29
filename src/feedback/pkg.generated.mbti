@@ -2,6 +2,7 @@
 package "howtomakeaname/sumi/feedback"
 
 import {
+  "moonbit-community/rabbita/cmd",
   "moonbit-community/rabbita/html",
 }
 
@@ -22,6 +23,8 @@ pub fn skeleton_tile(width? : String, height? : String, style? : Array[String]) 
 
 pub fn status_badge(state~ : StatusBadgeState, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
+pub fn tool_call_row(label~ : String, icon? : @html.Html, state? : ToolCallState, expandable? : Bool, expanded? : Bool, on_toggle? : @cmd.Cmd, steps? : Array[String], truncate? : Bool, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 // Errors
 
 // Types and methods
@@ -36,6 +39,13 @@ pub(all) enum StatusBadgeState {
   Complete
   Warning
 }
+
+pub(all) enum ToolCallState {
+  Doing
+  Done
+} derive(Eq)
+pub fn ToolCallState::equal(Self, Self) -> Bool
+pub fn ToolCallState::not_equal(Self, Self) -> Bool
 
 // Type aliases
 

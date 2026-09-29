@@ -38,3 +38,52 @@ fn demo_chat_bubble(mode : @sumi.ThemeMode?) -> Val[Html] {
     ])
   })
 }
+
+///|
+/// Agent progress rows: shimmer while working, static when settled, an
+/// icon-less reasoning row, and an expandable row with threaded steps
+/// (click to flip).
+fn demo_tool_call_row(mode : @sumi.ThemeMode?) -> Val[Html] {
+  let (expanded, set_expanded) = @rabbita.create_variable(false)
+  expanded.view(fn(e) {
+    stage_mode(mode, [
+      @html.div(
+        style=["width:400px;display:flex;flex-direction:column;gap:12px"],
+        [
+          @sumi.tool_call_row(
+            icon=@sumi.icon_align_left(size=16),
+            label="Writing an outline document: project-notes.md",
+            truncate=false,
+          ),
+          @sumi.tool_call_row(
+            icon=@sumi.icon_image(size=16),
+            label="(0/1) Image generating…",
+          ),
+          @sumi.tool_call_row(
+            icon=@sumi.icon_image(size=16),
+            state=Done,
+            label="(1/1) Image generation completed",
+          ),
+          @sumi.tool_call_row(
+            icon=@sumi.icon_image(size=16),
+            state=Done,
+            label="(1/1) Image generation completed, 1 item failed",
+          ),
+          @sumi.tool_call_row(label="Thinking"),
+          @sumi.tool_call_row(
+            icon=@sumi.icon_adjust(size=16),
+            label="2 commands executed",
+            expandable=true,
+            expanded=e,
+            on_toggle=set_expanded(v => !v),
+            steps=["List file directories", "Search for related content"],
+          ),
+          @sumi.tool_call_row(
+            icon=@sumi.icon_clock(size=16),
+            label="Waiting to complete task: agent name",
+          ),
+        ],
+      ),
+    ])
+  })
+}

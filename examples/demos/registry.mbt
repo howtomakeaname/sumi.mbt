@@ -326,6 +326,12 @@ pub fn demos() -> Array[Demo] {
       build: demo_chat_bubble,
     },
     {
+      key: "tool-call-row",
+      group: "Chat",
+      title: "Tool call rows",
+      build: demo_tool_call_row,
+    },
+    {
       key: "theme-light",
       group: "Theming",
       title: "Light palette",

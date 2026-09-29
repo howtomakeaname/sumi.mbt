@@ -72,9 +72,13 @@ pub fn icon_check_fill(size? : Int) -> @html.Html
 
 pub fn icon_chevron_down(size? : Int) -> @html.Html
 
+pub fn icon_chevron_down_fill(size? : Int) -> @html.Html
+
 pub fn icon_chevron_left(size? : Int) -> @html.Html
 
 pub fn icon_chevron_right(size? : Int) -> @html.Html
+
+pub fn icon_chevron_right_fill(size? : Int) -> @html.Html
 
 pub fn icon_chevron_up(size? : Int) -> @html.Html
 
@@ -210,6 +214,8 @@ pub fn[C : @html.IsChildren] theme(mode? : ThemeMode, id? : String, class? : Str
 
 pub fn toast(message~ : String, open~ : Bool, variant? : @overlays.ToastVariant, on_close? : @cmd.Cmd, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
+pub fn tool_call_row(label~ : String, icon? : @html.Html, state? : @feedback.ToolCallState, expandable? : Bool, expanded? : Bool, on_toggle? : @cmd.Cmd, steps? : Array[String], truncate? : Bool, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn[C : @html.IsChildren] toolbar(id? : String, class? : String, title? : String, attrs? : @html.Attrs, style? : Array[String], C) -> @html.Html
 
 pub fn toolbar_divider(style? : Array[String]) -> @html.Html
@@ -269,6 +275,8 @@ pub using @layout {type TabEntry}
 pub using @primitives {type TagVariant}
 
 pub using @overlays {type ToastVariant}
+
+pub using @feedback {type ToolCallState}
 
 pub using @overlays {type TooltipSide}
 

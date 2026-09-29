@@ -40,9 +40,13 @@ pub fn icon_check_fill(size? : Int) -> @html.Html
 
 pub fn icon_chevron_down(size? : Int) -> @html.Html
 
+pub fn icon_chevron_down_fill(size? : Int) -> @html.Html
+
 pub fn icon_chevron_left(size? : Int) -> @html.Html
 
 pub fn icon_chevron_right(size? : Int) -> @html.Html
+
+pub fn icon_chevron_right_fill(size? : Int) -> @html.Html
 
 pub fn icon_chevron_up(size? : Int) -> @html.Html
 

@@ -89,7 +89,7 @@ PKG_FILES = {
     "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "media_tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt", "favorite_toggle.mbt", "add_tile.mbt"],
     "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "attachment_strip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
-    "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt", "shimmer_text.mbt"],
+    "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt", "shimmer_text.mbt", "tool_call_row.mbt"],
     "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt", "chat_bubble.mbt"],
 }
 
@@ -997,6 +997,41 @@ items=[
             }),
         ],
         [],
+    ),
+    page(
+        "tool-call-row", "feedback", "Tool Call Row", "Tool Call Row 工具调用行",
+        "One line of agent progress: a 16px tool icon, a label that shimmers while the work streams and settles when done, and an optional expandable chevron that reveals sub-steps under a thread line.",
+        "一行 agent 进度：16px 工具图标 + 进行中扫光、完成后静止的标签；可展开的行带箭头，展开后在线索连接线下显示子步骤。",
+        [
+            demo("tool-call-row", "States & expandable", "状态与展开", """
+@sumi.tool_call_row(icon=@sumi.icon_image(), label="(0/1) Image generating…")
+@sumi.tool_call_row(icon=@sumi.icon_image(), state=@sumi.Done,
+  label="(1/1) Image generation completed")
+@sumi.tool_call_row(
+  icon=@sumi.icon_adjust(), label="2 commands executed",
+  expandable=true, expanded=e, on_toggle=set_e.map(v => _ => !v),
+  steps=["List file directories", "Search for related content"],
+)"""),
+        ],
+        [
+            api("tool_call_row", params={
+                "label": ("Status text; counts and failure notes are part of the copy", "状态文案；计数与失败说明直接写入文案"),
+                "icon": ("16px tool glyph (omit for icon-less rows)", "16px 工具图标（省略则无图标）"),
+                "state": ("Doing shimmers, Done settles to static tertiary", "Doing 扫光，Done 静止为三级文字"),
+                "expandable": ("Adds a right/down chevron and enables steps", "显示右/下箭头并启用子步骤"),
+                "expanded": ("Controlled expand state", "受控展开状态"),
+                "on_toggle": ("Whole-row click command", "整行点击命令"),
+                "steps": ("Sub-step lines shown when expanded", "展开时显示的子步骤行"),
+                "truncate": ("Single-line ellipsis (default) or wrapping", "单行省略（默认）或换行"),
+            }),
+        ],
+        [enum("ToolCallState", "feedback", {
+            "Doing": "Label keeps shimmering while work streams",
+            "Done": "Static tertiary label",
+        }, {
+            "Doing": "工作进行时标签持续扫光",
+            "Done": "静止的三级文字标签",
+        })],
     ),
     page(
         "progress", "feedback", "Progress", "Progress 进度条",

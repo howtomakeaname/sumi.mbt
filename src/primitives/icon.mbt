@@ -511,10 +511,18 @@ pub fn icon_copy(size? : Int = 16) -> @html.Html {
 }
 
 ///|
-/// Chunky filled chevron-up on a 14 grid — the collapse toggle's glyph.
-/// (The stroked `icon_chevron_up` reads too thin at this size.)
-pub fn icon_chevron_up_fill(size? : Int = 14) -> @html.Html {
+/// A filled icon on the 14x14 grid — the chunky small chevrons of the
+/// status rows. Color inherits from the parent via `currentColor`.
+fn fill14_icon(
+  path : String,
+  size? : Int = 14,
+  fill_rule? : String,
+) -> @html.Html {
   let px = size.to_string() + "px"
+  let path_attrs = match fill_rule {
+    Some(rule) => @svg.Attrs::build().fill_rule(rule)
+    None => @svg.Attrs::build()
+  }
   @html.span(
     style=[
       @internal.SumiBoxSizing,
@@ -526,13 +534,39 @@ pub fn icon_chevron_up_fill(size? : Int = 14) -> @html.Html {
       height=size,
       view_box="0 0 14 14",
       style=["display:block;width:100%;height:100%"],
-      [
-        @svg.path(
-          d="M12.2558 9.34399C12.5276 9.06901 12.5249 8.6258 12.25 8.35405L7.49204 3.65196C7.21936 3.38248 6.78063 3.38248 6.50795 3.65196L1.75003 8.35405C1.47505 8.6258 1.47244 9.06901 1.74419 9.34399C2.01594 9.61896 2.45914 9.62158 2.73412 9.34983L7 5.13401L11.2659 9.34983C11.5408 9.62158 11.9841 9.61896 12.2558 9.34399Z",
-          fill="currentColor",
-          attrs=@svg.Attrs::build().fill_rule("evenodd"),
-        ),
-      ],
+      [@svg.path(d=path, fill="currentColor", attrs=path_attrs)],
     ),
+  )
+}
+
+///|
+/// Chunky filled chevron-up on a 14 grid — the collapse toggle's glyph.
+/// (The stroked `icon_chevron_up` reads too thin at this size.)
+pub fn icon_chevron_up_fill(size? : Int = 14) -> @html.Html {
+  fill14_icon(
+    "M12.2558 9.34399C12.5276 9.06901 12.5249 8.6258 12.25 8.35405L7.49204 3.65196C7.21936 3.38248 6.78063 3.38248 6.50795 3.65196L1.75003 8.35405C1.47505 8.6258 1.47244 9.06901 1.74419 9.34399C2.01594 9.61896 2.45914 9.62158 2.73412 9.34983L7 5.13401L11.2659 9.34983C11.5408 9.62158 11.9841 9.61896 12.2558 9.34399Z",
+    size~,
+    fill_rule="evenodd",
+  )
+}
+
+///|
+/// Chunky filled chevron-right on a 14 grid — the collapsed status row's
+/// affordance.
+pub fn icon_chevron_right_fill(size? : Int = 14) -> @html.Html {
+  fill14_icon(
+    "M10.3479 7.49208C10.6174 7.21939 10.6174 6.78067 10.3479 6.50799L5.6458 1.75006C5.37406 1.47509 4.93085 1.47247 4.65587 1.74422C4.3809 2.01597 4.37828 2.45918 4.65003 2.73415L8.86585 7.00003L4.65003 11.2659C4.37828 11.5409 4.3809 11.9841 4.65587 12.2558C4.93085 12.5276 5.37406 12.525 5.6458 12.25L10.3479 7.49208Z",
+    size~,
+  )
+}
+
+///|
+/// Chunky filled chevron-down on a 14 grid — the expanded status row's
+/// affordance.
+pub fn icon_chevron_down_fill(size? : Int = 14) -> @html.Html {
+  fill14_icon(
+    "M12.2558 4.65602C12.5276 4.93099 12.5249 5.3742 12.25 5.64595L7.49204 10.348C7.21936 10.6175 6.78063 10.6175 6.50795 10.348L1.75003 5.64595C1.47505 5.3742 1.47244 4.93099 1.74419 4.65601C2.01594 4.38104 2.45914 4.37842 2.73412 4.65017L7 8.866L11.2659 4.65017C11.5408 4.37842 11.9841 4.38104 12.2558 4.65602Z",
+    size~,
+    fill_rule="evenodd",
   )
 }

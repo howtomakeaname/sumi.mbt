@@ -248,6 +248,8 @@ fn demo_icons_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
       icon_tile("chevron-down", @sumi.icon_chevron_down(size=s)),
       icon_tile("chevron-left", @sumi.icon_chevron_left(size=s)),
       icon_tile("chevron-right", @sumi.icon_chevron_right(size=s)),
+      icon_tile("chevron-down-fill", @sumi.icon_chevron_down_fill(size=s)),
+      icon_tile("chevron-right-fill", @sumi.icon_chevron_right_fill(size=s)),
       icon_tile("chevron-up", @sumi.icon_chevron_up(size=s)),
       icon_tile("chevron-up-fill", @sumi.icon_chevron_up_fill(size=s)),
       icon_tile("clock", @sumi.icon_clock(size=s)),

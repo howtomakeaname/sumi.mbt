@@ -380,6 +380,7 @@ const SumiInteractionCss : String =
   #|  [data-slot="chat-bubble-toggle"]:focus-visible,
   #|  [data-slot="chat-bubble-copy"]:focus-visible,
   #|  [data-slot="menu-item"]:focus-visible,
+  #|  [data-slot="tool-call-row"]:focus-visible,
   #|  [data-slot="checkbox-menu-item"]:focus-visible {
   #|    outline:1px solid var(--sumi-text,#ffffff) !important;
   #|    outline-offset:-1px !important;
