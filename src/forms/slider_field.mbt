@@ -57,19 +57,26 @@ fn slider_field_parse(text : String) -> Int? {
 }
 
 ///|
-fn slider_field_tick_label(
-  pct : Int,
-  tick : Int,
-  index : Int,
-  count : Int,
-) -> @html.Html {
-  let position = if count <= 1 || index == 0 {
+/// Horizontal alignment of a tick label: the first label hugs the left edge,
+/// the last hugs the right edge, the rest center on their tick.
+fn slider_field_tick_position(pct : Int, index : Int, count : Int) -> String {
+  if count <= 1 || index == 0 {
     "left:0%;transform:none"
   } else if index == count - 1 {
     "left:100%;transform:translateX(-100%)"
   } else {
     "left:\{pct}%;transform:translateX(-50%)"
   }
+}
+
+///|
+fn slider_field_tick_label(
+  pct : Int,
+  tick : Int,
+  index : Int,
+  count : Int,
+) -> @html.Html {
+  let position = slider_field_tick_position(pct, index, count)
   @html.span(style=[SliderFieldTickLabelStyle, position], tick.to_string())
 }
 
