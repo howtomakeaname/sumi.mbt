@@ -52,6 +52,7 @@ pub fn demos() -> Array[Demo] {
     { key: "skeleton-basic", group: "Feedback", title: "Skeleton", build: demo_skeleton_basic },
     { key: "badge-basic", group: "Feedback", title: "Badge", build: demo_badge_basic },
     { key: "empty-state-basic", group: "Feedback", title: "Empty state", build: demo_empty_state_basic },
+    { key: "alert-basic", group: "Feedback", title: "Solid & subtle", build: demo_alert_basic },
     { key: "avatar-basic", group: "Display", title: "Avatar", build: demo_avatar_basic },
     { key: "tag-basic", group: "Display", title: "Tag", build: demo_tag_basic },
     { key: "kbd-basic", group: "Display", title: "Kbd", build: demo_kbd_basic },

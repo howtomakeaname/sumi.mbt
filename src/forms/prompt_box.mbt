@@ -40,7 +40,7 @@ pub fn send_button(
     ignore(element_attrs.aria_busy("true"))
   }
   let content : @html.Html = if loading {
-    @feedback.spinner(size=20)
+    @primitives.spinner(size=20)
   } else {
     @primitives.icon_arrow_up(size=18)
   }

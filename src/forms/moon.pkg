@@ -2,7 +2,6 @@ import {
   "howtomakeaname/sumi/internal",
   "howtomakeaname/sumi/primitives",
   "howtomakeaname/sumi/overlays",
-  "howtomakeaname/sumi/feedback",
   "moonbit-community/rabbita/html",
   "moonbit-community/rabbita/cmd",
   "moonbitlang/core/cmp",

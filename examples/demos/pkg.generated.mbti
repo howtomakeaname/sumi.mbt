@@ -1,0 +1,29 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "example/demos"
+
+import {
+  "howtomakeaname/sumi",
+  "moonbit-community/rabbita",
+  "moonbit-community/rabbita/html",
+}
+
+// Values
+pub fn demo_groups() -> Array[String]
+
+pub fn demos() -> Array[Demo]
+
+pub fn find_demo(String) -> ((@sumi.ThemeMode?) -> @rabbita.Val[@html.Html])?
+
+// Errors
+
+// Types and methods
+pub struct Demo {
+  key : String
+  group : String
+  title : String
+  build : (@sumi.ThemeMode?) -> @rabbita.Val[@html.Html]
+}
+
+// Type aliases
+
+// Traits

@@ -2,6 +2,7 @@
 package "howtomakeaname/sumi"
 
 import {
+  "howtomakeaname/sumi/feedback",
   "howtomakeaname/sumi/forms",
   "howtomakeaname/sumi/layout",
   "howtomakeaname/sumi/overlays",
@@ -11,6 +12,8 @@ import {
 }
 
 // Values
+pub fn alert(message~ : String, variant? : @feedback.AlertVariant, icon? : @html.Html, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn avatar(src? : String, fallback? : String, size? : Int, alt? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn badge(value? : Int, dot? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
@@ -66,6 +69,8 @@ pub fn icon_expand(size? : Int) -> @html.Html
 pub fn icon_grid(size? : Int) -> @html.Html
 
 pub fn icon_image(size? : Int) -> @html.Html
+
+pub fn icon_important(size? : Int) -> @html.Html
 
 pub fn icon_layers(size? : Int) -> @html.Html
 
@@ -149,6 +154,8 @@ pub(all) enum ThemeMode {
 }
 
 // Type aliases
+pub using @feedback {type AlertVariant}
+
 pub using @primitives {type ButtonSize}
 
 pub using @primitives {type ButtonVariant}

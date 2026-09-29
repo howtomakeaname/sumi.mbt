@@ -193,7 +193,7 @@ pub fn[C : @html.IsChildren] button(
         style=[
           "position:absolute;inset:0;display:inline-flex;align-items:center;justify-content:center",
         ],
-        [@feedback.spinner(size=16)],
+        [spinner(size=16)],
       ),
     ])
   } else {

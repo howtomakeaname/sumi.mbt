@@ -220,3 +220,41 @@ pub fn icon_ratio(width~ : Int, height~ : Int, size? : Int = 16) -> @html.Html {
     ),
   )
 }
+
+///|
+/// A filled icon rendered as inline SVG on a 16x16 grid — companion to the
+/// stroke set for glyphs the design draws as solids. Color inherits from the
+/// parent via `currentColor`.
+fn fill_icon(
+  path : String,
+  size? : Int = 16,
+  style? : Array[String] = [],
+) -> @html.Html {
+  let px = size.to_string() + "px"
+  @html.span(
+    style=@internal.sumi_styles(
+      [
+        @internal.SumiBoxSizing,
+        "display:inline-flex;width:\{px};height:\{px};flex:none;align-items:center;justify-content:center;pointer-events:none",
+      ],
+      style,
+    ),
+    attrs=@html.Attrs::build().aria_hidden("true"),
+    @svg.svg(
+      width=size,
+      height=size,
+      view_box="0 0 16 16",
+      style=["display:block;width:100%;height:100%"],
+      [@svg.path(d=path, fill="currentColor")],
+    ),
+  )
+}
+
+///|
+/// Exclamation in a circle, used for inline validation and status notes.
+pub fn icon_important(size? : Int = 16) -> @html.Html {
+  fill_icon(
+    "M8 1.33333C11.6819 1.33333 14.6667 4.3181 14.6667 8C14.6667 11.6819 11.6819 14.6667 8 14.6667C4.3181 14.6667 1.33333 11.6819 1.33333 8C1.33333 4.3181 4.3181 1.33333 8 1.33333ZM8 2.66667C5.05448 2.66667 2.66667 5.05448 2.66667 8C2.66667 10.9455 5.05448 13.3333 8 13.3333C10.9455 13.3333 13.3333 10.9455 13.3333 8C13.3333 5.05448 10.9455 2.66667 8 2.66667ZM8 9.41602C8.44182 9.41602 8.80013 9.77432 8.80013 10.2161C8.80006 10.6579 8.44178 11.0163 8 11.0163C7.55822 11.0163 7.19994 10.6579 7.19987 10.2161C7.19987 9.77432 7.55817 9.41602 8 9.41602ZM8 4.61589C8.44183 4.61589 8.80013 4.97419 8.80013 5.41602V7.81576C8.80013 8.25758 8.44183 8.61589 8 8.61589C7.55817 8.61589 7.19987 8.25758 7.19987 7.81576V5.41602C7.19987 4.97419 7.55817 4.61589 8 4.61589Z",
+    size~,
+  )
+}

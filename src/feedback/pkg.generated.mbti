@@ -6,6 +6,8 @@ import {
 }
 
 // Values
+pub fn alert(message~ : String, variant? : AlertVariant, icon? : @html.Html, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn empty_state(title_text~ : String, description? : String, icon? : @html.Html, action? : @html.Html, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn progress(value~ : Int, max? : Int, show_value? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
@@ -16,11 +18,13 @@ pub fn skeleton_lines(count? : Int, style? : Array[String]) -> @html.Html
 
 pub fn skeleton_tile(width? : String, height? : String, style? : Array[String]) -> @html.Html
 
-pub fn spinner(size? : Int, id? : String, class? : String, style? : Array[String]) -> @html.Html
-
 // Errors
 
 // Types and methods
+pub(all) enum AlertVariant {
+  Solid
+  Subtle
+}
 
 // Type aliases
 

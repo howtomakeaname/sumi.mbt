@@ -52,3 +52,21 @@ fn demo_empty_state_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
     ]),
   )
 }
+
+///|
+/// Inline validation notes on both fills.
+fn demo_alert_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
+  Val::constant(
+    stage_mode(mode, [
+      column("12px", [
+        @sumi.alert(
+          message="Prompt exceeds the 800-word limit — shorten it before generating",
+        ),
+        @sumi.alert(
+          variant=Subtle,
+          message="Check the highlighted section before sending",
+        ),
+      ]),
+    ]),
+  )
+}

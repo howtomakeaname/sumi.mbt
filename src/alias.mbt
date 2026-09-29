@@ -27,6 +27,7 @@ pub using @primitives {
   icon_expand,
   icon_grid,
   icon_image,
+  icon_important,
   icon_layers,
   icon_minus,
   icon_more,
@@ -40,6 +41,7 @@ pub using @primitives {
   icon_upload,
   icon_x,
   kbd,
+  spinner,
   tag,
   type ButtonSize,
   type ButtonVariant,
@@ -48,12 +50,13 @@ pub using @primitives {
 
 ///|
 pub using @feedback {
+  alert,
   empty_state,
   progress,
   skeleton,
   skeleton_lines,
   skeleton_tile,
-  spinner,
+  type AlertVariant,
 }
 
 ///|

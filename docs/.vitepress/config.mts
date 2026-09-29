@@ -43,6 +43,7 @@ const componentsSidebar = [
       { text: 'Skeleton', link: '/components/skeleton' },
       { text: 'Badge', link: '/components/badge' },
       { text: 'Empty State', link: '/components/empty-state' },
+      { text: 'Alert', link: '/components/alert' },
     ],
   },
   {
@@ -90,6 +91,7 @@ const componentsSidebarZh = [
     { text: 'Skeleton 骨架屏', link: '/zh/components/skeleton' },
     { text: 'Badge 徽标', link: '/zh/components/badge' },
     { text: 'Empty State 空状态', link: '/zh/components/empty-state' },
+    { text: 'Alert 提示', link: '/zh/components/alert' },
   ]},
   { text: '展示', items: [
     { text: 'Avatar 头像', link: '/zh/components/avatar' },

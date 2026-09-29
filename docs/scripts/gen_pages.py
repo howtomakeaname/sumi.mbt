@@ -89,7 +89,7 @@ PKG_FILES = {
     "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt"],
     "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "slider.mbt", "segmented.mbt", "prompt_box.mbt"],
     "overlays": ["dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
-    "feedback": ["spinner.mbt", "progress.mbt", "skeleton.mbt", "empty_state.mbt"],
+    "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt"],
     "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt"],
 }
 
@@ -809,6 +809,34 @@ items=[
                 "description": ("Supporting text", "辅助文本"),
                 "icon": ("Artwork above the title", "标题上方的图形"),
                 "action": ("Call-to-action below the text", "文本下方的动作按钮"),
+            }),
+        ],
+    ),
+    page(
+        "alert", "feedback", "Alert", "Alert 提示",
+        "An inline icon + message note for validation and status inside a panel.",
+        "面板内的行内图标 + 文案提示，用于校验与状态说明。",
+        [
+            demo("alert-basic", "Solid & subtle", "实底与淡底", """
+@sumi.alert(
+  message="Prompt exceeds the 800-word limit — shorten it before generating",
+)
+@sumi.alert(
+  variant=@sumi.Subtle,
+  message="Check the highlighted section before sending",
+)"""),
+        ],
+        [
+            api("alert", params={
+                "message": ("Note text; wraps to multiple lines", "提示文案；可多行换行"),
+                "variant": ("`Solid` on the canvas, `Subtle` on a filled surface", "`Solid` 用于画布，`Subtle` 用于已有填充的表面"),
+                "icon": ("Leading glyph (defaults to `icon_important`)", "前置图标（默认为 `icon_important`）"),
+            }),
+        ],
+        [
+            enum("AlertVariant", "feedback", {
+                "Solid": "Tooltip-dark fill for notes sitting on the canvas",
+                "Subtle": "Barely-there fill for notes on an already-filled surface",
             }),
         ],
     ),

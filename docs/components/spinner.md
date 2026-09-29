@@ -19,11 +19,4 @@ A rotating arc for inline loading. Also used inside buttons and the send button.
 
 ### spinner
 
-| Name | Type | Default | Description |
-|---|---|---|---|
-| size | `Int` | 16 | Diameter in px |
-| id | `String` | — | Element id |
-| class | `String` | — | Extra class names |
-| style | `Array[String]` | [] | Extra inline styles |
-
 \* required (labelled) parameter — everything else is optional.
