@@ -8,6 +8,8 @@ import {
 }
 
 // Values
+pub fn add_tile(on_click? : @cmd.Cmd, disabled? : Bool, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn avatar(src? : String, fallback? : String, size? : Int, alt? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn badge(value? : Int, dot? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
@@ -52,6 +54,8 @@ pub fn icon_download(size? : Int) -> @html.Html
 
 pub fn icon_expand(size? : Int) -> @html.Html
 
+pub fn icon_folder(size? : Int) -> @html.Html
+
 pub fn icon_grid(size? : Int) -> @html.Html
 
 pub fn icon_image(size? : Int) -> @html.Html
@@ -70,6 +74,8 @@ pub fn icon_play(size? : Int) -> @html.Html
 
 pub fn icon_plus(size? : Int) -> @html.Html
 
+pub fn icon_plus_fill(size? : Int) -> @html.Html
+
 pub fn icon_ratio(width~ : Int, height~ : Int, size? : Int) -> @html.Html
 
 pub fn icon_reset(size? : Int) -> @html.Html
@@ -86,9 +92,13 @@ pub fn icon_star(size? : Int) -> @html.Html
 
 pub fn icon_star_fill(size? : Int) -> @html.Html
 
+pub fn icon_target(size? : Int) -> @html.Html
+
 pub fn icon_tick_circle_fill(size? : Int, style? : Array[String]) -> @html.Html
 
 pub fn icon_upload(size? : Int) -> @html.Html
+
+pub fn icon_upload_fill(size? : Int) -> @html.Html
 
 pub fn icon_x(size? : Int) -> @html.Html
 

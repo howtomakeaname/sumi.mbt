@@ -47,6 +47,12 @@ pub fn demos() -> Array[Demo] {
       build: demo_favorite_toggle_basic,
     },
     {
+      key: "add-tile-basic",
+      group: "Actions",
+      title: "Add tile",
+      build: demo_add_tile_basic,
+    },
+    {
       key: "toolbar-basic",
       group: "Actions",
       title: "Toolbar",

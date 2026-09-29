@@ -86,7 +86,7 @@ def parse_enum(src, name):
     return variants
 
 PKG_FILES = {
-    "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt", "favorite_toggle.mbt"],
+    "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt", "favorite_toggle.mbt", "add_tile.mbt"],
     "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt"],
@@ -240,6 +240,38 @@ PAGES = [
                 "on_change": ("Emitted with the flipped value on click", "点击时以翻转后的值触发"),
                 "disabled": ("Faded and inert", "置灰且不可交互"),
                 "aria_label": ("Override the accessible label (defaults flip with state)", "覆盖无障碍标签（默认随状态切换）"),
+            }),
+        ],
+        [],
+    ),
+    page(
+        "add-tile", "primitives", "Add Tile", "Add Tile 添加磁贴",
+        "The 48px add tile: a quiet bordered square with a centered plus. Compose it as a `dropdown_menu` trigger to open an upload/picker menu above; hover raises the fill to the primary block.",
+        "48px 的添加磁贴：低调的描边方块中央一个加号。可作为 `dropdown_menu` 的触发器组合，在上方弹出上传/选取菜单；悬停时填充提升为主块色。",
+        [
+            demo("add-tile-basic", "With picker menu", "带选取菜单", """
+@sumi.dropdown_menu(
+  trigger=@sumi.add_tile(aria_label="Add image"),
+  items=[
+    Item(@sumi.MenuItem::new("upload", "Upload image",
+      icon=@sumi.icon_upload_fill())),
+    Item(@sumi.MenuItem::new("assets", "Select from assets",
+      icon=@sumi.icon_folder())),
+    Item(@sumi.MenuItem::new("canvas", "Select from canvas",
+      icon=@sumi.icon_target())),
+  ],
+  open=is_open,
+  on_open_change=set_open.map(v => _ => v),
+  side=@sumi.Top,
+  menu_style=["width:240px"],
+)
+@sumi.add_tile(disabled=true)"""),
+        ],
+        [
+            api("add_tile", params={
+                "on_click": ("Click command (usually the menu toggle via composition)", "点击命令（组合用法下通常是菜单开关）"),
+                "disabled": ("Faded plus and inert", "加号置灰且不可交互"),
+                "aria_label": ("Accessible label (defaults to \"Add\")", "无障碍标签（默认 \"Add\"）"),
             }),
         ],
         [],

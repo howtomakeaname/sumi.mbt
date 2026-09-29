@@ -53,6 +53,46 @@ fn demo_favorite_toggle_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
 }
 
 ///|
+fn demo_add_tile_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
+  let (open, set_open) = @rabbita.create_variable(false)
+  open.view(fn(is_open) {
+    stage_mode(mode, [
+      @sumi.dropdown_menu(
+        trigger=@sumi.add_tile(aria_label="Add image"),
+        items=[
+          Item(
+            @sumi.MenuItem::new(
+              "upload",
+              "Upload image",
+              icon=@sumi.icon_upload_fill(),
+            ),
+          ),
+          Item(
+            @sumi.MenuItem::new(
+              "assets",
+              "Select from assets",
+              icon=@sumi.icon_folder(),
+            ),
+          ),
+          Item(
+            @sumi.MenuItem::new(
+              "canvas",
+              "Select from canvas",
+              icon=@sumi.icon_target(),
+            ),
+          ),
+        ],
+        open=is_open,
+        on_open_change=set_open.map(v => _ => v),
+        side=Top,
+        menu_style=["width:240px"],
+      ),
+      @sumi.add_tile(disabled=true),
+    ])
+  })
+}
+
+///|
 fn demo_toolbar_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   let (enhance_open, set_enhance_open) = @rabbita.create_variable(false)
   let (enhance, set_enhance) = @rabbita.create_variable("standard")

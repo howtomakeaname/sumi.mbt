@@ -8,6 +8,7 @@ const componentsSidebar = [
       { text: 'Button', link: '/components/button' },
       { text: 'Icon Button', link: '/components/icon-button' },
       { text: 'Favorite Toggle', link: '/components/favorite-toggle' },
+      { text: 'Add Tile', link: '/components/add-tile' },
       { text: 'Toolbar', link: '/components/toolbar' },
     ],
   },
@@ -72,6 +73,7 @@ const componentsSidebarZh = [
     { text: 'Button 按钮', link: '/zh/components/button' },
     { text: 'Icon Button 图标按钮', link: '/zh/components/icon-button' },
     { text: 'Favorite Toggle 收藏切换', link: '/zh/components/favorite-toggle' },
+    { text: 'Add Tile 添加磁贴', link: '/zh/components/add-tile' },
     { text: 'Toolbar 工具栏', link: '/zh/components/toolbar' },
   ]},
   { text: '表单', items: [

@@ -7,6 +7,7 @@
 
 ///|
 pub using @primitives {
+  add_tile,
   avatar,
   badge,
   button,
@@ -29,6 +30,7 @@ pub using @primitives {
   icon_crop,
   icon_download,
   icon_expand,
+  icon_folder,
   icon_grid,
   icon_image,
   icon_important,
@@ -38,6 +40,7 @@ pub using @primitives {
   icon_more,
   icon_play,
   icon_plus,
+  icon_plus_fill,
   icon_ratio,
   icon_reset,
   icon_scissors,
@@ -46,8 +49,10 @@ pub using @primitives {
   icon_sparkle,
   icon_star,
   icon_star_fill,
+  icon_target,
   icon_tick_circle_fill,
   icon_upload,
+  icon_upload_fill,
   icon_x,
   kbd,
   spinner,
