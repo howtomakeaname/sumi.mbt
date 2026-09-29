@@ -30,7 +30,9 @@ fn row(children : Array[Html]) -> Html {
 fn column(gap : String, children : Array[Html]) -> Html {
   @html.div(
     style=[
-      "display:flex;flex-direction:column;gap:" + gap + ";width:100%;max-width:420px",
+      "display:flex;flex-direction:column;gap:" +
+      gap +
+      ";width:100%;max-width:420px",
     ],
     children,
   )

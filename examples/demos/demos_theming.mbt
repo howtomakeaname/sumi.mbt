@@ -23,23 +23,24 @@ fn demo_theme_tokens(mode : @sumi.ThemeMode?) -> Val[Html] {
       mode=mode.unwrap_or(@sumi.Dark),
       style=["--sumi-brand:#7c3aed;--sumi-brand-hover:#6d28d9"],
       [
-      @html.div(
-        style=[
-          "padding:28px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;background:var(--sumi-canvas,#0d0d0d)",
-        ],
-        [
-          @sumi.switch(checked=is_on, on_change=set_on.map(v => _ => v)),
-          @sumi.tag(variant=Brand, [
-            @sumi.icon_sparkle(size=12),
-            @html.text("AI"),
-          ]),
-          @sumi.checkbox(
-            checked=is_on,
-            label="Brand-tinted",
-            on_change=set_on.map(v => _ => v),
-          ),
-        ],
-      ),
-    ])
+        @html.div(
+          style=[
+            "padding:28px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;background:var(--sumi-canvas,#0d0d0d)",
+          ],
+          [
+            @sumi.switch(checked=is_on, on_change=set_on.map(v => _ => v)),
+            @sumi.tag(variant=Brand, [
+              @sumi.icon_sparkle(size=12),
+              @html.text("AI"),
+            ]),
+            @sumi.checkbox(
+              checked=is_on,
+              label="Brand-tinted",
+              on_change=set_on.map(v => _ => v),
+            ),
+          ],
+        ),
+      ],
+    )
   })
 }

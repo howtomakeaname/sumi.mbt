@@ -12,7 +12,7 @@ fn mountable(name : String) -> (() -> Val[Html])? {
 }
 
 ///|
-let mount_counter : Ref[Int] = { val: 0 }
+let mount_counter : Ref[Int] = { val: 0, }
 
 ///|
 /// Mount every not-yet-mounted demo placeholder currently in the document.
@@ -44,8 +44,7 @@ fn main {
   let observer = @dom.MutationObserver::new(fn(_records, _observer) {
     hydrate()
   })
-  if @dom.document().get_body() is Some(body) &&
-    body.to_node() is Some(node) {
+  if @dom.document().get_body() is Some(body) && body.to_node() is Some(node) {
     observer.observe(node, child_list=true, subtree=true)
   }
 }

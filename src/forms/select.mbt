@@ -23,7 +23,11 @@ const SelectFilterCaretStyle : String = "display:inline-flex;flex:none;align-ite
 const SelectLabelStyle : String = "flex:1 1 0%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"
 
 ///|
-fn select_trigger_color(disabled : Bool, filtered : Bool, open : Bool) -> String {
+fn select_trigger_color(
+  disabled : Bool,
+  filtered : Bool,
+  open : Bool,
+) -> String {
   if disabled {
     "color:var(--sumi-text-disabled,rgba(255,255,255,0.2))"
   } else if filtered || open {
@@ -119,10 +123,7 @@ fn select_filter_trigger(
           .data_set("slot", "select-filter-open")
           .aria_haspopup("menu")
           .aria_expanded(@internal.sumi_bool(open)),
-        [
-          @html.span(style=[SelectLabelStyle], [label]),
-          ..caret,
-        ],
+        [@html.span(style=[SelectLabelStyle], [label]), ..caret],
       ),
       ..clear_button,
     ],
@@ -166,8 +167,12 @@ pub fn select(
   style? : Array[String] = [],
 ) -> @html.Html {
   let current = options.iter().find_first(option => option.value == value)
-  let selected_label : @html.Html? = current.map(option => @html.text(option.label))
-  let base_attrs = @internal.sumi_attrs(attrs).data_set("slot", "select-trigger")
+  let selected_label : @html.Html? = current.map(option => {
+    @html.text(option.label)
+  })
+  let base_attrs = @internal.sumi_attrs(attrs).data_set(
+    "slot", "select-trigger",
+  )
   let trigger = match variant {
     Form => {
       let label : @html.Html = match selected_label {
@@ -223,7 +228,12 @@ pub fn select(
     }
   }
   let (menu_style, trigger_style, root_style) = match variant {
-    Form => (["width:100%"], ["display:flex;width:100%"], ["display:block;width:100%"])
+    Form =>
+      (
+        ["width:100%"],
+        ["display:flex;width:100%"],
+        ["display:block;width:100%"],
+      )
     Filter => ([], ["display:inline-flex"], ["display:inline-block"])
   }
   @overlays.dropdown_menu(

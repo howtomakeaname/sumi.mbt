@@ -1,7 +1,10 @@
 ///|
 fn demo_avatar_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
-    stage_mode(mode, [@sumi.avatar(fallback="Sumi"), @sumi.avatar(fallback="墨", size=40)]),
+    stage_mode(mode, [
+      @sumi.avatar(fallback="Sumi"),
+      @sumi.avatar(fallback="墨", size=40),
+    ]),
   )
 }
 
@@ -24,7 +27,13 @@ fn demo_kbd_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
       @sumi.kbd("⌘"),
       @sumi.kbd("K"),
       hint("combine:"),
-      row([@sumi.kbd("⌘"), @html.text("+"), @sumi.kbd("⇧"), @html.text("+"), @sumi.kbd("P")]),
+      row([
+        @sumi.kbd("⌘"),
+        @html.text("+"),
+        @sumi.kbd("⇧"),
+        @html.text("+"),
+        @sumi.kbd("P"),
+      ]),
     ]),
   )
 }
@@ -57,9 +66,7 @@ fn demo_card_section(mode : @sumi.ThemeMode?) -> Val[Html] {
             ],
             [
               @html.span(
-                style=[
-                  "color:var(--sumi-text-secondary,rgba(255,255,255,0.7))",
-                ],
+                style=["color:var(--sumi-text-secondary,rgba(255,255,255,0.7))"],
                 "Export format",
               ),
               @sumi.tag("PNG"),

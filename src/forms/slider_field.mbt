@@ -113,7 +113,9 @@ pub fn slider_field(
   attrs? : @html.Attrs,
   style? : Array[String] = [],
 ) -> @html.Html {
-  let element_attrs = @internal.sumi_attrs(attrs).data_set("slot", "slider-field")
+  let element_attrs = @internal.sumi_attrs(attrs).data_set(
+    "slot", "slider-field",
+  )
   let range = max - min
   let percent_of = fn(tick : Int) -> Int {
     if range <= 0 {
@@ -131,7 +133,12 @@ pub fn slider_field(
       }
       [
         @html.div(
-          style=[@internal.SumiBoxSizing, @internal.SumiFontNum, SliderFieldAutoStyle, auto_color],
+          style=[
+            @internal.SumiBoxSizing,
+            @internal.SumiFontNum,
+            SliderFieldAutoStyle,
+            auto_color,
+          ],
           attrs=@html.Attrs::build().data_set("slot", "slider-field-auto"),
           [
             @html.span(style=[], auto_label),
@@ -143,20 +150,25 @@ pub fn slider_field(
     None => []
   }
   let title_row : Array[@html.Html] = match label {
-    Some(text) => [
-      @html.div(
-        style=[@internal.SumiBoxSizing, @internal.SumiFontSans, SliderFieldTitleStyle],
-        attrs=@html.Attrs::build().data_set("slot", "slider-field-title"),
-        [
-          @html.span(
-            style=[@internal.SumiFontSans, SliderFieldLabelStyle],
-            attrs=@html.Attrs::build().data_set("slot", "slider-field-label"),
-            text,
-          ),
-          ..auto_row,
-        ],
-      ),
-    ]
+    Some(text) =>
+      [
+        @html.div(
+          style=[
+            @internal.SumiBoxSizing,
+            @internal.SumiFontSans,
+            SliderFieldTitleStyle,
+          ],
+          attrs=@html.Attrs::build().data_set("slot", "slider-field-title"),
+          [
+            @html.span(
+              style=[@internal.SumiFontSans, SliderFieldLabelStyle],
+              attrs=@html.Attrs::build().data_set("slot", "slider-field-label"),
+              text,
+            ),
+            ..auto_row,
+          ],
+        ),
+      ]
     None => []
   }
   let tick_count = ticks.length()
@@ -180,17 +192,14 @@ pub fn slider_field(
   let tick_labels = ticks.mapi(fn(i, tick) {
     slider_field_tick_label(percent_of(tick), tick, i, tick_count)
   })
-  let slider_wrap = @html.div(
-    style=["position:relative;width:100%"],
-    [
-      slider(value~, min~, max~, step~, on_input?, on_commit?, disabled~),
-      @html.div(
-        style=[SliderFieldTicksStyle],
-        attrs=@html.Attrs::build().aria_hidden("true"),
-        tick_marks,
-      ),
-    ],
-  )
+  let slider_wrap = @html.div(style=["position:relative;width:100%"], [
+    slider(value~, min~, max~, step~, on_input?, on_commit?, disabled~),
+    @html.div(
+      style=[SliderFieldTicksStyle],
+      attrs=@html.Attrs::build().aria_hidden("true"),
+      tick_marks,
+    ),
+  ])
   let commit = fn(text : String) -> @cmd.Cmd {
     match slider_field_parse(text) {
       Some(v) => {
@@ -224,7 +233,11 @@ pub fn slider_field(
         input_type=Text,
         value=value.to_string(),
         read_only=disabled,
-        style=[@internal.SumiBoxSizing, @internal.SumiFontNum, SliderFieldInputStyle],
+        style=[
+          @internal.SumiBoxSizing,
+          @internal.SumiFontNum,
+          SliderFieldInputStyle,
+        ],
         attrs=@html.Attrs::build()
           .data_set("slot", "slider-field-input")
           .data_set("value", value.to_string())

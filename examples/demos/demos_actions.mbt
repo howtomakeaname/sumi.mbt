@@ -34,11 +34,7 @@ fn demo_icon_button_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
         aria_label="Crop (active tool)",
       ),
       @sumi.icon_button(@sumi.icon_x(), size=IconSm, aria_label="Close"),
-      @sumi.icon_button(
-        @sumi.icon_upload(),
-        disabled=true,
-        aria_label="Export",
-      ),
+      @sumi.icon_button(@sumi.icon_upload(), disabled=true, aria_label="Export"),
     ]),
   )
 }
