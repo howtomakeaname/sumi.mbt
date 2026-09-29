@@ -258,3 +258,28 @@ pub fn icon_important(size? : Int = 16) -> @html.Html {
     size~,
   )
 }
+
+///|
+/// Slanted bar separating pagination numbers — a filled glyph on a 9.333x14
+/// design grid, sized by height (the width follows the glyph's ratio).
+pub fn icon_slash(size? : Int = 14) -> @html.Html {
+  let px = size.to_string() + "px"
+  @html.span(
+    style=[
+      @internal.SumiBoxSizing,
+      "display:inline-flex;height:\{px};flex:none;align-items:center;justify-content:center;pointer-events:none",
+    ],
+    attrs=@html.Attrs::build().aria_hidden("true"),
+    @svg.svg(
+      height=size,
+      view_box="0 0 9.33333 14",
+      style=["display:block;width:auto;height:100%"],
+      [
+        @svg.path(
+          d="M5.89302 1.65749C5.99977 1.35366 6.33306 1.19409 6.63692 1.30066C6.94065 1.40751 7.10031 1.74018 6.99369 2.044L3.47614 12.0587C3.36932 12.3625 3.03615 12.5223 2.73224 12.4155C2.42852 12.3086 2.26867 11.9754 2.3754 11.6716L5.89302 1.65749Z",
+          fill="currentColor",
+        ),
+      ],
+    ),
+  )
+}

@@ -59,6 +59,7 @@ pub fn demos() -> Array[Demo] {
     { key: "card-basic", group: "Display", title: "Bare card", build: demo_card_basic },
     { key: "card-section", group: "Display", title: "Section card", build: demo_card_section },
     { key: "tabs-basic", group: "Display", title: "Tabs", build: demo_tabs_basic },
+    { key: "pagination-basic", group: "Display", title: "Current / total", build: demo_pagination_basic },
     { key: "credits-basic", group: "Display", title: "Credits", build: demo_credits_basic },
     { key: "icons-basic", group: "Display", title: "Icon set", build: demo_icons_basic },
     { key: "theme-light", group: "Theming", title: "Light palette", build: demo_theme_light },

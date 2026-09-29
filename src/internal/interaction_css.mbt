@@ -44,6 +44,12 @@ const SumiInteractionCss : String =
   #|  [data-slot="icon-button"]:not(:disabled):not([aria-disabled="true"]):active {
   #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12));
   #|  }
+  #|  [data-slot="pagination-button"]:not(:disabled):not([aria-disabled="true"]):hover {
+  #|    background:var(--sumi-block,rgba(255,255,255,0.08));
+  #|  }
+  #|  [data-slot="pagination-button"]:not(:disabled):not([aria-disabled="true"]):active {
+  #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12));
+  #|  }
   #|  [data-slot="segmented-item"]:not([data-state="on"]):not(:disabled):hover {
   #|    background:var(--sumi-block,rgba(255,255,255,0.08));
   #|    color:var(--sumi-text,#ffffff);

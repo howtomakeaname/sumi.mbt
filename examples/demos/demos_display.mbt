@@ -93,6 +93,21 @@ fn demo_tabs_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
 }
 
 ///|
+/// Stepping through a small result set.
+fn demo_pagination_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
+  let (page, set_page) = @rabbita.create_variable(2)
+  page.view(fn(current) {
+    stage_mode(mode, [
+      @sumi.pagination(
+        page=current,
+        total=4,
+        on_change=set_page.map(v => _ => v),
+      ),
+    ])
+  })
+}
+
+///|
 fn demo_credits_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
@@ -147,6 +162,8 @@ fn demo_icons_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
       icon_tile("plus", @sumi.icon_plus(size=s)),
       icon_tile("reset", @sumi.icon_reset(size=s)),
       icon_tile("scissors", @sumi.icon_scissors(size=s)),
+      icon_tile("important", @sumi.icon_important(size=s)),
+      icon_tile("slash", @sumi.icon_slash(size=s)),
       icon_tile("search", @sumi.icon_search(size=s)),
       icon_tile("sparkle", @sumi.icon_sparkle(size=s)),
       icon_tile("upload", @sumi.icon_upload(size=s)),

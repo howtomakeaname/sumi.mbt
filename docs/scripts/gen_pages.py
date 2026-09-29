@@ -90,7 +90,7 @@ PKG_FILES = {
     "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "slider.mbt", "segmented.mbt", "prompt_box.mbt"],
     "overlays": ["dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt"],
-    "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt"],
+    "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt"],
 }
 
 def pkg_src(pkg):
@@ -948,6 +948,26 @@ items=[
             api("TabEntry::new", desc_en="One tab.", desc_zh="一个标签。", params={
                 "0": ("`String` value, `String` label", "`String` 值，`String` 标签"),
                 "icon": ("Leading icon", "前置图标"),
+            }),
+        ],
+    ),
+    page(
+        "pagination", "layout", "Pagination", "Pagination 分页",
+        "A minimal `\u2039 page / total \u203a` pager with clamped arrow buttons.",
+        "极简 `\u2039 页码 / 总数 \u203a` 分页器，箭头在边界处钳制并禁用。",
+        [
+            demo("pagination-basic", "Current / total", "页码 / 总数", """
+@sumi.pagination(
+  page=current,
+  total=4,
+  on_change=set_page.map(v => _ => v),
+)"""),
+        ],
+        [
+            api("pagination", params={
+                "page": ("Current page, 1-based (controlled)", "当前页码，从 1 开始（受控）"),
+                "total": ("Total page count", "总页数"),
+                "on_change": ("Called with the clamped target page", "以钳制后的目标页回调"),
             }),
         ],
     ),
