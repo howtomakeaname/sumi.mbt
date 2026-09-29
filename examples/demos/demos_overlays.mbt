@@ -83,6 +83,76 @@ fn demo_dropdown_menu_compact(mode : @sumi.ThemeMode?) -> Val[Html] {
 }
 
 ///|
+fn checkbox_menu_toggle(list : Array[String], value : String) -> Array[String] {
+  if list.contains(value) {
+    list.filter(fn(v) { v != value })
+  } else {
+    [..list, value]
+  }
+}
+
+///|
+fn demo_checkbox_menu(mode : @sumi.ThemeMode?) -> Val[Html] {
+  let (selected, set_selected) = @rabbita.create_variable([
+    "text", "number", "compact",
+  ])
+  selected.view(fn(current) {
+    let field_values = ["text", "number", "date", "member"]
+    stage_mode(mode, [
+      @sumi.checkbox_menu(
+        groups=[
+          @sumi.CheckboxMenuGroup::new(
+            [
+              @sumi.CheckboxMenuItem::new(
+                "text",
+                "Text",
+                checked=current.contains("text"),
+              ),
+              @sumi.CheckboxMenuItem::new(
+                "number",
+                "Number",
+                checked=current.contains("number"),
+              ),
+              @sumi.CheckboxMenuItem::new(
+                "date",
+                "Date",
+                checked=current.contains("date"),
+              ),
+              @sumi.CheckboxMenuItem::new("member", "Member", disabled=true),
+            ],
+            title="Fields",
+            clear_label="Clear",
+            on_clear=set_selected(fn(c) {
+              c.filter(fn(v) { !field_values.contains(v) })
+            }),
+          ),
+          @sumi.CheckboxMenuGroup::new([
+            @sumi.CheckboxMenuItem::new(
+              "compact",
+              "Compact view",
+              icon=@sumi.icon_grid(size=16),
+              checked=current.contains("compact"),
+            ),
+            @sumi.CheckboxMenuItem::new(
+              "details",
+              "File details",
+              icon=@sumi.icon_layers(size=16),
+              checked=current.contains("details"),
+            ),
+          ]),
+        ],
+        on_toggle=set_selected.map(v => fn(c) { checkbox_menu_toggle(c, v) }),
+        footer_label="Show all",
+        footer_icon=@sumi.icon_reset(size=16),
+        on_footer=set_selected(_ => {
+          ["text", "number", "date", "compact", "details"]
+        }),
+      ),
+    ])
+  })
+}
+
+///|
 fn demo_context_menu_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   let (open, set_open) = @rabbita.create_variable(false)
   let (action, set_action) = @rabbita.create_variable("")

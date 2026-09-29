@@ -88,7 +88,7 @@ def parse_enum(src, name):
 PKG_FILES = {
     "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt"],
     "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt"],
-    "overlays": ["dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
+    "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt"],
     "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt"],
 }
@@ -660,6 +660,48 @@ items=[
             }, {
                 "Bottom": "在触发器下方展开（默认）",
                 "Top": "在触发器上方展开（输入坞）",
+            }),
+        ],
+    ),
+    page(
+        "checkbox-menu", "overlays", "Checkbox Menu", "Checkbox Menu 多选菜单",
+        "A multi-select menu panel: grouped rows carrying an outline checkbox that toggle independently, an optional per-group clear action, and a pinned footer row. The body scrolls past the max height.",
+        "多选菜单面板：分组行右侧带描边勾选框，各行独立切换；支持分组清空操作与底部固定行，内容超出最大高度时滚动。",
+        [
+            demo("checkbox-menu", "Grouped multi-select", "分组多选", """
+@sumi.checkbox_menu(
+  groups=[
+    @sumi.CheckboxMenuGroup::new([
+      @sumi.CheckboxMenuItem::new("text", "Text", checked=true),
+      @sumi.CheckboxMenuItem::new("date", "Date"),
+    ], title="Fields", clear_label="Clear", on_clear=clear_fields),
+  ],
+  on_toggle=set_selected.map(v => fn(c) { toggle(c, v) }),
+  footer_label="Show all",
+  on_footer=show_all,
+)"""),
+        ],
+        [
+            api("checkbox_menu", params={
+                "groups": ("Titled sections of rows; a hairline sits between groups", "带标题的分组行；组间以细分隔线相隔"),
+                "on_toggle": ("Emits the clicked row's `value`", "点击行时发出其 `value`"),
+                "width": ("Panel width — the design's steps are 160/200/240/320", "面板宽度——设计规格档位为 160/200/240/320"),
+                "max_height": ("Scroll threshold for the body", "正文区域的滚动阈值"),
+                "footer_label": ("Pinned row below the scroll area", "滚动区下方的固定行"),
+                "footer_icon": ("Leading icon of the footer row", "固定行的前置图标"),
+                "on_footer": ("Footer row activation", "固定行的激活回调"),
+            }),
+            api("CheckboxMenuGroup::new", desc_en="One titled section.", desc_zh="一个带标题的分组。", params={
+                "0": ("`Array[CheckboxMenuItem]` rows", "`Array[CheckboxMenuItem]` 行"),
+                "title": ("Section caption", "分组小标题"),
+                "clear_label": ("Text action at the title's right edge", "标题右侧的文字操作"),
+                "on_clear": ("Clear action command", "清空操作命令"),
+            }),
+            api("CheckboxMenuItem::new", desc_en="One toggleable row.", desc_zh="一个可切换的行。", params={
+                "0": ("`String` value, `String` label", "`String` 值，`String` 标签"),
+                "icon": ("Leading icon", "前置图标"),
+                "checked": ("Controlled checked flag", "受控选中状态"),
+                "disabled": ("Dims and deactivates the row", "置灰并禁用该行"),
             }),
         ],
     ),

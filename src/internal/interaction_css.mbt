@@ -75,6 +75,21 @@ const SumiInteractionCss : String =
   #|  [data-slot="menu-item"]:not([aria-disabled="true"]):hover {
   #|    background:var(--sumi-block,rgba(255,255,255,0.08)) !important;
   #|  }
+  #|  [data-slot="checkbox-menu-item"]:not([aria-disabled="true"]):hover,
+  #|  [data-slot="checkbox-menu-footer-row"]:hover {
+  #|    background:var(--sumi-block,rgba(255,255,255,0.08)) !important;
+  #|  }
+  #|  [data-slot="checkbox-menu-item"]:not([aria-disabled="true"]):active {
+  #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12)) !important;
+  #|  }
+  #|  [data-slot="checkbox-menu-item"]:not([aria-disabled="true"]):hover [data-slot="checkbox-menu-check"],
+  #|  [data-slot="checkbox-menu-item"]:not([aria-disabled="true"]):active [data-slot="checkbox-menu-check"] {
+  #|    opacity:1 !important;
+  #|  }
+  #|  [data-slot="checkbox-menu-clear"]:hover,
+  #|  [data-slot="checkbox-menu-clear"]:active {
+  #|    color:var(--sumi-text,#ffffff) !important;
+  #|  }
   #|  [data-slot="switch"][data-state="off"]:not(:disabled):hover {
   #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12)) !important;
   #|  }
@@ -216,16 +231,19 @@ const SumiInteractionCss : String =
   #|    opacity:0.5;
   #|  }
   #|  [data-slot="scroll-area"],
+  #|  [data-slot="checkbox-menu-body"],
   #|  [data-slot="prompt-textarea"] {
   #|    scrollbar-width:thin;
   #|    scrollbar-color:var(--sumi-scrollbar,rgba(204,221,255,0.12)) transparent;
   #|  }
   #|  [data-slot="scroll-area"]::-webkit-scrollbar,
+  #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar,
   #|  [data-slot="prompt-textarea"]::-webkit-scrollbar {
   #|    width:2px;
   #|    height:2px;
   #|  }
   #|  [data-slot="scroll-area"]::-webkit-scrollbar-thumb,
+  #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-thumb,
   #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-thumb {
   #|    background:var(--sumi-scrollbar,rgba(204,221,255,0.12));
   #|    border-radius:17px;
@@ -295,7 +313,8 @@ const SumiInteractionCss : String =
   #|    opacity:1;
   #|  }
   #|  [data-slot="segmented-item"]:focus-visible,
-  #|  [data-slot="menu-item"]:focus-visible {
+  #|  [data-slot="menu-item"]:focus-visible,
+  #|  [data-slot="checkbox-menu-item"]:focus-visible {
   #|    outline:1px solid var(--sumi-text,#ffffff) !important;
   #|    outline-offset:-1px !important;
   #|  }
@@ -319,6 +338,8 @@ const SumiInteractionCss : String =
   #|  [data-slot="icon-button"],
   #|  [data-slot="segmented-item"],
   #|  [data-slot="menu-item"],
+  #|  [data-slot="checkbox-menu-item"],
+  #|  [data-slot="checkbox-menu-check"],
   #|  [data-slot="switch"],
   #|  [data-slot="dialog"][open],
   #|  [data-slot="dialog"][open]::backdrop,

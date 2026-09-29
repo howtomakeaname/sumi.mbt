@@ -26,6 +26,8 @@ pub fn[C : @html.IsChildren] card_section(header~ : @html.Html, id? : String, cl
 
 pub fn checkbox(checked~ : Bool, label? : String, indeterminate? : Bool, on_change? : @cmd.Emit[Bool], disabled? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
+pub fn checkbox_menu(groups~ : Array[@overlays.CheckboxMenuGroup], on_toggle? : @cmd.Emit[String], width? : Int, max_height? : Int, footer_label? : String, footer_icon? : @html.Html, on_footer? : @cmd.Cmd, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn[C : @html.IsChildren] context_menu(entries~ : Array[@overlays.MenuEntry], open~ : Bool, on_open_change? : @cmd.Emit[Bool], selected? : String, on_select? : @cmd.Emit[String], id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String], menu_style? : Array[String], C) -> @html.Html
 
 pub fn credits(value~ : Int, original_value? : Int, muted? : Bool, on_click? : @cmd.Cmd, id? : String, class? : String, title? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
@@ -53,6 +55,8 @@ pub fn icon_button(@html.Html, variant? : @primitives.ButtonVariant, size? : @pr
 pub fn icon_caret_down(size? : Int) -> @html.Html
 
 pub fn icon_check(size? : Int) -> @html.Html
+
+pub fn icon_check_fill(size? : Int) -> @html.Html
 
 pub fn icon_chevron_down(size? : Int) -> @html.Html
 
@@ -171,6 +175,10 @@ pub using @feedback {type AlertVariant}
 pub using @primitives {type ButtonSize}
 
 pub using @primitives {type ButtonVariant}
+
+pub using @overlays {type CheckboxMenuGroup}
+
+pub using @overlays {type CheckboxMenuItem}
 
 pub using @overlays {type MenuAlign}
 

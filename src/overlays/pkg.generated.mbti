@@ -8,6 +8,8 @@ import {
 }
 
 // Values
+pub fn checkbox_menu(groups~ : Array[CheckboxMenuGroup], on_toggle? : @cmd.Emit[String], width? : Int, max_height? : Int, footer_label? : String, footer_icon? : @html.Html, on_footer? : @cmd.Cmd, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn[C : @html.IsChildren] context_menu(entries~ : Array[MenuEntry], open~ : Bool, on_open_change? : @cmd.Emit[Bool], selected? : String, on_select? : @cmd.Emit[String], id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String], menu_style? : Array[String], C) -> @html.Html
 
 pub fn[C : @html.IsChildren] dialog(id~ : String, title_text? : String, description? : String, show_close? : Bool, spacious? : Bool, closedby? : String, on_close? : @cmd.Emit[String], on_cancel? : @cmd.Cmd, class? : String, attrs? : @html.Attrs, style? : Array[String], C) -> @html.Html
@@ -25,6 +27,23 @@ pub fn[C : @html.IsChildren] tooltip(content~ : String, side? : TooltipSide, id?
 // Errors
 
 // Types and methods
+pub(all) struct CheckboxMenuGroup {
+  title : String?
+  clear_label : String?
+  on_clear : @cmd.Cmd?
+  items : Array[CheckboxMenuItem]
+}
+pub fn CheckboxMenuGroup::new(Array[CheckboxMenuItem], title? : String, clear_label? : String, on_clear? : @cmd.Cmd) -> Self
+
+pub(all) struct CheckboxMenuItem {
+  value : String
+  label : String
+  icon : @html.Html?
+  checked : Bool
+  disabled : Bool
+}
+pub fn CheckboxMenuItem::new(String, String, icon? : @html.Html, checked? : Bool, disabled? : Bool) -> Self
+
 pub(all) enum MenuAlign {
   Start
   End

@@ -18,6 +18,7 @@ pub using @primitives {
   icon_arrow_up,
   icon_button,
   icon_check,
+  icon_check_fill,
   icon_chevron_down,
   icon_chevron_left,
   icon_chevron_right,
@@ -94,6 +95,7 @@ pub using @forms {
 
 ///|
 pub using @overlays {
+  checkbox_menu,
   context_menu,
   dialog,
   dropdown_menu,
@@ -101,6 +103,8 @@ pub using @overlays {
   popover,
   toast,
   tooltip,
+  type CheckboxMenuGroup,
+  type CheckboxMenuItem,
   type MenuAlign,
   type MenuEntry,
   type MenuItem,

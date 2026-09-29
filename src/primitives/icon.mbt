@@ -64,6 +64,18 @@ pub fn icon_check(size? : Int = 16) -> @html.Html {
 }
 
 ///|
+/// Filled check mark for the outline checkboxes of menu rows. The glyph grid
+/// is 12 inside the 16 viewBox (path coordinates scaled by 4/3), so at the
+/// default size 12 it reproduces the design's checkbox tick exactly.
+pub fn icon_check_fill(size? : Int = 12) -> @html.Html {
+  fill_icon(
+    "M12.18688 5.00164C12.51232 5.32708 12.51232 5.85472 12.18688 6.18016L7.38688 10.98016C7.06144 11.3056 6.5338 11.3056 6.20837 10.98016L3.80837 8.58016C3.48293 8.25472 3.48293 7.72708 3.80837 7.40164C4.1338 7.07621 4.66144 7.07621 4.98688 7.40164L6.79763 9.21239L11.00837 5.00164C11.3338 4.67621 11.86144 4.67621 12.18688 5.00164Z",
+    size~,
+    fill_rule="evenodd",
+  )
+}
+
+///|
 pub fn icon_x(size? : Int = 16) -> @html.Html {
   icon("M18 6 6 18M6 6l12 12", size~)
 }
@@ -309,4 +321,3 @@ pub fn icon_close_circle(size? : Int = 16) -> @html.Html {
     fill_rule="evenodd",
   )
 }
-

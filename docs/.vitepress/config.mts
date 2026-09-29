@@ -30,6 +30,7 @@ const componentsSidebar = [
     text: 'Overlays',
     items: [
       { text: 'Dropdown Menu', link: '/components/dropdown-menu' },
+      { text: 'Checkbox Menu', link: '/components/checkbox-menu' },
       { text: 'Context Menu', link: '/components/context-menu' },
       { text: 'Popover', link: '/components/popover' },
       { text: 'Tooltip', link: '/components/tooltip' },
@@ -84,6 +85,7 @@ const componentsSidebarZh = [
   ]},
   { text: '浮层', items: [
     { text: 'Dropdown Menu 下拉菜单', link: '/zh/components/dropdown-menu' },
+    { text: 'Checkbox Menu 多选菜单', link: '/zh/components/checkbox-menu' },
     { text: 'Context Menu 上下文菜单', link: '/zh/components/context-menu' },
     { text: 'Popover 气泡卡片', link: '/zh/components/popover' },
     { text: 'Tooltip 文字提示', link: '/zh/components/tooltip' },
