@@ -28,6 +28,7 @@ const componentsSidebar = [
       { text: 'Segmented', link: '/components/segmented' },
       { text: 'Prompt Box', link: '/components/prompt-box' },
       { text: 'Agent Input', link: '/components/agent-input' },
+      { text: 'HITL Card', link: '/components/hitl-card' },
       { text: 'Editable Text', link: '/components/editable-text' },
     ],
   },
@@ -97,6 +98,7 @@ const componentsSidebarZh = [
     { text: 'Segmented 分段选择器', link: '/zh/components/segmented' },
     { text: 'Prompt Box 提示输入框', link: '/zh/components/prompt-box' },
     { text: 'Agent Input 输入框', link: '/zh/components/agent-input' },
+    { text: 'HITL Card 确认卡片', link: '/zh/components/hitl-card' },
     { text: 'Editable Text 可编辑文本', link: '/zh/components/editable-text' },
   ]},
   { text: '浮层', items: [

@@ -58,6 +58,7 @@ pub using @primitives {
   icon_search,
   icon_skill,
   icon_slash,
+  icon_sparkle_fill,
   icon_sound,
   icon_sparkle,
   icon_star,
@@ -121,6 +122,7 @@ pub using @forms {
   agent_input,
   agent_tool_button,
   attachment_strip,
+  hitl_card,
   editable_text,
   checkbox,
   chip,
@@ -136,6 +138,7 @@ pub using @forms {
   textarea,
   type AttachmentItem,
   type AttachmentKind,
+  type HitlItem,
   type SegmentedItem,
   type SelectVariant,
 }

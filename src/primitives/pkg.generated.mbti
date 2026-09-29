@@ -114,6 +114,8 @@ pub fn icon_sound(size? : Int) -> @html.Html
 
 pub fn icon_sparkle(size? : Int) -> @html.Html
 
+pub fn icon_sparkle_fill(size? : Int) -> @html.Html
+
 pub fn icon_star(size? : Int) -> @html.Html
 
 pub fn icon_star_fill(size? : Int) -> @html.Html

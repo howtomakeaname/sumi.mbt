@@ -87,7 +87,7 @@ def parse_enum(src, name):
 
 PKG_FILES = {
     "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "media_tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt", "favorite_toggle.mbt", "add_tile.mbt"],
-    "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "attachment_strip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt", "agent_input.mbt"],
+    "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "attachment_strip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt", "agent_input.mbt", "hitl_card.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt", "shimmer_text.mbt", "tool_call_row.mbt"],
     "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt", "chat_bubble.mbt"],
@@ -718,6 +718,38 @@ PAGES = [
                 desc_zh="图标前置的工具 pill。", params={
                 "0": ("`Html` icon (16px)", "`Html` 图标（16px）"),
                 "label": ("12/20 label text", "12/20 标签文本"),
+            }),
+        ],
+    ),
+    page(
+        "hitl-card", "forms", "HITL Card", "HITL 确认卡片",
+        "A human-in-the-loop confirm card: a titled list of generation options with checkable rows and credit costs, a Cancel / confirm footer carrying the checked total, and a read-only receipt state once confirmed.",
+        "人机协作确认卡片：带标题的生成项列表，行可勾选并标注额度消耗；底部为取消/确认按钮，确认按钮显示勾选项总额；确认后转为只读回执状态。",
+        [
+            demo("hitl-card", "Confirm and receipt", "确认与回执", """
+@sumi.hitl_card(
+  title="Generate the following 5 shots",
+  items=plan,
+  on_toggle=set_plan.map(i => c => flip_at(c, i)),
+  on_cancel=emit(Dismiss),
+  on_confirm=emit(ConfirmAll),
+)
+@sumi.hitl_card(title="Generated the following 3 shots", items=done, confirmed=true)"""),
+        ],
+        [
+            api("hitl_card", params={
+                "title": ("Header text (14/22 Medium)", "标题文本（14/22 Medium）"),
+                "items": ("`HitlItem` rows (controlled)", "`HitlItem` 行（受控）"),
+                "on_toggle": ("Row click, emits the row index", "行点击，回传行索引"),
+                "confirmed": ("Read-only receipt: no checkboxes or footer", "只读回执：无勾选框与底部按钮"),
+                "on_confirm": ("Primary button carrying the checked total", "主按钮，显示勾选项总额"),
+                "max_height": ("List scroll cap in px (default 190)", "列表滚动限高 px（默认 190）"),
+            }),
+            api("HitlItem::new", desc_en="One generation option.", desc_zh="一个生成选项。", params={
+                "0": ("`String` label", "`String` 标签"),
+                "cost": ("Credit cost; shown when > 0", "额度消耗；大于 0 时显示"),
+                "thumbnails": ("Reference thumbnails (one per modality)", "参考缩略图（每种模态一张）"),
+                "checked": ("Checked for the confirm run", "是否勾选参与本次生成"),
             }),
         ],
     ),

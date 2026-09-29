@@ -60,6 +60,7 @@ const SumiTokensDark : String =
   #|--sumi-tooltip-fg:#ffffff;
   #|--sumi-input-bg:rgba(34,34,34,0.72);
   #|--sumi-agent-dock-bg:rgba(16,16,16,0.7);
+  #|--sumi-agent-form-bg:#181818;
   #|--sumi-agent-dock-border:rgba(204,221,255,0.08);
   #|--sumi-agent-dock-shadow:0px 4px 8px 0px rgba(0,0,0,0.03),0px 2px 4px 0px rgba(0,0,0,0.02);
   #|--sumi-scrollbar:rgba(255,255,255,0.08);
@@ -125,6 +126,7 @@ const SumiTokensLight : String =
   #|--sumi-tooltip-fg:#fafafa;
   #|--sumi-input-bg:rgba(255,255,255,0.72);
   #|--sumi-agent-dock-bg:rgba(255,255,255,0.7);
+  #|--sumi-agent-form-bg:#ffffff;
   #|--sumi-agent-dock-border:rgba(0,0,0,0.08);
   #|--sumi-agent-dock-shadow:0px 4px 8px 0px rgba(0,0,0,0.05),0px 2px 4px 0px rgba(0,0,0,0.04);
   #|--sumi-scrollbar:rgba(0,0,0,0.12);

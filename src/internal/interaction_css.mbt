@@ -133,6 +133,9 @@ const SumiInteractionCss : String =
   #|  [data-slot="agent-tool-button"]:not(:disabled):not([aria-disabled="true"]):active {
   #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12)) !important;
   #|  }
+  #|  button[data-slot="hitl-card-row"]:hover {
+  #|    background:var(--sumi-block,rgba(255,255,255,0.08)) !important;
+  #|  }
   #|  [data-slot="select-trigger"][data-variant="form"]:not(:disabled):not([aria-disabled="true"]):hover {
   #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12)) !important;
   #|  }
@@ -268,7 +271,8 @@ const SumiInteractionCss : String =
   #|  [data-slot="checkbox-menu-body"],
   #|  [data-slot="shortcuts-panel-body"],
   #|  [data-slot="prompt-textarea"],
-  #|  [data-slot="agent-input-textarea"] {
+  #|  [data-slot="agent-input-textarea"],
+  #|  [data-slot="hitl-card-list"] {
   #|    scrollbar-width:thin;
   #|    scrollbar-color:var(--sumi-scrollbar,rgba(255,255,255,0.08)) transparent;
   #|  }
@@ -276,7 +280,8 @@ const SumiInteractionCss : String =
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar,
   #|  [data-slot="shortcuts-panel-body"]::-webkit-scrollbar,
   #|  [data-slot="prompt-textarea"]::-webkit-scrollbar,
-  #|  [data-slot="agent-input-textarea"]::-webkit-scrollbar {
+  #|  [data-slot="agent-input-textarea"]::-webkit-scrollbar,
+  #|  [data-slot="hitl-card-list"]::-webkit-scrollbar {
   #|    width:12px;
   #|    height:12px;
   #|  }
@@ -284,7 +289,8 @@ const SumiInteractionCss : String =
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-thumb,
   #|  [data-slot="shortcuts-panel-body"]::-webkit-scrollbar-thumb,
   #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-thumb,
-  #|  [data-slot="agent-input-textarea"]::-webkit-scrollbar-thumb {
+  #|  [data-slot="agent-input-textarea"]::-webkit-scrollbar-thumb,
+  #|  [data-slot="hitl-card-list"]::-webkit-scrollbar-thumb {
   #|    background:var(--sumi-scrollbar,rgba(255,255,255,0.08));
   #|    border:5px solid transparent;
   #|    border-radius:10px;
@@ -294,7 +300,8 @@ const SumiInteractionCss : String =
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-thumb:hover,
   #|  [data-slot="shortcuts-panel-body"]::-webkit-scrollbar-thumb:hover,
   #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-thumb:hover,
-  #|  [data-slot="agent-input-textarea"]::-webkit-scrollbar-thumb:hover {
+  #|  [data-slot="agent-input-textarea"]::-webkit-scrollbar-thumb:hover,
+  #|  [data-slot="hitl-card-list"]::-webkit-scrollbar-thumb:hover {
   #|    background:var(--sumi-scrollbar-hover,rgba(255,255,255,0.12));
   #|    border-width:4px;
   #|  }
@@ -302,7 +309,8 @@ const SumiInteractionCss : String =
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-thumb:active,
   #|  [data-slot="shortcuts-panel-body"]::-webkit-scrollbar-thumb:active,
   #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-thumb:active,
-  #|  [data-slot="agent-input-textarea"]::-webkit-scrollbar-thumb:active {
+  #|  [data-slot="agent-input-textarea"]::-webkit-scrollbar-thumb:active,
+  #|  [data-slot="hitl-card-list"]::-webkit-scrollbar-thumb:active {
   #|    background:var(--sumi-scrollbar-pressed,rgba(255,255,255,0.16));
   #|    border-width:4px;
   #|  }
@@ -310,7 +318,8 @@ const SumiInteractionCss : String =
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-track,
   #|  [data-slot="shortcuts-panel-body"]::-webkit-scrollbar-track,
   #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-track,
-  #|  [data-slot="agent-input-textarea"]::-webkit-scrollbar-track {
+  #|  [data-slot="agent-input-textarea"]::-webkit-scrollbar-track,
+  #|  [data-slot="hitl-card-list"]::-webkit-scrollbar-track {
   #|    background:transparent;
   #|  }
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar {
@@ -419,6 +428,7 @@ const SumiInteractionCss : String =
   #|  [data-slot="button"],
   #|  [data-slot="icon-button"],
   #|  [data-slot="agent-tool-button"],
+  #|  [data-slot="hitl-card-row"],
   #|  [data-slot="segmented-item"],
   #|  [data-slot="chip"],
   #|  [data-slot="media-tag"],

@@ -56,6 +56,8 @@ pub fn empty_state(title_text~ : String, description? : String, icon? : @html.Ht
 
 pub fn favorite_toggle(checked~ : Bool, on_change? : @cmd.Emit[Bool], disabled? : Bool, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
+pub fn hitl_card(title~ : String, items~ : Array[@forms.HitlItem], on_toggle? : @cmd.Emit[Int], confirmed? : Bool, on_cancel? : @cmd.Cmd, on_confirm? : @cmd.Cmd, cancel_label? : String, confirm_label? : String, max_height? : Int, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn icon(String, size? : Int, stroke_width? : Int, style? : Array[String]) -> @html.Html
 
 pub fn icon_adjust(size? : Int) -> @html.Html
@@ -149,6 +151,8 @@ pub fn icon_slash(size? : Int) -> @html.Html
 pub fn icon_sound(size? : Int) -> @html.Html
 
 pub fn icon_sparkle(size? : Int) -> @html.Html
+
+pub fn icon_sparkle_fill(size? : Int) -> @html.Html
 
 pub fn icon_star(size? : Int) -> @html.Html
 
@@ -259,6 +263,8 @@ pub using @primitives {type ButtonVariant}
 pub using @overlays {type CheckboxMenuGroup}
 
 pub using @overlays {type CheckboxMenuItem}
+
+pub using @forms {type HitlItem}
 
 pub using @primitives {type MediaTagKind}
 

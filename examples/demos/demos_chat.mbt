@@ -153,3 +153,92 @@ fn demo_agent_input(mode : @sumi.ThemeMode?) -> Val[Html] {
     ])
   })
 }
+
+///|
+fn bool_flip_at(items : Array[Bool], index : Int) -> Array[Bool] {
+  let out = []
+  for i, item in items {
+    out.push(if i == index { !item } else { item })
+  }
+  out
+}
+
+///|
+/// HITL confirm cards: the checkable plan (toggle a row and the confirm
+/// total recomputes) and the read-only receipt state after confirmation.
+fn demo_hitl_card(mode : @sumi.ThemeMode?) -> Val[Html] {
+  let (marks, set_marks) = @rabbita.create_variable([
+    true, true, true, true, false,
+  ])
+  marks.view(fn(checked) {
+    let rows = [
+      (
+        "Wide shot: harbor lanterns coming on at dusk",
+        100,
+        [attachment_thumb(3)],
+      ),
+      (
+        "Tracking shot: crossing the stone steps into the canyon",
+        300,
+        [attachment_thumb(6)],
+      ),
+      (
+        "Close-up: weathered hands resting on the rudder",
+        120,
+        [attachment_thumb(8)],
+      ),
+      (
+        "Aerial shot: fog pooling over the quiet bay",
+        120,
+        [attachment_thumb(11), attachment_thumb(5)],
+      ),
+      (
+        "Insert shot: lantern light rippling on dark water",
+        120,
+        [attachment_thumb(14)],
+      ),
+    ]
+    let items = []
+    for i, row in rows {
+      let (label, cost, thumbs) = row
+      items.push(
+        @sumi.HitlItem::new(label, cost~, thumbnails=thumbs, checked=checked[i]),
+      )
+    }
+    stage_mode(mode, [
+      @html.div(
+        style=["width:400px;display:flex;flex-direction:column;gap:16px"],
+        [
+          @sumi.hitl_card(
+            title="Generate the following 5 shots",
+            items~,
+            on_toggle=set_marks.map(i => c => bool_flip_at(c, i)),
+            on_cancel=@cmd.none,
+            on_confirm=@cmd.none,
+          ),
+          @sumi.hitl_card(
+            title="Generated the following 3 shots",
+            items=[
+              @sumi.HitlItem::new(
+                "Wide shot: harbor lanterns coming on at dusk",
+                cost=100,
+                thumbnails=[attachment_thumb(3)],
+              ),
+              @sumi.HitlItem::new(
+                "Tracking shot: crossing the stone steps into the canyon",
+                cost=300,
+                thumbnails=[attachment_thumb(6)],
+              ),
+              @sumi.HitlItem::new(
+                "Aerial shot: fog pooling over the quiet bay",
+                cost=120,
+                thumbnails=[attachment_thumb(11), attachment_thumb(5)],
+              ),
+            ],
+            confirmed=true,
+          ),
+        ],
+      ),
+    ])
+  })
+}

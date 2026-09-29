@@ -338,6 +338,12 @@ pub fn demos() -> Array[Demo] {
       build: demo_agent_input,
     },
     {
+      key: "hitl-card",
+      group: "Chat",
+      title: "Confirm card",
+      build: demo_hitl_card,
+    },
+    {
       key: "theme-light",
       group: "Theming",
       title: "Light palette",
