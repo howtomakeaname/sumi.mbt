@@ -89,6 +89,14 @@ const SumiInteractionCss : String =
   #|  [data-slot="media-tag"][data-interactive]:hover {
   #|    color:var(--sumi-text,#ffffff) !important;
   #|  }
+  #|  [data-slot="chat-bubble"]:hover [data-slot="chat-bubble-copy"],
+  #|  [data-slot="chat-bubble"]:focus-within [data-slot="chat-bubble-copy"] {
+  #|    opacity:1 !important;
+  #|    pointer-events:auto !important;
+  #|  }
+  #|  [data-slot="chat-bubble-toggle"]:hover {
+  #|    color:var(--sumi-text,#ffffff) !important;
+  #|  }
   #|  [data-slot="menu-item"]:not([aria-disabled="true"]):hover {
   #|    background:var(--sumi-block,rgba(255,255,255,0.08)) !important;
   #|  }
@@ -369,6 +377,8 @@ const SumiInteractionCss : String =
   #|  [data-slot="media-tag"]:focus-visible,
   #|  [data-slot="add-tile"]:focus-visible,
   #|  [data-slot="attachment-remove"]:focus-visible,
+  #|  [data-slot="chat-bubble-toggle"]:focus-visible,
+  #|  [data-slot="chat-bubble-copy"]:focus-visible,
   #|  [data-slot="menu-item"]:focus-visible,
   #|  [data-slot="checkbox-menu-item"]:focus-visible {
   #|    outline:1px solid var(--sumi-text,#ffffff) !important;
@@ -397,6 +407,8 @@ const SumiInteractionCss : String =
   #|  [data-slot="media-tag"],
   #|  [data-slot="add-tile"],
   #|  [data-slot="attachment-remove"],
+  #|  [data-slot="chat-bubble-toggle"],
+  #|  [data-slot="chat-bubble-copy"],
   #|  [data-slot="menu-item"],
   #|  [data-slot="checkbox-menu-item"],
   #|  [data-slot="checkbox-menu-check"],

@@ -499,3 +499,40 @@ pub fn icon_element(size? : Int = 16) -> @html.Html {
     fill_rule="evenodd",
   )
 }
+
+///|
+/// Two overlapping rounded frames — the copy-to-clipboard action glyph.
+pub fn icon_copy(size? : Int = 16) -> @html.Html {
+  fill_icon(
+    "M6.66667 2.68034H12C12.7364 2.68034 13.3333 3.27729 13.3333 4.01367V9.34701C13.3333 10.0834 12.7364 10.6803 12 10.6803H6.66667C5.93029 10.6803 5.33333 10.0834 5.33333 9.34701V4.01367C5.33333 3.27729 5.93029 2.68034 6.66667 2.68034ZM4 4.01367C4 2.54091 5.19391 1.34701 6.66667 1.34701H12C13.4728 1.34701 14.6667 2.54091 14.6667 4.01367V9.34701C14.6667 10.8198 13.4728 12.0137 12 12.0137H6.66667C5.19391 12.0137 4 10.8198 4 9.34701V4.01367ZM9.33333 13.347H6C4.15905 13.347 2.66667 11.8546 2.66667 10.0137V6.68034C2.66667 6.31215 2.36819 6.01367 2 6.01367C1.63181 6.01367 1.33333 6.31215 1.33333 6.68034V10.0137C1.33333 12.591 3.42267 14.6803 6 14.6803H9.33333C9.70152 14.6803 10 14.3819 10 14.0137C10 13.6455 9.70152 13.347 9.33333 13.347Z",
+    size~,
+    fill_rule="evenodd",
+  )
+}
+
+///|
+/// Chunky filled chevron-up on a 14 grid — the collapse toggle's glyph.
+/// (The stroked `icon_chevron_up` reads too thin at this size.)
+pub fn icon_chevron_up_fill(size? : Int = 14) -> @html.Html {
+  let px = size.to_string() + "px"
+  @html.span(
+    style=[
+      @internal.SumiBoxSizing,
+      "display:inline-flex;width:\{px};height:\{px};flex:none;align-items:center;justify-content:center;pointer-events:none",
+    ],
+    attrs=@html.Attrs::build().aria_hidden("true"),
+    @svg.svg(
+      width=size,
+      height=size,
+      view_box="0 0 14 14",
+      style=["display:block;width:100%;height:100%"],
+      [
+        @svg.path(
+          d="M12.2558 9.34399C12.5276 9.06901 12.5249 8.6258 12.25 8.35405L7.49204 3.65196C7.21936 3.38248 6.78063 3.38248 6.50795 3.65196L1.75003 8.35405C1.47505 8.6258 1.47244 9.06901 1.74419 9.34399C2.01594 9.61896 2.45914 9.62158 2.73412 9.34983L7 5.13401L11.2659 9.34983C11.5408 9.62158 11.9841 9.61896 12.2558 9.34399Z",
+          fill="currentColor",
+          attrs=@svg.Attrs::build().fill_rule("evenodd"),
+        ),
+      ],
+    ),
+  )
+}

@@ -28,6 +28,8 @@ pub fn[C : @html.IsChildren] card(id? : String, class? : String, title? : String
 
 pub fn[C : @html.IsChildren] card_section(header~ : @html.Html, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String], C) -> @html.Html
 
+pub fn chat_bubble(text? : String, children? : Array[@html.Html], collapsible? : Bool, collapsed? : Bool, on_toggle? : @cmd.Cmd, collapse_lines? : Int, on_copy? : @cmd.Cmd, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn checkbox(checked~ : Bool, label? : String, indeterminate? : Bool, on_change? : @cmd.Emit[Bool], disabled? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn checkbox_menu(groups~ : Array[@overlays.CheckboxMenuGroup], on_toggle? : @cmd.Emit[String], width? : Int, max_height? : Int, footer_label? : String, footer_icon? : @html.Html, on_footer? : @cmd.Cmd, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
@@ -76,9 +78,13 @@ pub fn icon_chevron_right(size? : Int) -> @html.Html
 
 pub fn icon_chevron_up(size? : Int) -> @html.Html
 
+pub fn icon_chevron_up_fill(size? : Int) -> @html.Html
+
 pub fn icon_clock(size? : Int) -> @html.Html
 
 pub fn icon_close_circle(size? : Int) -> @html.Html
+
+pub fn icon_copy(size? : Int) -> @html.Html
 
 pub fn icon_crop(size? : Int) -> @html.Html
 

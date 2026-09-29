@@ -46,9 +46,13 @@ pub fn icon_chevron_right(size? : Int) -> @html.Html
 
 pub fn icon_chevron_up(size? : Int) -> @html.Html
 
+pub fn icon_chevron_up_fill(size? : Int) -> @html.Html
+
 pub fn icon_clock(size? : Int) -> @html.Html
 
 pub fn icon_close_circle(size? : Int) -> @html.Html
+
+pub fn icon_copy(size? : Int) -> @html.Html
 
 pub fn icon_crop(size? : Int) -> @html.Html
 

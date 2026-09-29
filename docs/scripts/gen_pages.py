@@ -90,7 +90,7 @@ PKG_FILES = {
     "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "attachment_strip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt", "shimmer_text.mbt"],
-    "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt"],
+    "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt", "chat_bubble.mbt"],
 }
 
 def pkg_src(pkg):
@@ -1333,6 +1333,38 @@ items=[
             }),
             api("ShortcutItem::new", desc_en="One row.", desc_zh="一行。", params={
                 "0": ("`String` action label, `String` key combination", "`String` 动作名，`String` 键位组合"),
+            }),
+        ],
+        [],
+    ),
+    page(
+        "chat-bubble", "layout", "Chat Bubble", "Chat Bubble 对话气泡",
+        "The right-aligned bubble of a sent message. Plain text, or rich content with inline media tags; long messages clamp behind a fade with an Expand/Collapse toggle, and a copy action appears below on hover.",
+        "发送消息的右对齐气泡：支持纯文本或内嵌媒体标签的富文本；长文可在渐变遮罩后折叠并提供展开/收起开关，悬停时下方出现复制按钮。",
+        [
+            demo("chat-bubble", "Plain, rich & collapsible", "纯文本、富文本与折叠", """
+@sumi.chat_bubble(text="Continue")
+@sumi.chat_bubble(children=[
+  @sumi.media_tag(kind=@sumi.Image, variant=@sumi.Inline, thumbnail=thumb),
+  @html.text("Add more detail"),
+])
+@sumi.chat_bubble(
+  text=long,
+  collapsible=true,
+  collapsed=c,
+  on_toggle=set_c.map(v => _ => !v),
+  on_copy=copy_it,
+)"""),
+        ],
+        [
+            api("chat_bubble", params={
+                "text": ("Plain-text content (mutually exclusive with children)", "纯文本内容（与 children 互斥）"),
+                "children": ("Rich content row: inline media tags + text spans", "富文本行：行内媒体标签与文本"),
+                "collapsible": ("Enables the clamp + Expand/Collapse toggle", "启用折叠与展开/收起开关"),
+                "collapsed": ("Controlled clamp state", "受控折叠状态"),
+                "on_toggle": ("Expand/Collapse click command", "展开/收起点击命令"),
+                "collapse_lines": ("Lines kept when collapsed (default 9)", "折叠时保留的行数（默认 9）"),
+                "on_copy": ("Copy action revealed below the bubble on hover", "悬停时在气泡下方显示的复制按钮"),
             }),
         ],
         [],

@@ -26,8 +26,10 @@ pub using @primitives {
   icon_chevron_left,
   icon_chevron_right,
   icon_chevron_up,
+  icon_chevron_up_fill,
   icon_clock,
   icon_close_circle,
+  icon_copy,
   icon_crop,
   icon_download,
   icon_element,
@@ -92,6 +94,7 @@ pub using @feedback {
 ///|
 pub using @layout {
   card,
+  chat_bubble,
   card_section,
   divider,
   pagination,

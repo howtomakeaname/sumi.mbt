@@ -320,6 +320,12 @@ pub fn demos() -> Array[Demo] {
       build: demo_icons_basic,
     },
     {
+      key: "chat-bubble",
+      group: "Chat",
+      title: "Sent bubble",
+      build: demo_chat_bubble,
+    },
+    {
       key: "theme-light",
       group: "Theming",
       title: "Light palette",
@@ -337,7 +343,7 @@ pub fn demos() -> Array[Demo] {
 ///|
 /// Demo groups in gallery display order.
 pub fn demo_groups() -> Array[String] {
-  ["Actions", "Forms", "Overlays", "Feedback", "Display", "Theming"]
+  ["Actions", "Forms", "Overlays", "Feedback", "Display", "Chat", "Theming"]
 }
 
 ///|
