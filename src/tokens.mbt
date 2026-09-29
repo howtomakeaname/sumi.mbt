@@ -48,6 +48,7 @@ const SumiTokensDark : String =
   #|--sumi-brand:#009efa;
   #|--sumi-brand-hover:#0099f2;
   #|--sumi-error:#ff3355;
+  #|--sumi-favorite:#ffa21e;
   #|--sumi-primary-bg:#fafafa;
   #|--sumi-primary-fg:#1a1a1a;
   #|--sumi-primary-bg-hover:#d9d9d9;
@@ -108,6 +109,7 @@ const SumiTokensLight : String =
   #|--sumi-brand:#009efa;
   #|--sumi-brand-hover:#008ee1;
   #|--sumi-error:#e02040;
+  #|--sumi-favorite:#ffa21e;
   #|--sumi-primary-bg:#1c1c1e;
   #|--sumi-primary-fg:#fafafa;
   #|--sumi-primary-bg-hover:#3a3a3e;

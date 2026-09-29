@@ -86,7 +86,7 @@ def parse_enum(src, name):
     return variants
 
 PKG_FILES = {
-    "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt"],
+    "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt", "favorite_toggle.mbt"],
     "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt"],
@@ -224,6 +224,25 @@ PAGES = [
             }),
         ],
         [enum("ButtonVariant", "primitives"), enum("ButtonSize", "primitives")],
+    ),
+    page(
+        "favorite-toggle", "primitives", "Favorite Toggle", "Favorite Toggle 收藏切换",
+        "A chrome-less star button that toggles a favorite on or off. Unlike `icon_button` it carries no hover plate; state shows through the glyph alone — outline star at rest, filled amber when on.",
+        "无底盘的星形收藏切换按钮。与 `icon_button` 不同，它没有悬停底板，状态完全通过图标呈现：常态为描边星形，收藏后为实心琥珀色。",
+        [
+            demo("favorite-toggle", "Basic usage", "基础用法", """
+@sumi.favorite_toggle(checked=fav, on_change=set_fav.map(v => _ => v))
+@sumi.favorite_toggle(checked=true, disabled=true)"""),
+        ],
+        [
+            api("favorite_toggle", params={
+                "checked": ("Current on/off state (controlled)", "当前收藏状态（受控）"),
+                "on_change": ("Emitted with the flipped value on click", "点击时以翻转后的值触发"),
+                "disabled": ("Faded and inert", "置灰且不可交互"),
+                "aria_label": ("Override the accessible label (defaults flip with state)", "覆盖无障碍标签（默认随状态切换）"),
+            }),
+        ],
+        [],
     ),
     page(
         "toolbar", "layout", "Toolbar", "Toolbar 工具栏",

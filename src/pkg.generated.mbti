@@ -42,6 +42,8 @@ pub fn editable_text(value~ : String, placeholder? : String, on_change? : @cmd.E
 
 pub fn empty_state(title_text~ : String, description? : String, icon? : @html.Html, action? : @html.Html, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
+pub fn favorite_toggle(checked~ : Bool, on_change? : @cmd.Emit[Bool], disabled? : Bool, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn icon(String, size? : Int, stroke_width? : Int, style? : Array[String]) -> @html.Html
 
 pub fn icon_adjust(size? : Int) -> @html.Html
@@ -103,6 +105,10 @@ pub fn icon_search(size? : Int) -> @html.Html
 pub fn icon_slash(size? : Int) -> @html.Html
 
 pub fn icon_sparkle(size? : Int) -> @html.Html
+
+pub fn icon_star(size? : Int) -> @html.Html
+
+pub fn icon_star_fill(size? : Int) -> @html.Html
 
 pub fn icon_upload(size? : Int) -> @html.Html
 

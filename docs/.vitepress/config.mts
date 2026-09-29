@@ -7,6 +7,7 @@ const componentsSidebar = [
     items: [
       { text: 'Button', link: '/components/button' },
       { text: 'Icon Button', link: '/components/icon-button' },
+      { text: 'Favorite Toggle', link: '/components/favorite-toggle' },
       { text: 'Toolbar', link: '/components/toolbar' },
     ],
   },
@@ -68,6 +69,7 @@ const componentsSidebarZh = [
   { text: '操作', items: [
     { text: 'Button 按钮', link: '/zh/components/button' },
     { text: 'Icon Button 图标按钮', link: '/zh/components/icon-button' },
+    { text: 'Favorite Toggle 收藏切换', link: '/zh/components/favorite-toggle' },
     { text: 'Toolbar 工具栏', link: '/zh/components/toolbar' },
   ]},
   { text: '表单', items: [

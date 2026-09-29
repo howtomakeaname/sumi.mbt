@@ -40,6 +40,19 @@ fn demo_icon_button_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
 }
 
 ///|
+fn demo_favorite_toggle_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
+  let (fav_a, set_fav_a) = @rabbita.create_variable(true)
+  let (fav_b, set_fav_b) = @rabbita.create_variable(false)
+  fav_a.view2(fav_b, fn(a, b) {
+    stage_mode(mode, [
+      @sumi.favorite_toggle(checked=a, on_change=set_fav_a.map(v => _ => v)),
+      @sumi.favorite_toggle(checked=b, on_change=set_fav_b.map(v => _ => v)),
+      @sumi.favorite_toggle(checked=true, disabled=true),
+    ])
+  })
+}
+
+///|
 fn demo_toolbar_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   let (enhance_open, set_enhance_open) = @rabbita.create_variable(false)
   let (enhance, set_enhance) = @rabbita.create_variable("standard")

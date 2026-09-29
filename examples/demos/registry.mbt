@@ -41,6 +41,12 @@ pub fn demos() -> Array[Demo] {
       build: demo_icon_button_basic,
     },
     {
+      key: "favorite-toggle",
+      group: "Actions",
+      title: "Favorite toggle",
+      build: demo_favorite_toggle_basic,
+    },
+    {
       key: "toolbar-basic",
       group: "Actions",
       title: "Toolbar",
