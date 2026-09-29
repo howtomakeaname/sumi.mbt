@@ -284,6 +284,12 @@ pub fn demos() -> Array[Demo] {
       build: demo_pagination_basic,
     },
     {
+      key: "shortcuts-panel",
+      group: "Display",
+      title: "Shortcuts panel",
+      build: demo_shortcuts_panel,
+    },
+    {
       key: "credits-basic",
       group: "Display",
       title: "Credits",

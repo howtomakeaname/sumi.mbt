@@ -81,9 +81,12 @@ pub using @layout {
   card_section,
   divider,
   pagination,
+  shortcuts_panel,
   tabs,
   toolbar,
   toolbar_divider,
+  type ShortcutItem,
+  type ShortcutSection,
   type TabEntry,
 }
 

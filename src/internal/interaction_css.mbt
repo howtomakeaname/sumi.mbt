@@ -238,18 +238,21 @@ const SumiInteractionCss : String =
   #|  }
   #|  [data-slot="scroll-area"],
   #|  [data-slot="checkbox-menu-body"],
+  #|  [data-slot="shortcuts-panel-body"],
   #|  [data-slot="prompt-textarea"] {
   #|    scrollbar-width:thin;
   #|    scrollbar-color:var(--sumi-scrollbar,rgba(255,255,255,0.08)) transparent;
   #|  }
   #|  [data-slot="scroll-area"]::-webkit-scrollbar,
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar,
+  #|  [data-slot="shortcuts-panel-body"]::-webkit-scrollbar,
   #|  [data-slot="prompt-textarea"]::-webkit-scrollbar {
   #|    width:12px;
   #|    height:12px;
   #|  }
   #|  [data-slot="scroll-area"]::-webkit-scrollbar-thumb,
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-thumb,
+  #|  [data-slot="shortcuts-panel-body"]::-webkit-scrollbar-thumb,
   #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-thumb {
   #|    background:var(--sumi-scrollbar,rgba(255,255,255,0.08));
   #|    border:5px solid transparent;
@@ -258,18 +261,21 @@ const SumiInteractionCss : String =
   #|  }
   #|  [data-slot="scroll-area"]::-webkit-scrollbar-thumb:hover,
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-thumb:hover,
+  #|  [data-slot="shortcuts-panel-body"]::-webkit-scrollbar-thumb:hover,
   #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-thumb:hover {
   #|    background:var(--sumi-scrollbar-hover,rgba(255,255,255,0.12));
   #|    border-width:4px;
   #|  }
   #|  [data-slot="scroll-area"]::-webkit-scrollbar-thumb:active,
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-thumb:active,
+  #|  [data-slot="shortcuts-panel-body"]::-webkit-scrollbar-thumb:active,
   #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-thumb:active {
   #|    background:var(--sumi-scrollbar-pressed,rgba(255,255,255,0.16));
   #|    border-width:4px;
   #|  }
   #|  [data-slot="scroll-area"]::-webkit-scrollbar-track,
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-track,
+  #|  [data-slot="shortcuts-panel-body"]::-webkit-scrollbar-track,
   #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-track {
   #|    background:transparent;
   #|  }

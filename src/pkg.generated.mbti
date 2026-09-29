@@ -150,6 +150,8 @@ pub fn select(options~ : Array[@overlays.MenuItem], value~ : String, placeholder
 
 pub fn send_button(disabled? : Bool, loading? : Bool, on_click? : @cmd.Cmd, id? : String, class? : String, title? : String, aria_label? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
+pub fn shortcuts_panel(sections~ : Array[@layout.ShortcutSection], title? : String, on_close? : @cmd.Cmd, width? : Int, max_height? : Int, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn skeleton(width? : String, height? : String, radius? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn skeleton_lines(count? : Int, style? : Array[String]) -> @html.Html
@@ -215,6 +217,10 @@ pub using @overlays {type MenuSide}
 pub using @forms {type SegmentedItem}
 
 pub using @forms {type SelectVariant}
+
+pub using @layout {type ShortcutItem}
+
+pub using @layout {type ShortcutSection}
 
 pub using @feedback {type StatusBadgeState}
 

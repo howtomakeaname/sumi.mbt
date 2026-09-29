@@ -90,7 +90,7 @@ PKG_FILES = {
     "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt"],
-    "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt"],
+    "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt"],
 }
 
 def pkg_src(pkg):
@@ -1181,6 +1181,43 @@ items=[
                 "on_change": ("Called with the clamped target page", "以钳制后的目标页回调"),
             }),
         ],
+    ),
+    page(
+        "shortcuts-panel", "layout", "Shortcuts Panel", "Shortcuts Panel 快捷键面板",
+        "The keyboard-shortcuts reference sheet: an elevated 264px panel with a titled header and close button, then titled sections of label + key-chip rows. Long lists scroll inside the body.",
+        "快捷键速查面板：264px 的浮起面板，带标题栏与关闭按钮，下方是带小标题的标签 + 键位芯片行；内容过长时在体内滚动。",
+        [
+            demo("shortcuts-panel", "Three sections", "三个分组", """
+@sumi.shortcuts_panel(
+  sections=[
+    @sumi.ShortcutSection::new("General", [
+      @sumi.ShortcutItem::new("Toggle sidebar", "Cmd /"),
+      @sumi.ShortcutItem::new("Send message", "Enter"),
+    ]),
+    @sumi.ShortcutSection::new("Editing", [
+      @sumi.ShortcutItem::new("Select all", "\u2318 A"),
+      @sumi.ShortcutItem::new("Undo", "\u2318 Z"),
+    ]),
+  ],
+  on_close=close_panel,
+)"""),
+        ],
+        [
+            api("shortcuts_panel", params={
+                "sections": ("Titled shortcut clusters", "带标题的快捷键分组"),
+                "title": ("Header text (defaults to \"Shortcuts\")", "标题栏文字（默认 \"Shortcuts\"）"),
+                "on_close": ("Close button command; omit to hide the button's action", "关闭按钮命令"),
+                "width": ("Panel width in px (default 264)", "面板宽度 px（默认 264）"),
+                "max_height": ("Panel max height in px (default 660)", "面板最大高度 px（默认 660）"),
+            }),
+            api("ShortcutSection::new", desc_en="A titled cluster.", desc_zh="一个带标题的分组。", params={
+                "0": ("`String` title, `Array[ShortcutItem]` rows", "`String` 标题，`Array[ShortcutItem]` 行"),
+            }),
+            api("ShortcutItem::new", desc_en="One row.", desc_zh="一行。", params={
+                "0": ("`String` action label, `String` key combination", "`String` 动作名，`String` 键位组合"),
+            }),
+        ],
+        [],
     ),
     page(
         "credits", "primitives", "Credits", "Credits 额度",

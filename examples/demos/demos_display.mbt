@@ -39,6 +39,55 @@ fn demo_kbd_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
 }
 
 ///|
+fn demo_shortcuts_panel(mode : @sumi.ThemeMode?) -> Val[Html] {
+  let (visible, set_visible) = @rabbita.create_variable(true)
+  visible.view(fn(is_visible) {
+    let panel = if is_visible {
+      @sumi.shortcuts_panel(
+        sections=[
+          @sumi.ShortcutSection::new("General", [
+            @sumi.ShortcutItem::new("Toggle sidebar", "Cmd /"),
+            @sumi.ShortcutItem::new("Send message", "Enter"),
+          ]),
+          @sumi.ShortcutSection::new("Canvas & objects", [
+            @sumi.ShortcutItem::new("Add file", "Cmd O"),
+            @sumi.ShortcutItem::new("Add board", "F"),
+            @sumi.ShortcutItem::new("Add text", "T"),
+            @sumi.ShortcutItem::new("Deselect", "Esc"),
+            @sumi.ShortcutItem::new("Zoom in", "⌘ +"),
+            @sumi.ShortcutItem::new("Zoom out", "⌘ -"),
+            @sumi.ShortcutItem::new("Fit to content", "Cmd 0"),
+            @sumi.ShortcutItem::new("Pan canvas", "Space+Drag"),
+          ]),
+          @sumi.ShortcutSection::new("Editing", [
+            @sumi.ShortcutItem::new("Select all", "⌘ A"),
+            @sumi.ShortcutItem::new("Copy", "⌘ C"),
+            @sumi.ShortcutItem::new("Paste", "⌘ V"),
+            @sumi.ShortcutItem::new("Cut", "⌘ X"),
+            @sumi.ShortcutItem::new("Duplicate", "⌘ D"),
+            @sumi.ShortcutItem::new("Delete", "⌫"),
+            @sumi.ShortcutItem::new("Undo", "⌘ Z"),
+            @sumi.ShortcutItem::new("Redo", "⌘ ⇧ Z"),
+            @sumi.ShortcutItem::new("Bring forward", "⌘ ]"),
+            @sumi.ShortcutItem::new("Send backward", "⌘ ["),
+            @sumi.ShortcutItem::new("Bring to front", "⌘ ⌥ ]"),
+            @sumi.ShortcutItem::new("Send to back", "⌘ ⌥ ["),
+          ]),
+        ],
+        on_close=set_visible(_ => false),
+      )
+    } else {
+      @sumi.button(
+        variant=Secondary,
+        on_click=set_visible(_ => true),
+        "Show shortcuts",
+      )
+    }
+    stage_mode(mode, [panel])
+  })
+}
+
+///|
 fn demo_card_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [

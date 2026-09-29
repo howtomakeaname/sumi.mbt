@@ -15,6 +15,8 @@ pub fn divider(id? : String, class? : String, attrs? : @html.Attrs, style? : Arr
 
 pub fn pagination(page~ : Int, total~ : Int, on_change? : @cmd.Emit[Int], id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
+pub fn shortcuts_panel(sections~ : Array[ShortcutSection], title? : String, on_close? : @cmd.Cmd, width? : Int, max_height? : Int, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn tabs(items~ : Array[TabEntry], selected~ : String, on_select? : @cmd.Emit[String], id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn[C : @html.IsChildren] toolbar(id? : String, class? : String, title? : String, attrs? : @html.Attrs, style? : Array[String], C) -> @html.Html
@@ -24,6 +26,18 @@ pub fn toolbar_divider(style? : Array[String]) -> @html.Html
 // Errors
 
 // Types and methods
+pub(all) struct ShortcutItem {
+  label : String
+  keys : String
+}
+pub fn ShortcutItem::new(String, String) -> Self
+
+pub(all) struct ShortcutSection {
+  title : String
+  items : Array[ShortcutItem]
+}
+pub fn ShortcutSection::new(String, Array[ShortcutItem]) -> Self
+
 pub(all) struct TabEntry {
   value : String
   label : String
