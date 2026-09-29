@@ -15,6 +15,7 @@ pub using @primitives {
   favorite_toggle,
   icon,
   icon_adjust,
+  icon_align_left,
   icon_caret_down,
   icon_arrow_down,
   icon_arrow_up,
@@ -54,6 +55,7 @@ pub using @primitives {
   icon_upload,
   icon_upload_fill,
   icon_x,
+  icon_x_fill,
   kbd,
   spinner,
   tag,
@@ -92,6 +94,7 @@ pub using @layout {
 
 ///|
 pub using @forms {
+  attachment_strip,
   editable_text,
   checkbox,
   chip,
@@ -105,6 +108,8 @@ pub using @forms {
   stepper,
   switch,
   textarea,
+  type AttachmentItem,
+  type AttachmentKind,
   type SegmentedItem,
   type SelectVariant,
 }

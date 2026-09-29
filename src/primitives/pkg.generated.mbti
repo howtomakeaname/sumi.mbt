@@ -24,6 +24,8 @@ pub fn icon(String, size? : Int, stroke_width? : Int, style? : Array[String]) ->
 
 pub fn icon_adjust(size? : Int) -> @html.Html
 
+pub fn icon_align_left(size? : Int) -> @html.Html
+
 pub fn icon_arrow_down(size? : Int) -> @html.Html
 
 pub fn icon_arrow_up(size? : Int) -> @html.Html
@@ -101,6 +103,8 @@ pub fn icon_upload(size? : Int) -> @html.Html
 pub fn icon_upload_fill(size? : Int) -> @html.Html
 
 pub fn icon_x(size? : Int) -> @html.Html
+
+pub fn icon_x_fill(size? : Int) -> @html.Html
 
 pub fn kbd(String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 

@@ -87,7 +87,7 @@ def parse_enum(src, name):
 
 PKG_FILES = {
     "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt", "favorite_toggle.mbt", "add_tile.mbt"],
-    "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt"],
+    "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "attachment_strip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt"],
     "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt"],
@@ -557,6 +557,45 @@ PAGES = [
             }),
         ],
         [],
+    ),
+    page(
+        "attachment-strip", "forms", "Attachment Strip", "Attachment Strip 附件条",
+        "A row of 48px attachment tiles — cover-fit image thumbnails and slate-gradient document placeholders — followed by an add tile. Hovering a tile reveals its 8px remove badge. Past `max_visible` items the row clips, a right-edge fade appears, and the add tile pins over it.",
+        "一排 48px 附件块：裁切填充的图片缩略图与石板渐变文档占位块，末尾跟随添加块。悬停附件块会显现 8px 移除角标。超过 `max_visible` 时行被裁断，右缘出现渐隐遮罩，添加块固定在遮罩之上。",
+        [
+            demo("attachment-strip", "Add & remove", "添加与移除", """
+@sumi.attachment_strip(
+  items=[
+    @sumi.AttachmentItem::image("cover.png", label="Cover"),
+    @sumi.AttachmentItem::document("Brief.pdf"),
+  ],
+  on_add=pick_files,
+  on_remove=set_items.map(i => c => remove_at(c, i)),
+)"""),
+        ],
+        [
+            api("attachment_strip", params={
+                "items": ("Attachments to render, in order", "按顺序渲染的附件"),
+                "on_add": ("Adds the trailing add tile; in overflow it pins to the right edge", "提供则渲染末尾添加块；溢出时固定在右缘"),
+                "on_remove": ("Emitted with the item index from the hover badge", "悬停角标触发，携带附件下标"),
+                "max_visible": ("Visible tile cap before the fade + pinned add (default 10)", "超出该数量后出现渐隐遮罩与固定添加块（默认 10）"),
+                "aria_label": ("Strip label (defaults to \"Attachments\")", "整条的无障碍标签（默认 \"Attachments\"）"),
+            }),
+            api("AttachmentItem::image", desc_en="An image attachment.", desc_zh="一个图片附件。", params={
+                "0": ("`String` thumbnail URL", "`String` 缩略图地址"),
+                "label": ("Alt text (defaults to \"Image attachment\")", "替代文本（默认 \"Image attachment\"）"),
+            }),
+            api("AttachmentItem::document", desc_en="A non-image attachment, rendered as a gradient placeholder.", desc_zh="非图片附件，渲染为渐变占位块。", params={
+                "0": ("`String` file name used as the accessible label", "`String` 文件名，用作无障碍标签"),
+            }),
+        ],
+        [enum("AttachmentKind", "forms", {
+            "Image": "Cover-fit thumbnail tile",
+            "Document": "Slate-gradient placeholder with a document glyph",
+        }, {
+            "Image": "裁切填充的缩略图块",
+            "Document": "石板渐变占位块，带文档图标",
+        })],
     ),
     page(
         "segmented", "forms", "Segmented", "Segmented 分段选择器",

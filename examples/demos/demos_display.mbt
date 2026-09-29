@@ -198,6 +198,7 @@ fn demo_icons_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       icon_tile("adjust", @sumi.icon_adjust(size=s)),
+      icon_tile("align-left", @sumi.icon_align_left(size=s)),
       icon_tile("caret-down", @sumi.icon_caret_down(size=s)),
       icon_tile("arrow-down", @sumi.icon_arrow_down(size=s)),
       icon_tile("arrow-up", @sumi.icon_arrow_up(size=s)),
@@ -235,6 +236,7 @@ fn demo_icons_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
       icon_tile("upload", @sumi.icon_upload(size=s)),
       icon_tile("upload-fill", @sumi.icon_upload_fill(size=s)),
       icon_tile("x", @sumi.icon_x(size=s)),
+      icon_tile("x-fill", @sumi.icon_x_fill(size=s)),
     ]),
   )
 }

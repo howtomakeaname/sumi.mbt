@@ -243,6 +243,73 @@ fn demo_chip_row(mode : @sumi.ThemeMode?) -> Val[Html] {
 }
 
 ///|
+/// A tiny gradient plate standing in for an uploaded photo — a self-contained
+/// data URI so the gallery and docs render offline.
+fn attachment_thumb(seed : Int) -> String {
+  let hue = (seed * 47 + 210) % 360
+  let hue2 = (hue + 40) % 360
+  "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 48 48%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27hsl(\{hue},62%25,56%25)%27/%3E%3Cstop offset=%271%27 stop-color=%27hsl(\{hue2},58%25,32%25)%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%2748%27 height=%2748%27 fill=%27url(%23g)%27/%3E%3Ccircle cx=%2736%27 cy=%2712%27 r=%276%27 fill=%27rgba(255,255,255,0.35)%27/%3E%3C/svg%3E"
+}
+
+///|
+fn attachment_photo(seed : Int) -> @sumi.AttachmentItem {
+  @sumi.AttachmentItem::image(attachment_thumb(seed), label="Photo \{seed + 1}")
+}
+
+///|
+fn attachment_remove_at(
+  items : Array[@sumi.AttachmentItem],
+  index : Int,
+) -> Array[@sumi.AttachmentItem] {
+  let out = []
+  for i, item in items {
+    if i != index {
+      out.push(item)
+    }
+  }
+  out
+}
+
+///|
+fn demo_attachment_strip(mode : @sumi.ThemeMode?) -> Val[Html] {
+  let (items, set_items) = @rabbita.create_variable([
+    attachment_photo(0),
+    attachment_photo(1),
+    attachment_photo(2),
+    @sumi.AttachmentItem::document("Brief.pdf"),
+    attachment_photo(3),
+  ])
+  let (full, set_full) = @rabbita.create_variable([
+    attachment_photo(0),
+    attachment_photo(1),
+    attachment_photo(2),
+    attachment_photo(3),
+    attachment_photo(4),
+    attachment_photo(5),
+    attachment_photo(6),
+    attachment_photo(7),
+    @sumi.AttachmentItem::document("Brief.pdf"),
+    @sumi.AttachmentItem::document("Notes.txt"),
+    @sumi.AttachmentItem::document("Sketches.zip"),
+  ])
+  items.view2(full, fn(current, overflowing) {
+    stage_mode(mode, [
+      @sumi.attachment_strip(
+        items=current,
+        on_add=set_items(fn(c) { [..c, attachment_photo(c.length())] }),
+        on_remove=set_items.map(idx => c => attachment_remove_at(c, idx)),
+      ),
+      hint("Past 10 attachments the row clips and the add tile pins right:"),
+      @sumi.attachment_strip(
+        items=overflowing,
+        on_add=set_full(fn(c) { [..c, attachment_photo(c.length())] }),
+        on_remove=set_full.map(idx => c => attachment_remove_at(c, idx)),
+      ),
+    ])
+  })
+}
+
+///|
 fn demo_segmented_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   let (res, set_res) = @rabbita.create_variable("4k")
   res.view(fn(current) {

@@ -126,6 +126,12 @@ pub fn demos() -> Array[Demo] {
     },
     { key: "chip-row", group: "Forms", title: "Chips", build: demo_chip_row, },
     {
+      key: "attachment-strip",
+      group: "Forms",
+      title: "Attachment strip",
+      build: demo_attachment_strip,
+    },
+    {
       key: "segmented-basic",
       group: "Forms",
       title: "Row mode",

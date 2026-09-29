@@ -8,6 +8,8 @@ import {
 }
 
 // Values
+pub fn attachment_strip(items~ : Array[AttachmentItem], on_add? : @cmd.Cmd, on_remove? : @cmd.Emit[Int], max_visible? : Int, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn checkbox(checked~ : Bool, label? : String, indeterminate? : Bool, on_change? : @cmd.Emit[Bool], disabled? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn chip(String, selected? : Bool, on_click? : @cmd.Cmd, disabled? : Bool, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
@@ -37,6 +39,23 @@ pub fn textarea(value~ : String, placeholder? : String, rows? : Int, on_input? :
 // Errors
 
 // Types and methods
+pub(all) struct AttachmentItem {
+  kind : AttachmentKind
+  src : String
+  label : String
+} derive(Eq)
+pub fn AttachmentItem::document(String) -> Self
+pub fn AttachmentItem::equal(Self, Self) -> Bool
+pub fn AttachmentItem::image(String, label? : String) -> Self
+pub fn AttachmentItem::not_equal(Self, Self) -> Bool
+
+pub(all) enum AttachmentKind {
+  Image
+  Document
+} derive(Eq)
+pub fn AttachmentKind::equal(Self, Self) -> Bool
+pub fn AttachmentKind::not_equal(Self, Self) -> Bool
+
 pub(all) struct SegmentedItem {
   value : String
   label : String
