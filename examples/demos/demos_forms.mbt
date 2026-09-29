@@ -198,6 +198,38 @@ fn demo_slider_tooltip(mode : @sumi.ThemeMode?) -> Val[Html] {
 }
 
 ///|
+fn demo_slider_field(mode : @sumi.ThemeMode?) -> Val[Html] {
+  let (length, set_length) = @rabbita.create_variable(30)
+  let (auto, set_auto) = @rabbita.create_variable(false)
+  length.view2(auto, fn(current, is_auto) {
+    stage_mode(mode, [
+      column("24px", [
+        @sumi.slider_field(
+          value=current,
+          min=0,
+          max=180,
+          label="Clip length",
+          unit="s",
+          ticks=[0, 30, 60, 90, 120, 150, 180],
+          auto=is_auto,
+          on_auto_change=set_auto.map(v => _ => v),
+          on_input=set_length.map(v => _ => v),
+        ),
+        @sumi.slider_field(
+          value=current,
+          min=0,
+          max=180,
+          label="Clip length",
+          unit="s",
+          ticks=[0, 30, 60, 90, 120, 150, 180],
+          on_input=set_length.map(v => _ => v),
+        ),
+      ]),
+    ])
+  })
+}
+
+///|
 fn demo_segmented_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   let (res, set_res) = @rabbita.create_variable("4k")
   res.view(fn(current) {

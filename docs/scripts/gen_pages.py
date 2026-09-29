@@ -87,7 +87,7 @@ def parse_enum(src, name):
 
 PKG_FILES = {
     "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt"],
-    "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "slider.mbt", "segmented.mbt", "prompt_box.mbt"],
+    "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt"],
     "overlays": ["dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt"],
     "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt"],
@@ -454,6 +454,36 @@ PAGES = [
                 "show_value": ("Right-aligned numeric readout", "右侧数值显示"),
                 "value_tooltip": ("Bubble above the thumb while interacting", "交互时滑块上方的跟随气泡"),
                 "suffix": ("Unit appended to the readout", "数值显示的单位后缀"),
+            }),
+        ],
+    ),
+    page(
+        "slider-field", "forms", "Slider Field", "Slider Field 滑杆字段",
+        "A labelled numeric field composing the slider with tick marks and labels plus a number box with unit suffix; an optional auto row adds a switch.",
+        "带标签的数值字段：滑杆组合刻度标记与刻度标签，外加带单位后缀的数字框；可选自动行提供开关。",
+        [
+            demo("slider-field", "Ticks & number box", "刻度与数字框", """
+@sumi.slider_field(
+  value=current,
+  min=0,
+  max=180,
+  label="Clip length",
+  unit="s",
+  ticks=[0, 30, 60, 90, 120, 150, 180],
+  auto=is_auto,
+  on_auto_change=set_auto.map(v => _ => v),
+  on_input=set_length.map(v => _ => v),
+)"""),
+        ],
+        [
+            api("slider_field", params={
+                "value": ("Current value (controlled)", "当前值（受控）"),
+                "label": ("Title above the track; also the number-box aria label", "轨道上方标题，同时作为数字框 aria 标签"),
+                "unit": ("Suffix inside the number box", "数字框内单位后缀"),
+                "ticks": ("Values getting a track mark and a label", "带刻度标记与标签的值"),
+                "auto": ("Shows the auto row with a switch when given", "传入时显示带开关的自动行"),
+                "on_input": ("Per-tick during drags and number commits", "拖拽逐格与数字提交时触发"),
+                "on_commit": ("On release and number commits", "释放与数字提交时触发"),
             }),
         ],
     ),

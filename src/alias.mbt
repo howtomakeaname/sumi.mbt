@@ -84,6 +84,7 @@ pub using @forms {
   select,
   send_button,
   slider,
+  slider_field,
   stepper,
   switch,
   textarea,

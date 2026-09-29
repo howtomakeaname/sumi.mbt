@@ -132,6 +132,8 @@ pub fn skeleton_tile(width? : String, height? : String, style? : Array[String]) 
 
 pub fn slider(value~ : Int, min? : Int, max? : Int, step? : Int, on_input? : @cmd.Emit[Int], on_commit? : @cmd.Emit[Int], disabled? : Bool, show_value? : Bool, value_tooltip? : Bool, suffix? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
+pub fn slider_field(value~ : Int, min? : Int, max? : Int, step? : Int, label? : String, unit? : String, ticks? : Array[Int], auto? : Bool, auto_label? : String, on_auto_change? : @cmd.Emit[Bool], on_input? : @cmd.Emit[Int], on_commit? : @cmd.Emit[Int], disabled? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn spinner(size? : Int, id? : String, class? : String, style? : Array[String]) -> @html.Html
 
 pub fn stepper(value~ : Int, min? : Int, max? : Int, step? : Int, on_change? : @cmd.Emit[Int], disabled? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html

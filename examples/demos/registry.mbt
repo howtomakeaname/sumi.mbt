@@ -36,6 +36,7 @@ pub fn demos() -> Array[Demo] {
     { key: "checkbox-basic", group: "Forms", title: "Checkbox", build: demo_checkbox_basic },
     { key: "slider-basic", group: "Forms", title: "With readout", build: demo_slider_basic },
     { key: "slider-tooltip", group: "Forms", title: "Value bubble", build: demo_slider_tooltip },
+    { key: "slider-field", group: "Forms", title: "Ticks & number box", build: demo_slider_field },
     { key: "segmented-basic", group: "Forms", title: "Row mode", build: demo_segmented_basic },
     { key: "segmented-stacked", group: "Forms", title: "Stacked ratios", build: demo_segmented_stacked },
     { key: "prompt-box-basic", group: "Forms", title: "With action picker", build: demo_prompt_box_basic },
