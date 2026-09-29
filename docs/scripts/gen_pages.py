@@ -87,7 +87,7 @@ def parse_enum(src, name):
 
 PKG_FILES = {
     "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt", "favorite_toggle.mbt"],
-    "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt"],
+    "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt"],
     "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt"],
@@ -505,6 +505,26 @@ PAGES = [
                 "on_commit": ("On release and number commits", "释放与数字提交时触发"),
             }),
         ],
+    ),
+    page(
+        "chip", "forms", "Chip", "Chip 选项片",
+        "A single selectable pill — the quality-option look from the design. Text stays full-white in both states; selection shows through the block fill alone. Group several chips under one value for a radio-like row.",
+        "单个可选药丸片。两种状态下文字均为全白，选中态仅通过块填充体现。将多个 chip 绑定到同一个值即可组成单选行。",
+        [
+            demo("chip-row", "Quality row", "质量选项行", """
+@sumi.chip("720P", selected=quality == "720P",
+  on_click=set_quality(_ => "720P"))
+@sumi.chip("8K", disabled=true)"""),
+        ],
+        [
+            api("chip", params={
+                "0": ("`String` label", "`String` 标签"),
+                "selected": ("Filled on-state (controlled)", "填充选中态（受控）"),
+                "on_click": ("Click command (wire to your state)", "点击命令（接到你的状态）"),
+                "disabled": ("Faded and inert", "置灰且不可交互"),
+            }),
+        ],
+        [],
     ),
     page(
         "segmented", "forms", "Segmented", "Segmented 分段选择器",

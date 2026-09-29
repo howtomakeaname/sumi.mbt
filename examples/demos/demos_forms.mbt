@@ -230,6 +230,19 @@ fn demo_slider_field(mode : @sumi.ThemeMode?) -> Val[Html] {
 }
 
 ///|
+fn demo_chip_row(mode : @sumi.ThemeMode?) -> Val[Html] {
+  let (quality, set_quality) = @rabbita.create_variable("720P")
+  quality.view(fn(current) {
+    let options = ["360P", "720P", "1080P", "4K"]
+    let chips : Array[Html] = options.map(opt => {
+      @sumi.chip(opt, selected=current == opt, on_click=set_quality(_ => opt))
+    })
+    chips.push(@sumi.chip("8K", disabled=true))
+    stage_mode(mode, chips)
+  })
+}
+
+///|
 fn demo_segmented_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   let (res, set_res) = @rabbita.create_variable("4k")
   res.view(fn(current) {

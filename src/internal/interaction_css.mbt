@@ -72,6 +72,9 @@ const SumiInteractionCss : String =
   #|    background:var(--sumi-block,rgba(255,255,255,0.08)) !important;
   #|    color:var(--sumi-text,#ffffff) !important;
   #|  }
+  #|  [data-slot="chip"]:not([data-state="on"]):not(:disabled):hover {
+  #|    background:var(--sumi-block,rgba(255,255,255,0.08)) !important;
+  #|  }
   #|  [data-slot="menu-item"]:not([aria-disabled="true"]):hover {
   #|    background:var(--sumi-block,rgba(255,255,255,0.08)) !important;
   #|  }
@@ -342,6 +345,7 @@ const SumiInteractionCss : String =
   #|    opacity:1;
   #|  }
   #|  [data-slot="segmented-item"]:focus-visible,
+  #|  [data-slot="chip"]:focus-visible,
   #|  [data-slot="menu-item"]:focus-visible,
   #|  [data-slot="checkbox-menu-item"]:focus-visible {
   #|    outline:1px solid var(--sumi-text,#ffffff) !important;
@@ -366,6 +370,7 @@ const SumiInteractionCss : String =
   #|  [data-slot="button"],
   #|  [data-slot="icon-button"],
   #|  [data-slot="segmented-item"],
+  #|  [data-slot="chip"],
   #|  [data-slot="menu-item"],
   #|  [data-slot="checkbox-menu-item"],
   #|  [data-slot="checkbox-menu-check"],

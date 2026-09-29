@@ -10,6 +10,8 @@ import {
 // Values
 pub fn checkbox(checked~ : Bool, label? : String, indeterminate? : Bool, on_change? : @cmd.Emit[Bool], disabled? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
+pub fn chip(String, selected? : Bool, on_click? : @cmd.Cmd, disabled? : Bool, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn editable_text(value~ : String, placeholder? : String, on_change? : @cmd.Emit[String], read_only? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn input(value~ : String, placeholder? : String, input_type? : @html.InputType, on_input? : @cmd.Emit[String], on_change? : @cmd.Emit[String], on_clear? : @cmd.Cmd, clearable? : Bool, prefix? : @html.Html, suffix? : @html.Html, error? : Bool, error_text? : String, disabled? : Bool, read_only? : Bool, name? : String, maxlength? : Int, autofocus? : Bool, id? : String, class? : String, title? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html

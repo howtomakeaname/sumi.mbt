@@ -118,6 +118,7 @@ pub fn demos() -> Array[Demo] {
       title: "Ticks & number box",
       build: demo_slider_field,
     },
+    { key: "chip-row", group: "Forms", title: "Chips", build: demo_chip_row, },
     {
       key: "segmented-basic",
       group: "Forms",

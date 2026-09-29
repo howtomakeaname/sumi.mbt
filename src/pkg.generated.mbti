@@ -28,6 +28,8 @@ pub fn checkbox(checked~ : Bool, label? : String, indeterminate? : Bool, on_chan
 
 pub fn checkbox_menu(groups~ : Array[@overlays.CheckboxMenuGroup], on_toggle? : @cmd.Emit[String], width? : Int, max_height? : Int, footer_label? : String, footer_icon? : @html.Html, on_footer? : @cmd.Cmd, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
+pub fn chip(String, selected? : Bool, on_click? : @cmd.Cmd, disabled? : Bool, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn[C : @html.IsChildren] context_menu(entries~ : Array[@overlays.MenuEntry], open~ : Bool, on_open_change? : @cmd.Emit[Bool], selected? : String, on_select? : @cmd.Emit[String], id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String], menu_style? : Array[String], C) -> @html.Html
 
 pub fn credits(value~ : Int, original_value? : Int, muted? : Bool, on_click? : @cmd.Cmd, id? : String, class? : String, title? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html

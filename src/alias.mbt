@@ -82,6 +82,7 @@ pub using @layout {
 pub using @forms {
   editable_text,
   checkbox,
+  chip,
   input,
   prompt_box,
   segmented,
