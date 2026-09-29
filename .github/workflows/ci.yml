@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  moon:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+
+      - name: Fetch dependencies
+        run: moon update
+
+      - name: Check
+        run: moon check --target js
+
+      - name: Test
+        run: moon test --target js
+
+      - name: Build all packages
+        run: moon build --target js
+
+      - name: Formatting is clean
+        # `moon fmt` then diff: fails if any file was not formatted.
+        run: |
+          moon fmt
+          git diff --exit-code
