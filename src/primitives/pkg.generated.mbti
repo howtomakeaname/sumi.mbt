@@ -58,6 +58,8 @@ pub fn icon_image(size? : Int) -> @html.Html
 
 pub fn icon_important(size? : Int) -> @html.Html
 
+pub fn icon_info_circle_fill(size? : Int, style? : Array[String]) -> @html.Html
+
 pub fn icon_layers(size? : Int) -> @html.Html
 
 pub fn icon_minus(size? : Int) -> @html.Html
@@ -83,6 +85,8 @@ pub fn icon_sparkle(size? : Int) -> @html.Html
 pub fn icon_star(size? : Int) -> @html.Html
 
 pub fn icon_star_fill(size? : Int) -> @html.Html
+
+pub fn icon_tick_circle_fill(size? : Int, style? : Array[String]) -> @html.Html
 
 pub fn icon_upload(size? : Int) -> @html.Html
 

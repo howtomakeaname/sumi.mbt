@@ -4,6 +4,19 @@ fn demo_spinner_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
 }
 
 ///|
+fn demo_status_badge_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
+  Val::constant(
+    stage_mode(mode, [
+      @sumi.status_badge(state=Running(45)),
+      @sumi.status_badge(state=Count(3)),
+      @sumi.status_badge(state=Count(99)),
+      @sumi.status_badge(state=Complete),
+      @sumi.status_badge(state=Warning),
+    ]),
+  )
+}
+
+///|
 fn demo_progress_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [

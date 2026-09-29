@@ -210,6 +210,12 @@ pub fn demos() -> Array[Demo] {
       build: demo_spinner_basic,
     },
     {
+      key: "status-badge",
+      group: "Feedback",
+      title: "Status badge",
+      build: demo_status_badge_basic,
+    },
+    {
       key: "progress-basic",
       group: "Feedback",
       title: "Progress",

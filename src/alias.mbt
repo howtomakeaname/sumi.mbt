@@ -32,6 +32,7 @@ pub using @primitives {
   icon_grid,
   icon_image,
   icon_important,
+  icon_info_circle_fill,
   icon_layers,
   icon_minus,
   icon_more,
@@ -45,6 +46,7 @@ pub using @primitives {
   icon_sparkle,
   icon_star,
   icon_star_fill,
+  icon_tick_circle_fill,
   icon_upload,
   icon_x,
   kbd,
@@ -63,7 +65,9 @@ pub using @feedback {
   skeleton,
   skeleton_lines,
   skeleton_tile,
+  status_badge,
   type AlertVariant,
+  type StatusBadgeState,
 }
 
 ///|

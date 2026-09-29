@@ -89,7 +89,7 @@ PKG_FILES = {
     "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt", "favorite_toggle.mbt"],
     "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
-    "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt"],
+    "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt"],
     "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt"],
 }
 
@@ -889,6 +889,26 @@ items=[
 @sumi.spinner(size=24)"""),
         ],
         [api("spinner", params={"size": ("Diameter in px", "直径（px）")})],
+    ),
+    page(
+        "status-badge", "feedback", "Status Badge", "Status Badge 状态徽标",
+        "A 20px badge reporting an async job's state: frosted determinate ring while running, a white circle with the queue depth (capped at 99), a blue tick disc on completion, an amber info disc for partial failure. Rendered over dark imagery, so the palette is pinned dark.",
+        "20px 的异步任务状态徽标：进行中的磨砂确定进度环、显示排队数量的白色圆片（超过 99 封顶）、完成时的蓝色对勾圆盘、部分失败时的琥珀色信息圆盘。浮于深色内容之上，配色固定为深色。",
+        [
+            demo("status-badge", "All states", "全部状态", """
+@sumi.status_badge(state=Running(45))
+@sumi.status_badge(state=Count(3))
+@sumi.status_badge(state=Count(99))
+@sumi.status_badge(state=Complete)
+@sumi.status_badge(state=Warning)"""),
+        ],
+        [
+            api("status_badge", params={
+                "state": ("`StatusBadgeState` — `Running(pct)` / `Count(n)` / `Complete` / `Warning`", "`StatusBadgeState`——`Running(pct)` / `Count(n)` / `Complete` / `Warning`"),
+                "aria_label": ("Override the state description read to assistive tech", "覆盖读给辅助技术的状态描述"),
+            }),
+        ],
+        [],
     ),
     page(
         "progress", "feedback", "Progress", "Progress 进度条",

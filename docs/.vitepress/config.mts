@@ -44,6 +44,7 @@ const componentsSidebar = [
     text: 'Feedback',
     items: [
       { text: 'Spinner', link: '/components/spinner' },
+      { text: 'Status Badge', link: '/components/status-badge' },
       { text: 'Progress', link: '/components/progress' },
       { text: 'Skeleton', link: '/components/skeleton' },
       { text: 'Badge', link: '/components/badge' },
@@ -98,6 +99,7 @@ const componentsSidebarZh = [
   ]},
   { text: '反馈', items: [
     { text: 'Spinner 加载指示器', link: '/zh/components/spinner' },
+    { text: 'Status Badge 状态徽标', link: '/zh/components/status-badge' },
     { text: 'Progress 进度条', link: '/zh/components/progress' },
     { text: 'Skeleton 骨架屏', link: '/zh/components/skeleton' },
     { text: 'Badge 徽标', link: '/zh/components/badge' },

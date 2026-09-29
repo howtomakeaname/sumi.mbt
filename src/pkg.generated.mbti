@@ -86,6 +86,8 @@ pub fn icon_image(size? : Int) -> @html.Html
 
 pub fn icon_important(size? : Int) -> @html.Html
 
+pub fn icon_info_circle_fill(size? : Int, style? : Array[String]) -> @html.Html
+
 pub fn icon_layers(size? : Int) -> @html.Html
 
 pub fn icon_minus(size? : Int) -> @html.Html
@@ -111,6 +113,8 @@ pub fn icon_sparkle(size? : Int) -> @html.Html
 pub fn icon_star(size? : Int) -> @html.Html
 
 pub fn icon_star_fill(size? : Int) -> @html.Html
+
+pub fn icon_tick_circle_fill(size? : Int, style? : Array[String]) -> @html.Html
 
 pub fn icon_upload(size? : Int) -> @html.Html
 
@@ -147,6 +151,8 @@ pub fn slider(value~ : Int, min? : Int, max? : Int, step? : Int, on_input? : @cm
 pub fn slider_field(value~ : Int, min? : Int, max? : Int, step? : Int, label? : String, unit? : String, ticks? : Array[Int], auto? : Bool, auto_label? : String, on_auto_change? : @cmd.Emit[Bool], on_input? : @cmd.Emit[Int], on_commit? : @cmd.Emit[Int], disabled? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn spinner(size? : Int, id? : String, class? : String, style? : Array[String]) -> @html.Html
+
+pub fn status_badge(state~ : @feedback.StatusBadgeState, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn stepper(value~ : Int, min? : Int, max? : Int, step? : Int, on_change? : @cmd.Emit[Int], disabled? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
@@ -199,6 +205,8 @@ pub using @overlays {type MenuSide}
 pub using @forms {type SegmentedItem}
 
 pub using @forms {type SelectVariant}
+
+pub using @feedback {type StatusBadgeState}
 
 pub using @layout {type TabEntry}
 
