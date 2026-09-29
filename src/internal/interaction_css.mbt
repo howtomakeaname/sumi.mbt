@@ -87,8 +87,14 @@ const SumiInteractionCss : String =
   #|  [data-slot="send-button"]:not(:disabled):not([aria-disabled="true"]):active {
   #|    background:var(--sumi-primary-bg-pressed,#b2b2b2) !important;
   #|  }
-  #|  [data-slot="select-trigger"]:not(:disabled):not([aria-disabled="true"]):hover {
+  #|  [data-slot="select-trigger"][data-variant="form"]:not(:disabled):not([aria-disabled="true"]):hover {
   #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12)) !important;
+  #|  }
+  #|  [data-slot="select-trigger"][data-variant="filter"]:not([aria-disabled="true"]):hover {
+  #|    color:var(--sumi-text,#ffffff) !important;
+  #|  }
+  #|  [data-slot="select-filter-clear"]:not(:disabled):hover {
+  #|    color:var(--sumi-text-secondary,rgba(255,255,255,0.7)) !important;
   #|  }
   #|  [data-slot="icon-button"]:disabled,
   #|  [data-slot="stepper-button"]:disabled {

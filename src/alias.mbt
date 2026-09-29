@@ -13,6 +13,7 @@ pub using @primitives {
   credits,
   icon,
   icon_adjust,
+  icon_caret_down,
   icon_arrow_down,
   icon_arrow_up,
   icon_button,
@@ -22,6 +23,7 @@ pub using @primitives {
   icon_chevron_right,
   icon_chevron_up,
   icon_clock,
+  icon_close_circle,
   icon_crop,
   icon_download,
   icon_expand,
@@ -86,6 +88,7 @@ pub using @forms {
   switch,
   textarea,
   type SegmentedItem,
+  type SelectVariant,
 }
 
 ///|

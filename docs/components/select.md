@@ -25,6 +25,29 @@ An input-look trigger over a compact menu pinned to the trigger width. Shares `M
 
 </SumiDemo>
 
+### Filter trigger
+
+<SumiDemo name="select-filter">
+
+```moonbit
+@sumi.select(
+  options=[
+    @sumi.MenuItem::new("design", "Design"),
+    @sumi.MenuItem::new("engineering", "Engineering"),
+    @sumi.MenuItem::new("marketing", "Marketing"),
+  ],
+  value=current,
+  placeholder="Team",
+  open=is_open,
+  on_open_change=set_open.map(v => _ => v),
+  on_select=set_team.map(v => _ => v),
+  variant=Filter,
+  on_clear=set_team(_ => ""),
+)
+```
+
+</SumiDemo>
+
 ## API
 
 ### select
@@ -37,6 +60,8 @@ An input-look trigger over a compact menu pinned to the trigger width. Shares `M
 | open **\*** | `Bool` | — | Whether the overlay is open (controlled) |
 | on_open_change | `Emit[Bool]` | — | Called when the open state should change |
 | on_select | `Emit[String]` | — | Called with the value of the picked item |
+| variant | `SelectVariant` | Form | `Form` input look, `Filter` compact toolbar trigger |
+| on_clear | `Cmd` | — | Filter variant: emitted by the clear affordance |
 | disabled | `Bool` | false | Blocks interaction and dims the control |
 | id | `String` | — | Element id |
 | class | `String` | — | Extra class names |
@@ -46,5 +71,12 @@ An input-look trigger over a compact menu pinned to the trigger width. Shares `M
 ### MenuItem::new
 
 One menu option.
+
+### SelectVariant
+
+| Variant | Description |
+|---|---|
+| `Form` | Input-look trigger pinned to full width (default) |
+| `Filter` | Compact trigger naming the filter until a value is set |
 
 \* required (labelled) parameter — everything else is optional.

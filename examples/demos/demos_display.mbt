@@ -142,6 +142,7 @@ fn demo_icons_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       icon_tile("adjust", @sumi.icon_adjust(size=s)),
+      icon_tile("caret-down", @sumi.icon_caret_down(size=s)),
       icon_tile("arrow-down", @sumi.icon_arrow_down(size=s)),
       icon_tile("arrow-up", @sumi.icon_arrow_up(size=s)),
       icon_tile("check", @sumi.icon_check(size=s)),
@@ -150,6 +151,7 @@ fn demo_icons_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
       icon_tile("chevron-right", @sumi.icon_chevron_right(size=s)),
       icon_tile("chevron-up", @sumi.icon_chevron_up(size=s)),
       icon_tile("clock", @sumi.icon_clock(size=s)),
+      icon_tile("close-circle", @sumi.icon_close_circle(size=s)),
       icon_tile("crop", @sumi.icon_crop(size=s)),
       icon_tile("download", @sumi.icon_download(size=s)),
       icon_tile("expand", @sumi.icon_expand(size=s)),

@@ -324,11 +324,28 @@ PAGES = [
   on_open_change=set_open.map(v => _ => v),
   on_select=set_format.map(v => _ => v),
 )"""),
+            demo("select-filter", "Filter trigger", "筛选触发器", """
+@sumi.select(
+  options=[
+    @sumi.MenuItem::new("design", "Design"),
+    @sumi.MenuItem::new("engineering", "Engineering"),
+    @sumi.MenuItem::new("marketing", "Marketing"),
+  ],
+  value=current,
+  placeholder="Team",
+  open=is_open,
+  on_open_change=set_open.map(v => _ => v),
+  on_select=set_team.map(v => _ => v),
+  variant=Filter,
+  on_clear=set_team(_ => ""),
+)"""),
         ],
         [
             api("select", params={
                 "options": ("Option list", "选项列表"),
                 "value": ("Selected value (controlled)", "选中值（受控）"),
+                "variant": ("`Form` input look, `Filter` compact toolbar trigger", "`Form` 输入框外观，`Filter` 紧凑工具栏触发器"),
+                "on_clear": ("Filter variant: emitted by the clear affordance", "Filter 变体：清除按钮触发"),
             }),
             api("MenuItem::new", desc_en="One menu option.",
                 desc_zh="一个菜单项。", params={
@@ -336,6 +353,15 @@ PAGES = [
                 "description": ("Secondary line for rich items", "富文本项的次级描述行"),
                 "icon": ("Leading icon", "前置图标"),
                 "shortcut": ("Right-aligned shortcut hint", "右对齐快捷键提示"),
+            }),
+        ],
+        [
+            enum("SelectVariant", "forms", {
+                "Form": "Input-look trigger pinned to full width (default)",
+                "Filter": "Compact trigger naming the filter until a value is set",
+            }, {
+                "Form": "输入框外观，占满宽度（默认）",
+                "Filter": "紧凑触发器，未筛选时显示筛选名",
             }),
         ],
     ),

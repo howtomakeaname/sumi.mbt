@@ -81,6 +81,40 @@ fn demo_select_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
 }
 
 ///|
+fn demo_select_filter(mode : @sumi.ThemeMode?) -> Val[Html] {
+  let (team_open, set_team_open) = @rabbita.create_variable(false)
+  let (team, set_team) = @rabbita.create_variable("")
+  team_open.view2(team, fn(is_open, current) {
+    stage_mode(mode, [
+      row([
+        @sumi.select(
+          options=[
+            @sumi.MenuItem::new("design", "Design"),
+            @sumi.MenuItem::new("engineering", "Engineering"),
+            @sumi.MenuItem::new("marketing", "Marketing"),
+          ],
+          value=current,
+          placeholder="Team",
+          open=is_open,
+          on_open_change=set_team_open.map(v => _ => v),
+          on_select=set_team.map(v => _ => v),
+          variant=Filter,
+          on_clear=set_team(_ => ""),
+        ),
+        @sumi.select(
+          options=[@sumi.MenuItem::new("mine", "Mine")],
+          value="",
+          placeholder="Owner",
+          open=false,
+          variant=Filter,
+          disabled=true,
+        ),
+      ]),
+    ])
+  })
+}
+
+///|
 fn demo_stepper_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   let (count, set_count) = @rabbita.create_variable(4)
   count.view(fn(current) {

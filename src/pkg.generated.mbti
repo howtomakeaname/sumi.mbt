@@ -50,6 +50,8 @@ pub fn icon_arrow_up(size? : Int) -> @html.Html
 
 pub fn icon_button(@html.Html, variant? : @primitives.ButtonVariant, size? : @primitives.ButtonSize, disabled? : Bool, pressed? : Bool, id? : String, class? : String, title? : String, aria_label? : String, on_click? : @cmd.Cmd, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
+pub fn icon_caret_down(size? : Int) -> @html.Html
+
 pub fn icon_check(size? : Int) -> @html.Html
 
 pub fn icon_chevron_down(size? : Int) -> @html.Html
@@ -61,6 +63,8 @@ pub fn icon_chevron_right(size? : Int) -> @html.Html
 pub fn icon_chevron_up(size? : Int) -> @html.Html
 
 pub fn icon_clock(size? : Int) -> @html.Html
+
+pub fn icon_close_circle(size? : Int) -> @html.Html
 
 pub fn icon_crop(size? : Int) -> @html.Html
 
@@ -116,7 +120,7 @@ pub fn prompt_box(value~ : String, placeholder? : String, rows? : Int, on_input?
 
 pub fn segmented(items~ : Array[@forms.SegmentedItem], selected~ : String, stacked? : Bool, on_select? : @cmd.Emit[String], id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
-pub fn select(options~ : Array[@overlays.MenuItem], value~ : String, placeholder? : String, open~ : Bool, on_open_change? : @cmd.Emit[Bool], on_select? : @cmd.Emit[String], disabled? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+pub fn select(options~ : Array[@overlays.MenuItem], value~ : String, placeholder? : String, open~ : Bool, on_open_change? : @cmd.Emit[Bool], on_select? : @cmd.Emit[String], variant? : @forms.SelectVariant, on_clear? : @cmd.Cmd, disabled? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn send_button(disabled? : Bool, loading? : Bool, on_click? : @cmd.Cmd, id? : String, class? : String, title? : String, aria_label? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
@@ -175,6 +179,8 @@ pub using @overlays {type MenuItem}
 pub using @overlays {type MenuSide}
 
 pub using @forms {type SegmentedItem}
+
+pub using @forms {type SelectVariant}
 
 pub using @layout {type TabEntry}
 

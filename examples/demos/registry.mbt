@@ -30,6 +30,7 @@ pub fn demos() -> Array[Demo] {
     { key: "input-states", group: "Forms", title: "States", build: demo_input_states },
     { key: "textarea-basic", group: "Forms", title: "Textarea", build: demo_textarea_basic },
     { key: "select-basic", group: "Forms", title: "Select", build: demo_select_basic },
+    { key: "select-filter", group: "Forms", title: "Filter trigger", build: demo_select_filter },
     { key: "stepper-basic", group: "Forms", title: "Stepper", build: demo_stepper_basic },
     { key: "switch-basic", group: "Forms", title: "Switch", build: demo_switch_basic },
     { key: "checkbox-basic", group: "Forms", title: "Checkbox", build: demo_checkbox_basic },

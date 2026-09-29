@@ -35,6 +35,7 @@ const SumiTokensDark : String =
   #|--sumi-block-hover:rgba(255,255,255,0.12);
   #|--sumi-block-pressed:rgba(255,255,255,0.16);
   #|--sumi-stroke:rgba(204,221,255,0.1);
+  #|--sumi-stroke-primary:rgba(255,255,255,0.08);
   #|--sumi-stroke-secondary:rgba(255,255,255,0.04);
   #|--sumi-text:#ffffff;
   #|--sumi-text-secondary:rgba(255,255,255,0.7);
@@ -89,6 +90,7 @@ const SumiTokensLight : String =
   #|--sumi-block-hover:rgba(0,0,0,0.08);
   #|--sumi-block-pressed:rgba(0,0,0,0.12);
   #|--sumi-stroke:rgba(0,0,0,0.1);
+  #|--sumi-stroke-primary:rgba(0,0,0,0.08);
   #|--sumi-stroke-secondary:rgba(0,0,0,0.05);
   #|--sumi-text:#1a1a1a;
   #|--sumi-text-secondary:rgba(0,0,0,0.64);

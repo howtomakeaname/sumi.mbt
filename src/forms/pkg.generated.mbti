@@ -18,7 +18,7 @@ pub fn prompt_box(value~ : String, placeholder? : String, rows? : Int, on_input?
 
 pub fn segmented(items~ : Array[SegmentedItem], selected~ : String, stacked? : Bool, on_select? : @cmd.Emit[String], id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
-pub fn select(options~ : Array[@overlays.MenuItem], value~ : String, placeholder? : String, open~ : Bool, on_open_change? : @cmd.Emit[Bool], on_select? : @cmd.Emit[String], disabled? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+pub fn select(options~ : Array[@overlays.MenuItem], value~ : String, placeholder? : String, open~ : Bool, on_open_change? : @cmd.Emit[Bool], on_select? : @cmd.Emit[String], variant? : SelectVariant, on_clear? : @cmd.Cmd, disabled? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn send_button(disabled? : Bool, loading? : Bool, on_click? : @cmd.Cmd, id? : String, class? : String, title? : String, aria_label? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
@@ -42,6 +42,11 @@ pub(all) struct SegmentedItem {
   disabled : Bool
 }
 pub fn SegmentedItem::new(String, String, icon? : @html.Html, trailing? : @html.Html, numeric? : Bool, disabled? : Bool) -> Self
+
+pub(all) enum SelectVariant {
+  Form
+  Filter
+}
 
 // Type aliases
 

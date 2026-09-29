@@ -228,9 +228,14 @@ pub fn icon_ratio(width~ : Int, height~ : Int, size? : Int = 16) -> @html.Html {
 fn fill_icon(
   path : String,
   size? : Int = 16,
+  fill_rule? : String,
   style? : Array[String] = [],
 ) -> @html.Html {
   let px = size.to_string() + "px"
+  let path_attrs = match fill_rule {
+    Some(rule) => @svg.Attrs::build().fill_rule(rule)
+    None => @svg.Attrs::build()
+  }
   @html.span(
     style=@internal.sumi_styles(
       [
@@ -245,7 +250,7 @@ fn fill_icon(
       height=size,
       view_box="0 0 16 16",
       style=["display:block;width:100%;height:100%"],
-      [@svg.path(d=path, fill="currentColor")],
+      [@svg.path(d=path, fill="currentColor", attrs=path_attrs)],
     ),
   )
 }
@@ -283,3 +288,25 @@ pub fn icon_slash(size? : Int = 14) -> @html.Html {
     ),
   )
 }
+
+///|
+/// Filled rounded caret marking a filter trigger, on a 16 design grid.
+pub fn icon_caret_down(size? : Int = 16) -> @html.Html {
+  fill_icon(
+    "M10.4629 6H5.5371C4.67794 6 4.21876 7.01192 4.78452 7.6585L7.24742 10.4732C7.64584 10.9286 8.35416 10.9286 8.75258 10.4732L11.2155 7.6585C11.7812 7.01192 11.3221 6 10.4629 6Z",
+    size~,
+  )
+}
+
+///|
+/// Filled circle with a times cutout — the clear affordance of a filtered
+/// trigger. The glyph grid is 13.333 inside the 16 viewBox, which reproduces
+/// the design's 8.33% inset exactly at size 16.
+pub fn icon_close_circle(size? : Int = 16) -> @html.Html {
+  fill_icon(
+    "M6.66667 0C2.98477 0 0 2.98477 0 6.66667C0 10.3486 2.98477 13.3333 6.66667 13.3333C10.3486 13.3333 13.3333 10.3486 13.3333 6.66667C13.3333 2.98477 10.3486 0 6.66667 0ZM8.67307 8.66672C8.89974 8.44072 8.89974 8.07405 8.67307 7.84739L7.48641 6.66072L8.67307 5.47339C8.89974 5.24739 8.89974 4.87405 8.67307 4.64739C8.44641 4.42005 8.07974 4.42005 7.84641 4.64739L6.66641 5.83339L5.47974 4.64739C5.24641 4.42005 4.87974 4.42005 4.65307 4.64739C4.42641 4.87405 4.42641 5.24739 4.65307 5.47339L5.83974 6.66072L4.65307 7.84072C4.42641 8.07405 4.42641 8.44072 4.65307 8.66672C4.76641 8.78006 4.91974 8.84072 5.06641 8.84072C5.21974 8.84072 5.36641 8.78006 5.47974 8.66672L6.66641 7.48739L7.85307 8.66672C7.96641 8.78739 8.11307 8.84072 8.25974 8.84072C8.41307 8.84072 8.55974 8.78006 8.67307 8.66672Z",
+    size~,
+    fill_rule="evenodd",
+  )
+}
+
