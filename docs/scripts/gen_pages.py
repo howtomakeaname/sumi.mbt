@@ -89,7 +89,7 @@ PKG_FILES = {
     "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt", "favorite_toggle.mbt", "add_tile.mbt"],
     "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "attachment_strip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
-    "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt"],
+    "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt", "shimmer_text.mbt"],
     "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt"],
 }
 
@@ -977,6 +977,23 @@ items=[
             api("status_badge", params={
                 "state": ("`StatusBadgeState` — `Running(pct)` / `Count(n)` / `Complete` / `Warning`", "`StatusBadgeState`——`Running(pct)` / `Count(n)` / `Complete` / `Warning`"),
                 "aria_label": ("Override the state description read to assistive tech", "覆盖读给辅助技术的状态描述"),
+            }),
+        ],
+        [],
+    ),
+    page(
+        "shimmer-text", "feedback", "Shimmer Text", "Shimmer Text 扫光文字",
+        "Loading text with a dim band sweeping endlessly across the glyphs — the agent status line's in-progress state. The gradient is clipped to the letterforms (`background-clip:text`); reduced motion freezes the sweep.",
+        "一条暗带在文字上往复扫过的加载文案——agent 状态行的进行中态。渐变裁剪到字形上（`background-clip:text`）；减弱动效时扫动冻结。",
+        [
+            demo("shimmer-text", "Status lines", "状态文案", """
+@sumi.shimmer_text("Working on it…")
+@sumi.shimmer_text("Generating the image…")
+@sumi.shimmer_text("Reading the canvas…")"""),
+        ],
+        [
+            api("shimmer_text", params={
+                "0": ("`String` loading text", "`String` 加载文案"),
             }),
         ],
         [],

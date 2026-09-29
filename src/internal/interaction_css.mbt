@@ -18,6 +18,10 @@ const SumiInteractionCss : String =
   #|  from { background-position:200% 0; }
   #|  to { background-position:-200% 0; }
   #|}
+  #|@keyframes sumi-shimmer-text {
+  #|  from { background-position:100% 0; }
+  #|  to { background-position:-100% 0; }
+  #|}
   #|@keyframes sumi-fade-in {
   #|  from { opacity:0; }
   #|}
@@ -395,6 +399,7 @@ const SumiInteractionCss : String =
   #|  [data-slot="dialog"][open],
   #|  [data-slot="dialog"][open]::backdrop,
   #|  [data-slot="spinner"],
+  #|  [data-slot="shimmer-text"],
   #|  [data-slot="skeleton"] {
   #|    transition:none !important;
   #|    animation:none !important;

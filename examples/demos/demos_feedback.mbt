@@ -17,6 +17,17 @@ fn demo_status_badge_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
 }
 
 ///|
+fn demo_shimmer_text(mode : @sumi.ThemeMode?) -> Val[Html] {
+  Val::constant(
+    stage_mode(mode, [
+      @sumi.shimmer_text("Working on it…"),
+      @sumi.shimmer_text("Generating the image…"),
+      @sumi.shimmer_text("Reading the canvas…"),
+    ]),
+  )
+}
+
+///|
 fn demo_progress_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [

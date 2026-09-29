@@ -69,6 +69,7 @@ pub using @feedback {
   alert,
   empty_state,
   progress,
+  shimmer_text,
   skeleton,
   skeleton_lines,
   skeleton_tile,

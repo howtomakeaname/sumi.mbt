@@ -12,6 +12,8 @@ pub fn empty_state(title_text~ : String, description? : String, icon? : @html.Ht
 
 pub fn progress(value~ : Int, max? : Int, show_value? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
+pub fn shimmer_text(String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn skeleton(width? : String, height? : String, radius? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn skeleton_lines(count? : Int, style? : Array[String]) -> @html.Html

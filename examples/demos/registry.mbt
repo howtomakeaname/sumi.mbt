@@ -228,6 +228,12 @@ pub fn demos() -> Array[Demo] {
       build: demo_status_badge_basic,
     },
     {
+      key: "shimmer-text",
+      group: "Feedback",
+      title: "Shimmer text",
+      build: demo_shimmer_text,
+    },
+    {
       key: "progress-basic",
       group: "Feedback",
       title: "Progress",
