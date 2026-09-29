@@ -1,9 +1,9 @@
 ///|
-fn demo_dropdown_menu_basic() -> Val[Html] {
+fn demo_dropdown_menu_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   let (open, set_open) = @rabbita.create_variable(false)
   let (choice, set_choice) = @rabbita.create_variable("standard")
   open.view2(choice, fn(is_open, current) {
-    stage([
+    stage_mode(mode, [
       @sumi.dropdown_menu(
         trigger=@sumi.button(variant=Secondary, [
           @html.text("Enhance"),
@@ -38,11 +38,11 @@ fn demo_dropdown_menu_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_dropdown_menu_compact() -> Val[Html] {
+fn demo_dropdown_menu_compact(mode : @sumi.ThemeMode) -> Val[Html] {
   let (open, set_open) = @rabbita.create_variable(false)
   let (choice, set_choice) = @rabbita.create_variable("")
   open.view2(choice, fn(is_open, current) {
-    stage([
+    stage_mode(mode, [
       @sumi.dropdown_menu(
         trigger=@sumi.button(variant=Secondary, [
           @html.text("Actions"),
@@ -83,11 +83,11 @@ fn demo_dropdown_menu_compact() -> Val[Html] {
 }
 
 ///|
-fn demo_context_menu_basic() -> Val[Html] {
+fn demo_context_menu_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   let (open, set_open) = @rabbita.create_variable(false)
   let (action, set_action) = @rabbita.create_variable("")
   open.view2(action, fn(is_open, last_action) {
-    stage([
+    stage_mode(mode, [
       @sumi.context_menu(
         entries=[
           Item(@sumi.MenuItem::new("rename", "Rename", shortcut="R")),
@@ -142,11 +142,11 @@ fn demo_context_menu_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_popover_basic() -> Val[Html] {
+fn demo_popover_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   let (open, set_open) = @rabbita.create_variable(false)
   let (strength, set_strength) = @rabbita.create_variable(35)
   open.view2(strength, fn(is_open, value) {
-    stage([
+    stage_mode(mode, [
       @sumi.popover(
         trigger=@sumi.button(variant=Secondary, [
           @sumi.icon_adjust(size=14),
@@ -176,9 +176,9 @@ fn demo_popover_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_tooltip_basic() -> Val[Html] {
+fn demo_tooltip_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   Val::constant(
-    stage([
+    stage_mode(mode, [
       @sumi.tooltip(
         content="Export the current canvas",
         @sumi.icon_button(@sumi.icon_upload(), aria_label="Export"),
@@ -203,9 +203,9 @@ fn demo_tooltip_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_dialog_basic() -> Val[Html] {
+fn demo_dialog_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   Val::constant(
-    stage([
+    stage_mode(mode, [
       @sumi.button(
         variant=Secondary,
         on_click=@dialog.show("docs-dialog-basic"),
@@ -236,10 +236,10 @@ fn demo_dialog_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_toast_basic() -> Val[Html] {
+fn demo_toast_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   let (state, set_state) = @rabbita.create_variable("")
   state.view(fn(current) {
-    stage([
+    stage_mode(mode, [
       @sumi.button(
         variant=Secondary,
         on_click=set_state(_ => "success"),

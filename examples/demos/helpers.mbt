@@ -14,11 +14,6 @@ fn stage_mode(mode : @sumi.ThemeMode, children : Array[Html]) -> Html {
 }
 
 ///|
-fn stage(children : Array[Html]) -> Html {
-  stage_mode(@sumi.Dark, children)
-}
-
-///|
 fn row(children : Array[Html]) -> Html {
   @html.div(
     style=["display:flex;flex-wrap:wrap;align-items:center;gap:12px"],

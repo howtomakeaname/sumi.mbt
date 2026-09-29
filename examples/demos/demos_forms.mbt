@@ -1,8 +1,8 @@
 ///|
-fn demo_input_basic() -> Val[Html] {
+fn demo_input_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   let (name, set_name) = @rabbita.create_variable("")
   name.view(fn(current) {
-    stage([
+    stage_mode(mode, [
       column("12px", [
         @sumi.input(
           value=current,
@@ -23,9 +23,9 @@ fn demo_input_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_input_states() -> Val[Html] {
+fn demo_input_states(mode : @sumi.ThemeMode) -> Val[Html] {
   Val::constant(
-    stage([
+    stage_mode(mode, [
       column("12px", [
         @sumi.input(value="Read only field", read_only=true),
         @sumi.input(value="Disabled field", disabled=true),
@@ -40,10 +40,10 @@ fn demo_input_states() -> Val[Html] {
 }
 
 ///|
-fn demo_textarea_basic() -> Val[Html] {
+fn demo_textarea_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   let (notes, set_notes) = @rabbita.create_variable("")
   notes.view(fn(current) {
-    stage([
+    stage_mode(mode, [
       column("12px", [
         @sumi.textarea(
           value=current,
@@ -57,11 +57,11 @@ fn demo_textarea_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_select_basic() -> Val[Html] {
+fn demo_select_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   let (format_open, set_format_open) = @rabbita.create_variable(false)
   let (format, set_format) = @rabbita.create_variable("png")
   format_open.view2(format, fn(is_open, current) {
-    stage([
+    stage_mode(mode, [
       column("12px", [
         @sumi.select(
           options=[
@@ -81,10 +81,10 @@ fn demo_select_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_stepper_basic() -> Val[Html] {
+fn demo_stepper_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   let (count, set_count) = @rabbita.create_variable(4)
   count.view(fn(current) {
-    stage([
+    stage_mode(mode, [
       @sumi.stepper(
         value=current,
         min=1,
@@ -98,10 +98,10 @@ fn demo_stepper_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_switch_basic() -> Val[Html] {
+fn demo_switch_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   let (enabled, set_enabled) = @rabbita.create_variable(true)
   enabled.view(fn(is_on) {
-    stage([
+    stage_mode(mode, [
       @sumi.switch(checked=is_on, on_change=set_enabled.map(v => _ => v)),
       @sumi.switch(checked=is_on, disabled=true),
     ])
@@ -109,10 +109,10 @@ fn demo_switch_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_checkbox_basic() -> Val[Html] {
+fn demo_checkbox_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   let (checked, set_checked) = @rabbita.create_variable(true)
   checked.view(fn(is_checked) {
-    stage([
+    stage_mode(mode, [
       @sumi.checkbox(
         checked=is_checked,
         label="Keep original size",
@@ -130,10 +130,10 @@ fn demo_checkbox_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_slider_basic() -> Val[Html] {
+fn demo_slider_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   let (strength, set_strength) = @rabbita.create_variable(35)
   strength.view(fn(value) {
-    stage([
+    stage_mode(mode, [
       column("24px", [
         @sumi.slider(
           value~,
@@ -148,10 +148,10 @@ fn demo_slider_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_slider_tooltip() -> Val[Html] {
+fn demo_slider_tooltip(mode : @sumi.ThemeMode) -> Val[Html] {
   let (amount, set_amount) = @rabbita.create_variable(35)
   amount.view(fn(value) {
-    stage([
+    stage_mode(mode, [
       column("24px", [
         @sumi.slider(
           value~,
@@ -164,10 +164,10 @@ fn demo_slider_tooltip() -> Val[Html] {
 }
 
 ///|
-fn demo_segmented_basic() -> Val[Html] {
+fn demo_segmented_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   let (res, set_res) = @rabbita.create_variable("4k")
   res.view(fn(current) {
-    stage([
+    stage_mode(mode, [
       @sumi.segmented(
         items=[
           @sumi.SegmentedItem::new("2k", "2K", numeric=true),
@@ -192,10 +192,10 @@ fn demo_segmented_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_segmented_stacked() -> Val[Html] {
+fn demo_segmented_stacked(mode : @sumi.ThemeMode) -> Val[Html] {
   let (ratio, set_ratio) = @rabbita.create_variable("16:9")
   ratio.view(fn(current) {
-    stage([
+    stage_mode(mode, [
       @sumi.segmented(
         stacked=true,
         items=[
@@ -238,7 +238,7 @@ fn demo_segmented_stacked() -> Val[Html] {
 }
 
 ///|
-fn demo_prompt_box_basic() -> Val[Html] {
+fn demo_prompt_box_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   let (prompt, set_prompt) = @rabbita.create_variable("")
   let (model_open, set_model_open) = @rabbita.create_variable(false)
   let (model, set_model) = @rabbita.create_variable("nebula")
@@ -247,7 +247,7 @@ fn demo_prompt_box_basic() -> Val[Html] {
     model_is_open,
     current_model,
   ) {
-    stage([
+    stage_mode(mode, [
       column("12px", [
         @sumi.prompt_box(
           value=current_prompt,
@@ -293,12 +293,12 @@ fn demo_prompt_box_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_prompt_box_count() -> Val[Html] {
+fn demo_prompt_box_count(mode : @sumi.ThemeMode) -> Val[Html] {
   let (prompt, set_prompt) = @rabbita.create_variable(
     "A quiet harbor at dusk, fishing boats with warm lantern light",
   )
   prompt.view(fn(current) {
-    stage([
+    stage_mode(mode, [
       column("12px", [
         @sumi.prompt_box(
           value=current,
@@ -318,9 +318,9 @@ fn demo_prompt_box_count() -> Val[Html] {
 }
 
 ///|
-fn demo_send_button_basic() -> Val[Html] {
+fn demo_send_button_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   Val::constant(
-    stage([
+    stage_mode(mode, [
       @sumi.send_button(aria_label="Send"),
       @sumi.send_button(disabled=true, aria_label="Send (disabled)"),
       @sumi.send_button(loading=true, aria_label="Sending"),

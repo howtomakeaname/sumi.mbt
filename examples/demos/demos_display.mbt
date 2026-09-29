@@ -1,14 +1,14 @@
 ///|
-fn demo_avatar_basic() -> Val[Html] {
+fn demo_avatar_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   Val::constant(
-    stage([@sumi.avatar(fallback="Sumi"), @sumi.avatar(fallback="墨", size=40)]),
+    stage_mode(mode, [@sumi.avatar(fallback="Sumi"), @sumi.avatar(fallback="墨", size=40)]),
   )
 }
 
 ///|
-fn demo_tag_basic() -> Val[Html] {
+fn demo_tag_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   Val::constant(
-    stage([
+    stage_mode(mode, [
       @sumi.tag("Draft"),
       @sumi.tag(variant=Brand, [@sumi.icon_sparkle(size=12), @html.text("AI")]),
       @sumi.tag(variant=Outline, "16:9"),
@@ -18,9 +18,9 @@ fn demo_tag_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_kbd_basic() -> Val[Html] {
+fn demo_kbd_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   Val::constant(
-    stage([
+    stage_mode(mode, [
       @sumi.kbd("⌘"),
       @sumi.kbd("K"),
       hint("combine:"),
@@ -30,9 +30,9 @@ fn demo_kbd_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_card_basic() -> Val[Html] {
+fn demo_card_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   Val::constant(
-    stage([
+    stage_mode(mode, [
       @sumi.card(style=["width:280px;padding:16px"], [
         @html.div(
           style=["font-size:13px;line-height:22px"],
@@ -44,9 +44,9 @@ fn demo_card_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_card_section() -> Val[Html] {
+fn demo_card_section(mode : @sumi.ThemeMode) -> Val[Html] {
   Val::constant(
-    stage([
+    stage_mode(mode, [
       @sumi.card_section(header=@html.text("Settings"), style=["width:280px"], [
         @html.div(style=["display:flex;flex-direction:column;gap:12px"], [
           row([@sumi.checkbox(checked=true, label="Auto-save")]),
@@ -72,10 +72,10 @@ fn demo_card_section() -> Val[Html] {
 }
 
 ///|
-fn demo_tabs_basic() -> Val[Html] {
+fn demo_tabs_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   let (tab, set_tab) = @rabbita.create_variable("all")
   tab.view(fn(current) {
-    stage([
+    stage_mode(mode, [
       row([
         @sumi.tabs(
           items=[
@@ -93,9 +93,9 @@ fn demo_tabs_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_credits_basic() -> Val[Html] {
+fn demo_credits_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   Val::constant(
-    stage([
+    stage_mode(mode, [
       @sumi.credits(value=24),
       @sumi.credits(value=24, original_value=48),
       @sumi.credits(value=8, muted=true),
@@ -122,10 +122,10 @@ fn icon_tile(name : String, icon : Html) -> Html {
 }
 
 ///|
-fn demo_icons_basic() -> Val[Html] {
+fn demo_icons_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   let s = 16
   Val::constant(
-    stage([
+    stage_mode(mode, [
       icon_tile("adjust", @sumi.icon_adjust(size=s)),
       icon_tile("arrow-down", @sumi.icon_arrow_down(size=s)),
       icon_tile("arrow-up", @sumi.icon_arrow_up(size=s)),

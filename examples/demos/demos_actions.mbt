@@ -1,7 +1,7 @@
 ///|
-fn demo_button_basic() -> Val[Html] {
+fn demo_button_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   Val::constant(
-    stage([
+    stage_mode(mode, [
       @sumi.button(variant=Primary, "Generate"),
       @sumi.button(variant=Secondary, "HD Enhance"),
       @sumi.button(variant=Ghost, [@sumi.icon_sparkle(), @html.text("AI Edit")]),
@@ -12,9 +12,9 @@ fn demo_button_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_button_sizes() -> Val[Html] {
+fn demo_button_sizes(mode : @sumi.ThemeMode) -> Val[Html] {
   Val::constant(
-    stage([
+    stage_mode(mode, [
       @sumi.button(variant=Primary, "Apply"),
       @sumi.button(variant=Primary, size=Sm, "Apply"),
       @sumi.button(variant=Secondary, size=Sm, "Apply"),
@@ -24,9 +24,9 @@ fn demo_button_sizes() -> Val[Html] {
 }
 
 ///|
-fn demo_icon_button_basic() -> Val[Html] {
+fn demo_icon_button_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   Val::constant(
-    stage([
+    stage_mode(mode, [
       @sumi.icon_button(@sumi.icon_download(), aria_label="Download"),
       @sumi.icon_button(
         @sumi.icon_crop(),
@@ -44,7 +44,7 @@ fn demo_icon_button_basic() -> Val[Html] {
 }
 
 ///|
-fn demo_toolbar_basic() -> Val[Html] {
+fn demo_toolbar_basic(mode : @sumi.ThemeMode) -> Val[Html] {
   let (enhance_open, set_enhance_open) = @rabbita.create_variable(false)
   let (enhance, set_enhance) = @rabbita.create_variable("standard")
   let (detail_open, set_detail_open) = @rabbita.create_variable(false)
@@ -57,7 +57,7 @@ fn demo_toolbar_basic() -> Val[Html] {
     current_detail,
     current_res,
   ) {
-    stage([
+    stage_mode(mode, [
       @sumi.toolbar([
         @sumi.dropdown_menu(
           trigger=@sumi.button(variant=Ghost, [
