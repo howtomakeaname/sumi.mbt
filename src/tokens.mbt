@@ -57,7 +57,9 @@ const SumiTokensDark : String =
   #|--sumi-tooltip-bg:#333333;
   #|--sumi-tooltip-fg:#ffffff;
   #|--sumi-input-bg:rgba(34,34,34,0.72);
-  #|--sumi-scrollbar:rgba(204,221,255,0.12);
+  #|--sumi-scrollbar:rgba(255,255,255,0.08);
+  #|--sumi-scrollbar-hover:rgba(255,255,255,0.12);
+  #|--sumi-scrollbar-pressed:rgba(255,255,255,0.16);
   #|--sumi-shadow:rgba(0,0,0,0.24);
   #|--sumi-shadow-float:0px 2px 6px 0px rgba(0,0,0,0.02),0px 4px 12px 0px rgba(0,0,0,0.06);
   #|--sumi-shadow-menu:0px 8px 56px 0px rgba(0,0,0,0.24);
@@ -115,7 +117,9 @@ const SumiTokensLight : String =
   #|--sumi-tooltip-bg:#26262a;
   #|--sumi-tooltip-fg:#fafafa;
   #|--sumi-input-bg:rgba(255,255,255,0.72);
-  #|--sumi-scrollbar:rgba(0,0,0,0.16);
+  #|--sumi-scrollbar:rgba(0,0,0,0.12);
+  #|--sumi-scrollbar-hover:rgba(0,0,0,0.16);
+  #|--sumi-scrollbar-pressed:rgba(0,0,0,0.22);
   #|--sumi-shadow:rgba(0,0,0,0.12);
   #|--sumi-shadow-float:0px 2px 6px 0px rgba(0,0,0,0.04),0px 4px 12px 0px rgba(0,0,0,0.08);
   #|--sumi-shadow-menu:0px 8px 56px 0px rgba(0,0,0,0.12);

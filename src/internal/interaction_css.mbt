@@ -234,19 +234,48 @@ const SumiInteractionCss : String =
   #|  [data-slot="checkbox-menu-body"],
   #|  [data-slot="prompt-textarea"] {
   #|    scrollbar-width:thin;
-  #|    scrollbar-color:var(--sumi-scrollbar,rgba(204,221,255,0.12)) transparent;
+  #|    scrollbar-color:var(--sumi-scrollbar,rgba(255,255,255,0.08)) transparent;
   #|  }
   #|  [data-slot="scroll-area"]::-webkit-scrollbar,
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar,
   #|  [data-slot="prompt-textarea"]::-webkit-scrollbar {
-  #|    width:2px;
-  #|    height:2px;
+  #|    width:12px;
+  #|    height:12px;
   #|  }
   #|  [data-slot="scroll-area"]::-webkit-scrollbar-thumb,
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-thumb,
   #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-thumb {
-  #|    background:var(--sumi-scrollbar,rgba(204,221,255,0.12));
-  #|    border-radius:17px;
+  #|    background:var(--sumi-scrollbar,rgba(255,255,255,0.08));
+  #|    border:5px solid transparent;
+  #|    border-radius:10px;
+  #|    background-clip:padding-box;
+  #|  }
+  #|  [data-slot="scroll-area"]::-webkit-scrollbar-thumb:hover,
+  #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-thumb:hover,
+  #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-thumb:hover {
+  #|    background:var(--sumi-scrollbar-hover,rgba(255,255,255,0.12));
+  #|    border-width:4px;
+  #|  }
+  #|  [data-slot="scroll-area"]::-webkit-scrollbar-thumb:active,
+  #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-thumb:active,
+  #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-thumb:active {
+  #|    background:var(--sumi-scrollbar-pressed,rgba(255,255,255,0.16));
+  #|    border-width:4px;
+  #|  }
+  #|  [data-slot="scroll-area"]::-webkit-scrollbar-track,
+  #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-track,
+  #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-track {
+  #|    background:transparent;
+  #|  }
+  #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar {
+  #|    width:8px;
+  #|  }
+  #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-thumb {
+  #|    border-width:3px;
+  #|  }
+  #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-thumb:hover,
+  #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-thumb:active {
+  #|    border-width:2px;
   #|  }
   #|  [data-slot="dialog"]::backdrop {
   #|    background:var(--sumi-backdrop,rgba(0,0,0,0.8));
