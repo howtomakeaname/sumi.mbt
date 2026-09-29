@@ -86,7 +86,7 @@ def parse_enum(src, name):
     return variants
 
 PKG_FILES = {
-    "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt", "favorite_toggle.mbt", "add_tile.mbt"],
+    "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "media_tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt", "favorite_toggle.mbt", "add_tile.mbt"],
     "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "attachment_strip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt", "shimmer_text.mbt"],
@@ -1154,6 +1154,68 @@ items=[
             "Brand": "品牌色，用于高级或 AI 标识",
             "Outline": "描边无填充",
         })],
+    ),
+    page(
+        "media-tag", "primitives", "Media Tag", "Media Tag 媒体标签",
+        "An inline reference to a piece of content — the chip that prefixes a conversation bubble or sits inside the composer input.",
+        "指向一段内容的行内引用标签——可前缀在对话气泡上，也可内嵌在输入框中。",
+        [
+            demo("media-tag", "Kinds, states & inline", "类型、状态与行内", """
+@sumi.media_tag(kind=@sumi.Image, thumbnail=thumb_url)
+@sumi.media_tag(kind=@sumi.Video, state=@sumi.Generating)
+@sumi.media_tag(kind=@sumi.Audio, variant=@sumi.Inline)"""),
+        ],
+        [
+            api("media_tag", params={
+                "kind": ("What the tag references", "标签引用的内容类型"),
+                "label": ("Text; defaults to the kind name", "文字；缺省为类型名"),
+                "state": ("Lifecycle of the referenced content", "引用内容的生命周期状态"),
+                "variant": ("Filled block chip or transparent inline form", "实心块或透明行内形式"),
+                "thumbnail": ("16px square preview for Image/Video", "Image/Video 的 16px 方形缩略图"),
+                "on_click": ("Renders as a button and brightens on hover", "渲染为按钮，悬停时提亮"),
+            }),
+        ],
+        [
+            enum("MediaTagKind", "primitives", {
+                "Image": "Picture reference; can carry a thumbnail",
+                "Video": "Clip reference; can carry a thumbnail",
+                "Audio": "Waveform-glyph sound reference",
+                "Text": "Plain-text reference",
+                "Group": "Reference to several elements grouped together",
+                "Timeline": "Sequence reference",
+                "Element": "Single-element reference",
+            }, {
+                "Image": "图片引用；可带缩略图",
+                "Video": "视频引用；可带缩略图",
+                "Audio": "波形图标的音频引用",
+                "Text": "纯文本引用",
+                "Group": "成组元素的引用",
+                "Timeline": "时间线引用",
+                "Element": "单个元素引用",
+            }),
+            enum("MediaTagState", "primitives", {
+                "Ready": "Default look",
+                "Candidate": "Half-transparent suggestion",
+                "Uploading": "Thumbnail dimmed under a centered spinner",
+                "Generating": "Spinner replaces the visual",
+                "Failed": "Warning disc replaces the visual",
+                "Empty": "Placeholder glyph even when a thumbnail exists",
+            }, {
+                "Ready": "默认外观",
+                "Candidate": "半透明候选态",
+                "Uploading": "缩略图压暗并叠加居中加载圈",
+                "Generating": "视觉位替换为加载圈",
+                "Failed": "视觉位替换为警告圆盘",
+                "Empty": "即使有缩略图也显示占位图标",
+            }),
+            enum("MediaTagVariant", "primitives", {
+                "Block": "Filled chip, used inside conversation bubbles",
+                "Inline": "Transparent, sits inside the composer input",
+            }, {
+                "Block": "实心块，用于对话气泡内",
+                "Inline": "透明行内，嵌于输入框中",
+            }),
+        ],
     ),
     page(
         "kbd", "primitives", "Kbd", "Kbd 键盘按键",

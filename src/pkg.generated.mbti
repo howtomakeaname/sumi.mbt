@@ -84,13 +84,19 @@ pub fn icon_crop(size? : Int) -> @html.Html
 
 pub fn icon_download(size? : Int) -> @html.Html
 
+pub fn icon_element(size? : Int) -> @html.Html
+
 pub fn icon_expand(size? : Int) -> @html.Html
 
 pub fn icon_folder(size? : Int) -> @html.Html
 
 pub fn icon_grid(size? : Int) -> @html.Html
 
+pub fn icon_group(size? : Int) -> @html.Html
+
 pub fn icon_image(size? : Int) -> @html.Html
+
+pub fn icon_image_fill(size? : Int) -> @html.Html
 
 pub fn icon_important(size? : Int) -> @html.Html
 
@@ -118,6 +124,8 @@ pub fn icon_search(size? : Int) -> @html.Html
 
 pub fn icon_slash(size? : Int) -> @html.Html
 
+pub fn icon_sound(size? : Int) -> @html.Html
+
 pub fn icon_sparkle(size? : Int) -> @html.Html
 
 pub fn icon_star(size? : Int) -> @html.Html
@@ -126,11 +134,17 @@ pub fn icon_star_fill(size? : Int) -> @html.Html
 
 pub fn icon_target(size? : Int) -> @html.Html
 
+pub fn icon_text(size? : Int) -> @html.Html
+
 pub fn icon_tick_circle_fill(size? : Int, style? : Array[String]) -> @html.Html
+
+pub fn icon_timeline(size? : Int) -> @html.Html
 
 pub fn icon_upload(size? : Int) -> @html.Html
 
 pub fn icon_upload_fill(size? : Int) -> @html.Html
+
+pub fn icon_video(size? : Int) -> @html.Html
 
 pub fn icon_x(size? : Int) -> @html.Html
 
@@ -139,6 +153,8 @@ pub fn icon_x_fill(size? : Int) -> @html.Html
 pub fn input(value~ : String, placeholder? : String, input_type? : @html.InputType, on_input? : @cmd.Emit[String], on_change? : @cmd.Emit[String], on_clear? : @cmd.Cmd, clearable? : Bool, prefix? : @html.Html, suffix? : @html.Html, error? : Bool, error_text? : String, disabled? : Bool, read_only? : Bool, name? : String, maxlength? : Int, autofocus? : Bool, id? : String, class? : String, title? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn kbd(String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
+pub fn media_tag(kind~ : @primitives.MediaTagKind, label? : String, state? : @primitives.MediaTagState, variant? : @primitives.MediaTagVariant, thumbnail? : String, on_click? : @cmd.Cmd, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn menu_chevron(size? : Int) -> @html.Html
 
@@ -217,6 +233,12 @@ pub using @primitives {type ButtonVariant}
 pub using @overlays {type CheckboxMenuGroup}
 
 pub using @overlays {type CheckboxMenuItem}
+
+pub using @primitives {type MediaTagKind}
+
+pub using @primitives {type MediaTagState}
+
+pub using @primitives {type MediaTagVariant}
 
 pub using @overlays {type MenuAlign}
 

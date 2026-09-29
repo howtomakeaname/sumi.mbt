@@ -86,6 +86,9 @@ const SumiInteractionCss : String =
   #|  [data-slot="attachment-tile"]:focus-within [data-slot="attachment-remove"] {
   #|    opacity:1 !important;
   #|  }
+  #|  [data-slot="media-tag"][data-interactive]:hover {
+  #|    color:var(--sumi-text,#ffffff) !important;
+  #|  }
   #|  [data-slot="menu-item"]:not([aria-disabled="true"]):hover {
   #|    background:var(--sumi-block,rgba(255,255,255,0.08)) !important;
   #|  }
@@ -363,6 +366,7 @@ const SumiInteractionCss : String =
   #|  }
   #|  [data-slot="segmented-item"]:focus-visible,
   #|  [data-slot="chip"]:focus-visible,
+  #|  [data-slot="media-tag"]:focus-visible,
   #|  [data-slot="add-tile"]:focus-visible,
   #|  [data-slot="attachment-remove"]:focus-visible,
   #|  [data-slot="menu-item"]:focus-visible,
@@ -390,6 +394,7 @@ const SumiInteractionCss : String =
   #|  [data-slot="icon-button"],
   #|  [data-slot="segmented-item"],
   #|  [data-slot="chip"],
+  #|  [data-slot="media-tag"],
   #|  [data-slot="add-tile"],
   #|  [data-slot="attachment-remove"],
   #|  [data-slot="menu-item"],

@@ -60,6 +60,7 @@ const componentsSidebar = [
     items: [
       { text: 'Avatar', link: '/components/avatar' },
       { text: 'Tag', link: '/components/tag' },
+      { text: 'Media Tag', link: '/components/media-tag' },
       { text: 'Kbd', link: '/components/kbd' },
       { text: 'Card', link: '/components/card' },
       { text: 'Tabs', link: '/components/tabs' },
@@ -116,6 +117,7 @@ const componentsSidebarZh = [
   { text: '展示', items: [
     { text: 'Avatar 头像', link: '/zh/components/avatar' },
     { text: 'Tag 标签', link: '/zh/components/tag' },
+    { text: 'Media Tag 媒体标签', link: '/zh/components/media-tag' },
     { text: 'Kbd 键盘按键', link: '/zh/components/kbd' },
     { text: 'Card 卡片', link: '/zh/components/card' },
     { text: 'Tabs 标签页', link: '/zh/components/tabs' },

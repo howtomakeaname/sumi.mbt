@@ -270,6 +270,12 @@ pub fn demos() -> Array[Demo] {
       build: demo_avatar_basic,
     },
     { key: "tag-basic", group: "Display", title: "Tag", build: demo_tag_basic, },
+    {
+      key: "media-tag",
+      group: "Display",
+      title: "Media tag",
+      build: demo_media_tag,
+    },
     { key: "kbd-basic", group: "Display", title: "Kbd", build: demo_kbd_basic, },
     {
       key: "card-basic",
