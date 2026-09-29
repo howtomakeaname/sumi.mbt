@@ -1,16 +1,21 @@
 ///|
-/// Shared stage: every demo renders inside its own themed wrapper so the
-/// token sheet and interaction layers are always present, no matter which
-/// docs page mounts the demo.
-fn stage_mode(mode : @sumi.ThemeMode, children : Array[Html]) -> Html {
-  @sumi.theme(mode~, [
-    @html.div(
-      style=[
-        "padding:28px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;background:var(--sumi-canvas,#0d0d0d)",
-      ],
-      children,
-    ),
-  ])
+/// Shared stage: padded surface on the canvas token. With `Some(mode)` the
+/// stage brings its own themed wrapper (docs site mounts, where each demo
+/// must carry the token sheet and interaction layers itself). With `None`
+/// the stage stays theme-less and follows the ambient theme — the gallery
+/// uses this so its theme toggle re-skins every demo via CSS variables
+/// without rebuilding them (demo state survives the toggle).
+fn stage_mode(mode : @sumi.ThemeMode?, children : Array[Html]) -> Html {
+  let surface = @html.div(
+    style=[
+      "padding:28px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;background:var(--sumi-canvas,#0d0d0d)",
+    ],
+    children,
+  )
+  match mode {
+    Some(m) => @sumi.theme(mode=m, [surface])
+    None => surface
+  }
 }
 
 ///|

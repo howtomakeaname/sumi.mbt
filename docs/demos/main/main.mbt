@@ -6,7 +6,7 @@ using @rabbita {type Val, type Html}
 /// token overrides have their own dedicated registry entries.
 fn mountable(name : String) -> (() -> Val[Html])? {
   match @demos.find_demo(name) {
-    Some(build) => Some(fn() { build(@sumi.Dark) })
+    Some(build) => Some(fn() { build(Some(@sumi.Dark)) })
     None => None
   }
 }

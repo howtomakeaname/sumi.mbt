@@ -4,14 +4,15 @@ using @rabbita {type Val, type Html}
 ///|
 /// One interactive demo: a stable key (docs placeholders reference it), the
 /// category it belongs to, a short caption, and the builder. The builder
-/// takes the theme mode so the gallery can flip every demo between dark and
-/// light; the docs site always passes `Dark` except for the theming demos,
-/// which pin their own mode.
+/// takes an optional theme mode: the docs site passes `Some(Dark)` so every
+/// mounted demo carries its own theme, while the gallery passes `None` so
+/// its theme toggle re-skins demos in place through CSS variables (demo
+/// state survives the toggle). The theming demos pin their own mode.
 pub struct Demo {
   key : String
   group : String
   title : String
-  build : (@sumi.ThemeMode) -> Val[Html]
+  build : (@sumi.ThemeMode?) -> Val[Html]
 }
 
 ///|
@@ -72,7 +73,7 @@ pub fn demo_groups() -> Array[String] {
 
 ///|
 /// Look up a demo builder by registry key (docs hydration path).
-pub fn find_demo(name : String) -> ((@sumi.ThemeMode) -> Val[Html])? {
+pub fn find_demo(name : String) -> ((@sumi.ThemeMode?) -> Val[Html])? {
   for d in demos() {
     if d.key == name {
       return Some(d.build)

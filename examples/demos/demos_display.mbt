@@ -1,12 +1,12 @@
 ///|
-fn demo_avatar_basic(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_avatar_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [@sumi.avatar(fallback="Sumi"), @sumi.avatar(fallback="墨", size=40)]),
   )
 }
 
 ///|
-fn demo_tag_basic(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_tag_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       @sumi.tag("Draft"),
@@ -18,7 +18,7 @@ fn demo_tag_basic(mode : @sumi.ThemeMode) -> Val[Html] {
 }
 
 ///|
-fn demo_kbd_basic(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_kbd_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       @sumi.kbd("⌘"),
@@ -30,7 +30,7 @@ fn demo_kbd_basic(mode : @sumi.ThemeMode) -> Val[Html] {
 }
 
 ///|
-fn demo_card_basic(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_card_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       @sumi.card(style=["width:280px;padding:16px"], [
@@ -44,7 +44,7 @@ fn demo_card_basic(mode : @sumi.ThemeMode) -> Val[Html] {
 }
 
 ///|
-fn demo_card_section(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_card_section(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       @sumi.card_section(header=@html.text("Settings"), style=["width:280px"], [
@@ -72,7 +72,7 @@ fn demo_card_section(mode : @sumi.ThemeMode) -> Val[Html] {
 }
 
 ///|
-fn demo_tabs_basic(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_tabs_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   let (tab, set_tab) = @rabbita.create_variable("all")
   tab.view(fn(current) {
     stage_mode(mode, [
@@ -93,7 +93,7 @@ fn demo_tabs_basic(mode : @sumi.ThemeMode) -> Val[Html] {
 }
 
 ///|
-fn demo_credits_basic(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_credits_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       @sumi.credits(value=24),
@@ -122,7 +122,7 @@ fn icon_tile(name : String, icon : Html) -> Html {
 }
 
 ///|
-fn demo_icons_basic(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_icons_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   let s = 16
   Val::constant(
     stage_mode(mode, [

@@ -1,10 +1,10 @@
 ///|
-fn demo_spinner_basic(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_spinner_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(stage_mode(mode, [@sumi.spinner(), @sumi.spinner(size=24)]))
 }
 
 ///|
-fn demo_progress_basic(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_progress_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       column("12px", [
@@ -16,7 +16,7 @@ fn demo_progress_basic(mode : @sumi.ThemeMode) -> Val[Html] {
 }
 
 ///|
-fn demo_skeleton_basic(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_skeleton_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       @sumi.skeleton_tile(width="160px", height="90px"),
@@ -27,7 +27,7 @@ fn demo_skeleton_basic(mode : @sumi.ThemeMode) -> Val[Html] {
 }
 
 ///|
-fn demo_badge_basic(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_badge_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       @sumi.badge(value=5),
@@ -38,7 +38,7 @@ fn demo_badge_basic(mode : @sumi.ThemeMode) -> Val[Html] {
 }
 
 ///|
-fn demo_empty_state_basic(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_empty_state_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       @sumi.card(style=["width:320px"], [

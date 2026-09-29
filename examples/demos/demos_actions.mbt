@@ -1,5 +1,5 @@
 ///|
-fn demo_button_basic(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_button_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       @sumi.button(variant=Primary, "Generate"),
@@ -12,7 +12,7 @@ fn demo_button_basic(mode : @sumi.ThemeMode) -> Val[Html] {
 }
 
 ///|
-fn demo_button_sizes(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_button_sizes(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       @sumi.button(variant=Primary, "Apply"),
@@ -24,7 +24,7 @@ fn demo_button_sizes(mode : @sumi.ThemeMode) -> Val[Html] {
 }
 
 ///|
-fn demo_icon_button_basic(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_icon_button_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       @sumi.icon_button(@sumi.icon_download(), aria_label="Download"),
@@ -44,7 +44,7 @@ fn demo_icon_button_basic(mode : @sumi.ThemeMode) -> Val[Html] {
 }
 
 ///|
-fn demo_toolbar_basic(mode : @sumi.ThemeMode) -> Val[Html] {
+fn demo_toolbar_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   let (enhance_open, set_enhance_open) = @rabbita.create_variable(false)
   let (enhance, set_enhance) = @rabbita.create_variable("standard")
   let (detail_open, set_detail_open) = @rabbita.create_variable(false)
