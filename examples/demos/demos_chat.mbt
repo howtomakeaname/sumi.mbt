@@ -87,3 +87,69 @@ fn demo_tool_call_row(mode : @sumi.ThemeMode?) -> Val[Html] {
     ])
   })
 }
+
+///|
+/// Agent input docks: an empty draft (disabled send) that enables as you
+/// type and clears on send, an in-flight run whose stop button flips back
+/// to send, and rich inline-tag content composed via `children`.
+fn demo_agent_input(mode : @sumi.ThemeMode?) -> Val[Html] {
+  let (prompt, set_prompt) = @rabbita.create_variable("")
+  let (live, set_live) = @rabbita.create_variable(true)
+  let toolbar = fn() {
+    [
+      @sumi.icon_button(
+        @sumi.icon_plus_fill(size=14),
+        aria_label="Add attachment",
+        on_click=@cmd.none,
+      ),
+      @sumi.agent_tool_button(
+        @sumi.icon_skill(size=16),
+        label="Use Skill",
+        on_click=@cmd.none,
+      ),
+      @sumi.icon_button(
+        @sumi.icon_at(size=14),
+        aria_label="Mention a reference",
+        on_click=@cmd.none,
+      ),
+    ]
+  }
+  prompt.view2(live, fn(text, running) {
+    stage_mode(mode, [
+      @html.div(
+        style=["width:400px;display:flex;flex-direction:column;gap:16px"],
+        [
+          @sumi.agent_input(
+            value=text,
+            placeholder="Describe your idea, or type / to use a skill",
+            on_input=set_prompt.map(v => _ => v),
+            on_send=set_prompt(_ => ""),
+            send_disabled=text.is_empty(),
+            actions=toolbar(),
+          ),
+          @sumi.agent_input(
+            value="Extend the canyon shot into a slow tracking move",
+            generating=running,
+            on_stop=set_live(v => !v),
+            on_send=@cmd.none,
+            actions=toolbar(),
+          ),
+          @sumi.agent_input(children=[
+            @sumi.media_tag(
+              kind=Image,
+              variant=Inline,
+              thumbnail=attachment_thumb(5),
+            ),
+            @html.text("Using this frame, "),
+            @sumi.media_tag(
+              kind=Video,
+              variant=Inline,
+              thumbnail=attachment_thumb(9),
+            ),
+            @html.text("match the camera drift and keep the cold lighting."),
+          ]),
+        ],
+      ),
+    ])
+  })
+}

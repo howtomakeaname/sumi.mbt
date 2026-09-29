@@ -80,11 +80,12 @@ The standalone circular send button.
 |---|---|---|---|
 | disabled | `Bool` | false | Blocks interaction and dims the control |
 | loading | `Bool` | false | Spinner in the disabled tone |
+| stop | `Bool` | false | Stop square for halting a generation |
 | on_click | `Cmd` | — | Click command |
 | id | `String` | — | Element id |
 | class | `String` | — | Extra class names |
 | title | `String` | — | Native tooltip title |
-| aria_label | `String` | "Send" |  |
+| aria_label | `String` | — |  |
 | attrs | `Attrs` | — | Extra HTML attributes |
 | style | `Array[String]` | [] | Extra inline styles |
 

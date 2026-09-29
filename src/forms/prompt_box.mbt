@@ -17,32 +17,40 @@ const SendButtonEnabledStyle : String = "background:var(--sumi-primary-bg,#fafaf
 const SendButtonDisabledStyle : String = "background:var(--sumi-primary-bg-disabled,rgba(204,221,255,0.16));color:var(--sumi-primary-fg-disabled,rgba(224,245,255,0.2))"
 
 ///|
-/// The circular submit button used by `prompt_box`. Disabled state uses the
-/// design's exact muted fill rather than opacity. `loading=true` keeps the
-/// muted fill, swaps the arrow for a 20px spinner in the disabled tone, and
-/// blocks clicks while a submission is in flight.
+/// The circular submit button used by `prompt_box` and `agent_input`.
+/// Disabled state uses the design's exact muted fill rather than opacity.
+/// `loading=true` keeps the muted fill, swaps the glyph for a 20px spinner
+/// in the disabled tone, and blocks clicks while a submission is in
+/// flight. `stop=true` swaps the arrow for the stop square — the affordance
+/// for halting an in-flight generation; pair it with an enabled click.
 pub fn send_button(
   disabled? : Bool = false,
   loading? : Bool = false,
+  stop? : Bool = false,
   on_click? : @cmd.Cmd,
   id? : String,
   class? : String,
   title? : String,
-  aria_label? : String = "Send",
+  aria_label? : String,
   attrs? : @html.Attrs,
   style? : Array[String] = [],
 ) -> @html.Html {
   let inactive = disabled || loading
   let element_attrs = @internal.sumi_attrs(attrs)
     .data_set("slot", "send-button")
-    .aria_label(aria_label)
+    .aria_label(aria_label.unwrap_or(if stop { "Stop" } else { "Send" }))
+  if stop {
+    ignore(element_attrs.data_set("mode", "stop"))
+  }
   if loading {
     ignore(element_attrs.aria_busy("true"))
   }
   let content : @html.Html = if loading {
     @primitives.spinner(size=20)
+  } else if stop {
+    @primitives.icon_stop_fill(size=16)
   } else {
-    @primitives.icon_arrow_up(size=18)
+    @primitives.icon_arrow_up_fill(size=16)
   }
   @html.button(
     style=@internal.sumi_styles(

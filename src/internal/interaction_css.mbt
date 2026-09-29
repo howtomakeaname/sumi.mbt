@@ -127,6 +127,12 @@ const SumiInteractionCss : String =
   #|  [data-slot="send-button"]:not(:disabled):not([aria-disabled="true"]):active {
   #|    background:var(--sumi-primary-bg-pressed,#b2b2b2) !important;
   #|  }
+  #|  [data-slot="agent-tool-button"]:not(:disabled):not([aria-disabled="true"]):hover {
+  #|    background:var(--sumi-block,rgba(255,255,255,0.08)) !important;
+  #|  }
+  #|  [data-slot="agent-tool-button"]:not(:disabled):not([aria-disabled="true"]):active {
+  #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12)) !important;
+  #|  }
   #|  [data-slot="select-trigger"][data-variant="form"]:not(:disabled):not([aria-disabled="true"]):hover {
   #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12)) !important;
   #|  }
@@ -185,18 +191,21 @@ const SumiInteractionCss : String =
   #|  }
   #|  [data-slot="input"]::placeholder,
   #|  [data-slot="textarea"]::placeholder,
-  #|  [data-slot="prompt-textarea"]::placeholder {
+  #|  [data-slot="prompt-textarea"]::placeholder,
+  #|  [data-slot="agent-input-textarea"]::placeholder {
   #|    color:var(--sumi-text-placeholder,rgba(255,255,255,0.35)) !important;
   #|    opacity:1 !important;
   #|  }
   #|  [data-slot="input"],
   #|  [data-slot="textarea"],
-  #|  [data-slot="prompt-textarea"] {
+  #|  [data-slot="prompt-textarea"],
+  #|  [data-slot="agent-input-textarea"] {
   #|    caret-color:var(--sumi-brand,#009efa);
   #|  }
   #|  [data-slot="input"]::selection,
   #|  [data-slot="textarea"]::selection,
-  #|  [data-slot="prompt-textarea"]::selection {
+  #|  [data-slot="prompt-textarea"]::selection,
+  #|  [data-slot="agent-input-textarea"]::selection {
   #|    background:var(--sumi-selection-bg,rgba(0,158,250,0.35));
   #|    color:var(--sumi-selection-fg,#ffffff);
   #|  }
@@ -258,21 +267,24 @@ const SumiInteractionCss : String =
   #|  [data-slot="scroll-area"],
   #|  [data-slot="checkbox-menu-body"],
   #|  [data-slot="shortcuts-panel-body"],
-  #|  [data-slot="prompt-textarea"] {
+  #|  [data-slot="prompt-textarea"],
+  #|  [data-slot="agent-input-textarea"] {
   #|    scrollbar-width:thin;
   #|    scrollbar-color:var(--sumi-scrollbar,rgba(255,255,255,0.08)) transparent;
   #|  }
   #|  [data-slot="scroll-area"]::-webkit-scrollbar,
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar,
   #|  [data-slot="shortcuts-panel-body"]::-webkit-scrollbar,
-  #|  [data-slot="prompt-textarea"]::-webkit-scrollbar {
+  #|  [data-slot="prompt-textarea"]::-webkit-scrollbar,
+  #|  [data-slot="agent-input-textarea"]::-webkit-scrollbar {
   #|    width:12px;
   #|    height:12px;
   #|  }
   #|  [data-slot="scroll-area"]::-webkit-scrollbar-thumb,
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-thumb,
   #|  [data-slot="shortcuts-panel-body"]::-webkit-scrollbar-thumb,
-  #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-thumb {
+  #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-thumb,
+  #|  [data-slot="agent-input-textarea"]::-webkit-scrollbar-thumb {
   #|    background:var(--sumi-scrollbar,rgba(255,255,255,0.08));
   #|    border:5px solid transparent;
   #|    border-radius:10px;
@@ -281,21 +293,24 @@ const SumiInteractionCss : String =
   #|  [data-slot="scroll-area"]::-webkit-scrollbar-thumb:hover,
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-thumb:hover,
   #|  [data-slot="shortcuts-panel-body"]::-webkit-scrollbar-thumb:hover,
-  #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-thumb:hover {
+  #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-thumb:hover,
+  #|  [data-slot="agent-input-textarea"]::-webkit-scrollbar-thumb:hover {
   #|    background:var(--sumi-scrollbar-hover,rgba(255,255,255,0.12));
   #|    border-width:4px;
   #|  }
   #|  [data-slot="scroll-area"]::-webkit-scrollbar-thumb:active,
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-thumb:active,
   #|  [data-slot="shortcuts-panel-body"]::-webkit-scrollbar-thumb:active,
-  #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-thumb:active {
+  #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-thumb:active,
+  #|  [data-slot="agent-input-textarea"]::-webkit-scrollbar-thumb:active {
   #|    background:var(--sumi-scrollbar-pressed,rgba(255,255,255,0.16));
   #|    border-width:4px;
   #|  }
   #|  [data-slot="scroll-area"]::-webkit-scrollbar-track,
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar-track,
   #|  [data-slot="shortcuts-panel-body"]::-webkit-scrollbar-track,
-  #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-track {
+  #|  [data-slot="prompt-textarea"]::-webkit-scrollbar-track,
+  #|  [data-slot="agent-input-textarea"]::-webkit-scrollbar-track {
   #|    background:transparent;
   #|  }
   #|  [data-slot="checkbox-menu-body"]::-webkit-scrollbar {
@@ -403,6 +418,7 @@ const SumiInteractionCss : String =
   #|  [data-slot="menu-chevron"],
   #|  [data-slot="button"],
   #|  [data-slot="icon-button"],
+  #|  [data-slot="agent-tool-button"],
   #|  [data-slot="segmented-item"],
   #|  [data-slot="chip"],
   #|  [data-slot="media-tag"],

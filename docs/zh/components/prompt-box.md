@@ -80,11 +80,12 @@
 |---|---|---|---|
 | disabled | `Bool` | false | 禁用交互并降低不透明度 |
 | loading | `Bool` | false | 以禁用色调显示加载圈 |
+| stop | `Bool` | false | 用于停止生成的方块图标 |
 | on_click | `Cmd` | — | 点击时发送的命令 |
 | id | `String` | — | 元素 id |
 | class | `String` | — | 附加 class 名 |
 | title | `String` | — | 原生 tooltip 标题 |
-| aria_label | `String` | "Send" |  |
+| aria_label | `String` | — |  |
 | attrs | `Attrs` | — | 附加 HTML 属性 |
 | style | `Array[String]` | [] | 附加内联样式 |
 

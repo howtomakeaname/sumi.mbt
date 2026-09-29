@@ -332,6 +332,12 @@ pub fn demos() -> Array[Demo] {
       build: demo_tool_call_row,
     },
     {
+      key: "agent-input",
+      group: "Chat",
+      title: "Agent input",
+      build: demo_agent_input,
+    },
+    {
       key: "theme-light",
       group: "Theming",
       title: "Light palette",

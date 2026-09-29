@@ -87,7 +87,7 @@ def parse_enum(src, name):
 
 PKG_FILES = {
     "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "media_tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt", "favorite_toggle.mbt", "add_tile.mbt"],
-    "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "attachment_strip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt"],
+    "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "attachment_strip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt", "agent_input.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt", "shimmer_text.mbt", "tool_call_row.mbt"],
     "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt", "chat_bubble.mbt"],
@@ -679,6 +679,45 @@ PAGES = [
             api("send_button", desc_en="The standalone circular send button.",
                 desc_zh="独立的圆形发送按钮。", params={
                 "loading": ("Spinner in the disabled tone", "以禁用色调显示加载圈"),
+                "stop": ("Stop square for halting a generation", "用于停止生成的方块图标"),
+            }),
+        ],
+    ),
+    page(
+        "agent-input", "forms", "Agent Input", "Agent Input 输入框",
+        "The agent chat dock: a frosted container pairing an auto-clamped input region with a toolbar row of action atoms and a circular send button; the send button becomes a stop affordance while generating.",
+        "Agent 会话输入坞：磨砂容器，输入区自动限高；工具行左侧为操作原子，右侧为圆形发送按钮，生成中切换为停止按钮。",
+        [
+            demo("agent-input", "Chat dock", "会话输入坞", """
+@sumi.agent_input(
+  value=current,
+  placeholder="Describe your idea, or type / to use a skill",
+  on_input=set_prompt.map(v => _ => v),
+  on_send=set_prompt(_ => ""),
+  send_disabled=current.is_empty(),
+  actions=[
+    @sumi.icon_button(@sumi.icon_plus_fill(size=14), aria_label="Add attachment"),
+    @sumi.agent_tool_button(@sumi.icon_skill(), label="Use Skill"),
+    @sumi.icon_button(@sumi.icon_at(), aria_label="Mention a reference"),
+  ],
+)"""),
+        ],
+        [
+            api("agent_input", params={
+                "value": ("Current text (controlled)", "当前文本（受控）"),
+                "rows": ("Visible row count of the textarea", "输入区可见行数"),
+                "on_send": ("Send command", "发送命令"),
+                "on_stop": ("Stop command while `generating`", "`generating` 时的停止命令"),
+                "send_disabled": ("Disables the send button", "禁用发送按钮"),
+                "send_loading": ("Swaps the glyph for a spinner", "将图标替换为加载圈"),
+                "generating": ("Swaps send for the stop square", "将发送按钮切换为停止方块"),
+                "actions": ("Left toolbar atoms (icon buttons, tool pills)", "左侧工具原子（图标按钮、工具 pill）"),
+                "children": ("Rich inline content replacing the textarea", "替换输入区的富文本内容"),
+            }),
+            api("agent_tool_button", desc_en="The icon-leading toolbar pill.",
+                desc_zh="图标前置的工具 pill。", params={
+                "0": ("`Html` icon (16px)", "`Html` 图标（16px）"),
+                "label": ("12/20 label text", "12/20 标签文本"),
             }),
         ],
     ),

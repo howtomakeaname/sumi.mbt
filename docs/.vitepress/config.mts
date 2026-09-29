@@ -27,6 +27,7 @@ const componentsSidebar = [
       { text: 'Attachment Strip', link: '/components/attachment-strip' },
       { text: 'Segmented', link: '/components/segmented' },
       { text: 'Prompt Box', link: '/components/prompt-box' },
+      { text: 'Agent Input', link: '/components/agent-input' },
       { text: 'Editable Text', link: '/components/editable-text' },
     ],
   },
@@ -95,6 +96,7 @@ const componentsSidebarZh = [
     { text: 'Attachment Strip 附件条', link: '/zh/components/attachment-strip' },
     { text: 'Segmented 分段选择器', link: '/zh/components/segmented' },
     { text: 'Prompt Box 提示输入框', link: '/zh/components/prompt-box' },
+    { text: 'Agent Input 输入框', link: '/zh/components/agent-input' },
     { text: 'Editable Text 可编辑文本', link: '/zh/components/editable-text' },
   ]},
   { text: '浮层', items: [
