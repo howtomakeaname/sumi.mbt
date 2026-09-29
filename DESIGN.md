@@ -49,6 +49,20 @@ are the source of truth when contributing components.
   - Backdrop softens to `rgba(0,0,0,0.45)`; shadows drop to 0.12 black.
 
 
+## Interaction sheet
+
+- Pseudo-class states (`:hover`/`:active`/`:focus`/`:focus-visible`),
+  pseudo-elements (`::placeholder`, slider thumbs, scrollbars), and overlay
+  motion live in one static sheet (`internal/interaction_css.mbt`), wrapped
+  in `@layer sumi-interactions` so host pages can restyle them.
+- **Cascade rule**: any state rule that overrides a property the component
+  already sets inline (hover/active backgrounds, focus borders and rings,
+  placeholder colors against a host sheet) must end in `!important` —
+  inline-normal and unlayered host styles otherwise win over the layer.
+  Never mark `transition`/`animation` important: layered-important would
+  outrank the unlayered reduced-motion block.
+
+
 ## Motion
 
 | Token | Value | Used by |

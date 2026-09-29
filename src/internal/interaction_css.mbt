@@ -3,6 +3,13 @@
 /// `style` attribute, so hover/placeholder/pseudo-element/overlay-motion rules
 /// ship as one static sheet emitted once by `theme`. Kept in its own file so
 /// component files stay free of CSS text.
+///
+/// Cascade: the `@layer` keeps motion/base rules under host-page styles, but
+/// state overrides that fight a component's inline base style (hover/active
+/// backgrounds, focus borders and rings, placeholder colors) must carry
+/// `!important` — author-important beats inline-normal regardless of layers.
+/// Never `!important` a `transition`/`animation` here: inside a layer that
+/// would outrank the unlayered reduced-motion block below.
 const SumiInteractionCss : String =
   #|@keyframes sumi-spin {
   #|  to { transform:rotate(360deg); }
@@ -22,55 +29,66 @@ const SumiInteractionCss : String =
   #|    display:none !important;
   #|  }
   #|  [data-slot="button"][data-variant="primary"]:not(:disabled):not([aria-disabled="true"]):hover {
-  #|    background:var(--sumi-primary-bg-hover,#d9d9d9);
+  #|    background:var(--sumi-primary-bg-hover,#d9d9d9) !important;
   #|  }
   #|  [data-slot="button"][data-variant="secondary"]:not(:disabled):not([aria-disabled="true"]):hover {
-  #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12));
+  #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12)) !important;
   #|  }
   #|  [data-slot="button"][data-variant="ghost"]:not(:disabled):not([aria-disabled="true"]):hover,
   #|  [data-slot="icon-button"]:not(:disabled):not([aria-disabled="true"]):hover {
-  #|    background:var(--sumi-block,rgba(255,255,255,0.08));
+  #|    background:var(--sumi-block,rgba(255,255,255,0.08)) !important;
   #|  }
   #|  [data-slot="icon-button"][aria-pressed="true"]:not(:disabled):not([aria-disabled="true"]) {
-  #|    background:var(--sumi-block,rgba(255,255,255,0.08));
+  #|    background:var(--sumi-block,rgba(255,255,255,0.08)) !important;
   #|  }
   #|  [data-slot="button"][data-variant="primary"]:not(:disabled):not([aria-disabled="true"]):active {
-  #|    background:var(--sumi-primary-bg-pressed,#b2b2b2);
+  #|    background:var(--sumi-primary-bg-pressed,#b2b2b2) !important;
   #|  }
   #|  [data-slot="button"][data-variant="secondary"]:not(:disabled):not([aria-disabled="true"]):active {
-  #|    background:var(--sumi-block-pressed,rgba(255,255,255,0.16));
+  #|    background:var(--sumi-block-pressed,rgba(255,255,255,0.16)) !important;
   #|  }
   #|  [data-slot="button"][data-variant="ghost"]:not(:disabled):not([aria-disabled="true"]):active,
   #|  [data-slot="icon-button"]:not(:disabled):not([aria-disabled="true"]):active {
-  #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12));
+  #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12)) !important;
   #|  }
   #|  [data-slot="pagination-button"]:not(:disabled):not([aria-disabled="true"]):hover {
-  #|    background:var(--sumi-block,rgba(255,255,255,0.08));
+  #|    background:var(--sumi-block,rgba(255,255,255,0.08)) !important;
   #|  }
   #|  [data-slot="pagination-button"]:not(:disabled):not([aria-disabled="true"]):active {
-  #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12));
+  #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12)) !important;
+  #|  }
+  #|  [data-slot="editable-text-input"]:not(:focus):hover {
+  #|    background:var(--sumi-block,rgba(255,255,255,0.08)) !important;
+  #|    backdrop-filter:blur(20px) !important;
+  #|  }
+  #|  [data-slot="editable-text-input"]:focus {
+  #|    border-color:var(--sumi-stroke-secondary,rgba(255,255,255,0.04)) !important;
+  #|    backdrop-filter:blur(10px) !important;
+  #|  }
+  #|  [data-slot="editable-text-input"]::placeholder {
+  #|    color:var(--sumi-text-placeholder,rgba(255,255,255,0.35)) !important;
   #|  }
   #|  [data-slot="segmented-item"]:not([data-state="on"]):not(:disabled):hover {
-  #|    background:var(--sumi-block,rgba(255,255,255,0.08));
-  #|    color:var(--sumi-text,#ffffff);
+  #|    background:var(--sumi-block,rgba(255,255,255,0.08)) !important;
+  #|    color:var(--sumi-text,#ffffff) !important;
   #|  }
   #|  [data-slot="menu-item"]:not([aria-disabled="true"]):hover {
-  #|    background:var(--sumi-block,rgba(255,255,255,0.08));
+  #|    background:var(--sumi-block,rgba(255,255,255,0.08)) !important;
   #|  }
   #|  [data-slot="switch"][data-state="off"]:not(:disabled):hover {
-  #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12));
+  #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12)) !important;
   #|  }
   #|  [data-slot="switch"][data-state="on"]:not(:disabled):hover {
-  #|    background:var(--sumi-brand-hover,#0099f2);
+  #|    background:var(--sumi-brand-hover,#0099f2) !important;
   #|  }
   #|  [data-slot="send-button"]:not(:disabled):not([aria-disabled="true"]):hover {
-  #|    background:var(--sumi-primary-bg-hover,#d9d9d9);
+  #|    background:var(--sumi-primary-bg-hover,#d9d9d9) !important;
   #|  }
   #|  [data-slot="send-button"]:not(:disabled):not([aria-disabled="true"]):active {
-  #|    background:var(--sumi-primary-bg-pressed,#b2b2b2);
+  #|    background:var(--sumi-primary-bg-pressed,#b2b2b2) !important;
   #|  }
   #|  [data-slot="select-trigger"]:not(:disabled):not([aria-disabled="true"]):hover {
-  #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12));
+  #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12)) !important;
   #|  }
   #|  [data-slot="icon-button"]:disabled,
   #|  [data-slot="stepper-button"]:disabled {
@@ -78,7 +96,7 @@ const SumiInteractionCss : String =
   #|    opacity:0.5;
   #|  }
   #|  [data-slot="input-clear"]:hover {
-  #|    color:var(--sumi-text-secondary,rgba(255,255,255,0.7));
+  #|    color:var(--sumi-text-secondary,rgba(255,255,255,0.7)) !important;
   #|  }
   #|  [data-slot="tooltip-content"] {
   #|    opacity:0;
@@ -122,8 +140,8 @@ const SumiInteractionCss : String =
   #|  [data-slot="input"]::placeholder,
   #|  [data-slot="textarea"]::placeholder,
   #|  [data-slot="prompt-textarea"]::placeholder {
-  #|    color:var(--sumi-text-placeholder,rgba(255,255,255,0.35));
-  #|    opacity:1;
+  #|    color:var(--sumi-text-placeholder,rgba(255,255,255,0.35)) !important;
+  #|    opacity:1 !important;
   #|  }
   #|  [data-slot="input"],
   #|  [data-slot="textarea"],
@@ -142,7 +160,7 @@ const SumiInteractionCss : String =
   #|    outline:none;
   #|  }
   #|  [data-slot="input"]:focus {
-  #|    border-color:var(--sumi-brand,#009efa);
+  #|    border-color:var(--sumi-brand,#009efa) !important;
   #|  }
   #|  [data-slot="slider"] {
   #|    -webkit-appearance:none;
@@ -272,8 +290,8 @@ const SumiInteractionCss : String =
   #|  }
   #|  [data-slot="segmented-item"]:focus-visible,
   #|  [data-slot="menu-item"]:focus-visible {
-  #|    outline:1px solid var(--sumi-text,#ffffff);
-  #|    outline-offset:-1px;
+  #|    outline:1px solid var(--sumi-text,#ffffff) !important;
+  #|    outline-offset:-1px !important;
   #|  }
   #|}
   #|@starting-style {
