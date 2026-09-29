@@ -74,6 +74,7 @@ pub using @layout {
 
 ///|
 pub using @forms {
+  editable_text,
   checkbox,
   input,
   prompt_box,

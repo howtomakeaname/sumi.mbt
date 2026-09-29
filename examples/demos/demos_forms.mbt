@@ -318,6 +318,27 @@ fn demo_prompt_box_count(mode : @sumi.ThemeMode?) -> Val[Html] {
 }
 
 ///|
+/// Click the title to rename it; Enter or clicking away commits, Escape
+/// restores.
+fn demo_editable_text_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
+  let (title, set_title) = @rabbita.create_variable("Untitled")
+  title.view(fn(current) {
+    stage_mode(mode, [
+      column("12px", [
+        row([
+          @sumi.editable_text(
+            value=current,
+            placeholder="Enter a canvas name",
+            on_change=set_title.map(v => _ => v),
+          ),
+        ]),
+        @sumi.editable_text(value="", placeholder="Enter a canvas name"),
+      ]),
+    ])
+  })
+}
+
+///|
 fn demo_send_button_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [

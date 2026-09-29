@@ -517,6 +517,28 @@ PAGES = [
         ],
     ),
     page(
+        "editable-text", "forms", "Editable Text", "Editable Text 可编辑文本",
+        "A title that reads as plain text and becomes an input on click; Enter or blur commits, Escape reverts.",
+        "看似普通文本，点击变为输入框；Enter 或失焦提交，Escape 还原。",
+        [
+            demo("editable-text-basic", "Click to rename", "点击重命名", """
+@sumi.editable_text(
+  value=current,
+  placeholder="Enter a canvas name",
+  on_change=set_title.map(v => _ => v),
+)
+@sumi.editable_text(value="", placeholder="Enter a canvas name")"""),
+        ],
+        [
+            api("editable_text", params={
+                "value": ("Committed text (controlled)", "已提交文本（受控）"),
+                "placeholder": ("Shown when the value is empty", "值为空时显示"),
+                "read_only": ("Renders as plain text", "渲染为纯文本"),
+                "on_change": ("Commits on Enter or blur; Escape reverts", "Enter 或失焦时提交；Escape 还原"),
+            }),
+        ],
+    ),
+    page(
         "dropdown-menu", "overlays", "Dropdown Menu", "Dropdown Menu 下拉菜单",
         "A trigger-anchored menu with compact or rich items, section labels, separators and shortcut hints. Keyboard navigation and dismissal are handled by the theme's event layer.",
         "锚定触发器的菜单，支持紧凑或富文本项、分组标签、分隔线与快捷键提示。键盘导航与关闭行为由主题的事件层处理。",

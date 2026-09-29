@@ -39,6 +39,7 @@ pub fn demos() -> Array[Demo] {
     { key: "segmented-stacked", group: "Forms", title: "Stacked ratios", build: demo_segmented_stacked },
     { key: "prompt-box-basic", group: "Forms", title: "With action picker", build: demo_prompt_box_basic },
     { key: "prompt-box-count", group: "Forms", title: "Character count", build: demo_prompt_box_count },
+    { key: "editable-text-basic", group: "Forms", title: "Click to rename", build: demo_editable_text_basic },
     { key: "send-button-basic", group: "Forms", title: "Send button", build: demo_send_button_basic },
     { key: "dropdown-menu-basic", group: "Overlays", title: "Rich items", build: demo_dropdown_menu_basic },
     { key: "dropdown-menu-compact", group: "Overlays", title: "Shortcuts", build: demo_dropdown_menu_compact },

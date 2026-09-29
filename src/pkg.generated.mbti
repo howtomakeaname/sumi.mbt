@@ -36,6 +36,8 @@ pub fn divider(id? : String, class? : String, attrs? : @html.Attrs, style? : Arr
 
 pub fn dropdown_menu(items~ : Array[@overlays.MenuEntry], trigger~ : @html.Html, open~ : Bool, on_open_change? : @cmd.Emit[Bool], selected? : String, on_select? : @cmd.Emit[String], align? : @overlays.MenuAlign, side? : @overlays.MenuSide, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String], trigger_style? : Array[String], menu_style? : Array[String]) -> @html.Html
 
+pub fn editable_text(value~ : String, placeholder? : String, on_change? : @cmd.Emit[String], read_only? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn empty_state(title_text~ : String, description? : String, icon? : @html.Html, action? : @html.Html, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn icon(String, size? : Int, stroke_width? : Int, style? : Array[String]) -> @html.Html
@@ -90,6 +92,8 @@ pub fn icon_scissors(size? : Int) -> @html.Html
 
 pub fn icon_search(size? : Int) -> @html.Html
 
+pub fn icon_slash(size? : Int) -> @html.Html
+
 pub fn icon_sparkle(size? : Int) -> @html.Html
 
 pub fn icon_upload(size? : Int) -> @html.Html
@@ -101,6 +105,8 @@ pub fn input(value~ : String, placeholder? : String, input_type? : @html.InputTy
 pub fn kbd(String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn menu_chevron(size? : Int) -> @html.Html
+
+pub fn pagination(page~ : Int, total~ : Int, on_change? : @cmd.Emit[Int], id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn[C : @html.IsChildren] popover(trigger~ : @html.Html, open~ : Bool, on_open_change? : @cmd.Emit[Bool], align? : @overlays.MenuAlign, side? : @overlays.MenuSide, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String], panel_style? : Array[String], C) -> @html.Html
 

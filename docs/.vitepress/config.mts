@@ -22,6 +22,7 @@ const componentsSidebar = [
       { text: 'Slider', link: '/components/slider' },
       { text: 'Segmented', link: '/components/segmented' },
       { text: 'Prompt Box', link: '/components/prompt-box' },
+      { text: 'Editable Text', link: '/components/editable-text' },
     ],
   },
   {
@@ -77,6 +78,7 @@ const componentsSidebarZh = [
     { text: 'Slider 滑块', link: '/zh/components/slider' },
     { text: 'Segmented 分段选择器', link: '/zh/components/segmented' },
     { text: 'Prompt Box 提示输入框', link: '/zh/components/prompt-box' },
+    { text: 'Editable Text 可编辑文本', link: '/zh/components/editable-text' },
   ]},
   { text: '浮层', items: [
     { text: 'Dropdown Menu 下拉菜单', link: '/zh/components/dropdown-menu' },

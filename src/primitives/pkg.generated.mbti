@@ -68,6 +68,8 @@ pub fn icon_scissors(size? : Int) -> @html.Html
 
 pub fn icon_search(size? : Int) -> @html.Html
 
+pub fn icon_slash(size? : Int) -> @html.Html
+
 pub fn icon_sparkle(size? : Int) -> @html.Html
 
 pub fn icon_upload(size? : Int) -> @html.Html

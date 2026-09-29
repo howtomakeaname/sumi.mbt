@@ -87,6 +87,28 @@ const SumiEventGuardJs : String =
   #|      }
   #|    }
   #|  }, true);
+  #|  // Editable text: focus selects the whole title so typing replaces it
+  #|  // outright; Enter commits through the blur path, Escape restores the
+  #|  // committed value (mirrored on data-value) before blurring, which makes
+  #|  // the resulting commit a no-op.
+  #|  document.addEventListener('focusin', function(e){
+  #|    var t = e.target;
+  #|    if (t && t.matches && t.matches('[data-slot="editable-text-input"]')) {
+  #|      requestAnimationFrame(function(){ t.select(); });
+  #|    }
+  #|  });
+  #|  document.addEventListener('keydown', function(e){
+  #|    var t = e.target;
+  #|    if (!t || !t.matches || !t.matches('[data-slot="editable-text-input"]')) return;
+  #|    if (e.key === 'Enter') {
+  #|      e.preventDefault();
+  #|      t.blur();
+  #|    } else if (e.key === 'Escape') {
+  #|      var v = t.getAttribute('data-value');
+  #|      if (v !== null) t.value = v;
+  #|      t.blur();
+  #|    }
+  #|  }, true);
   #|})();
 
 ///|
