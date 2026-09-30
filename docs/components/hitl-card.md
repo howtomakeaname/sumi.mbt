@@ -51,6 +51,6 @@ One generation option.
 | label | `String` | — |  |
 | cost | `Int` | 0 | Credit cost; shown when > 0 |
 | thumbnails | `Array[String]` | [] | Reference thumbnails (one per modality) |
-| checked | `Bool` | true | Checked for the confirm run |
+| checked | `Bool` | true | Checked for the confirm run; unchecked rows sink (0.2 label, faded thumbs, hidden cost) |
 
 \* required (labelled) parameter — everything else is optional.

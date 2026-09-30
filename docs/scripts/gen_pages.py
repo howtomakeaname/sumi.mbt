@@ -749,7 +749,7 @@ PAGES = [
                 "0": ("`String` label", "`String` 标签"),
                 "cost": ("Credit cost; shown when > 0", "额度消耗；大于 0 时显示"),
                 "thumbnails": ("Reference thumbnails (one per modality)", "参考缩略图（每种模态一张）"),
-                "checked": ("Checked for the confirm run", "是否勾选参与本次生成"),
+                "checked": ("Checked for the confirm run; unchecked rows sink (0.2 label, faded thumbs, hidden cost)", "是否勾选参与本次生成；未勾选行下沉（0.2 标签、缩略图半透、消耗隐藏）"),
             }),
         ],
     ),

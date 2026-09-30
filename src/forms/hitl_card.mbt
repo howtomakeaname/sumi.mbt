@@ -38,7 +38,18 @@ const HitlListStyle : String = "display:flex;flex-direction:column;gap:4px;paddi
 const HitlRowStyle : String = "display:flex;align-items:center;gap:8px;width:100%;margin:0;padding:7px 12px 7px 8px;border:none;border-radius:8px;background:transparent;font-size:14px;line-height:22px;text-align:left;appearance:none;-webkit-appearance:none;outline:none"
 
 ///|
-const HitlLabelStyle : String = "flex:1;min-width:0;margin:0;color:var(--sumi-text-secondary,rgba(255,255,255,0.7));overflow:hidden;text-overflow:ellipsis;white-space:nowrap"
+const HitlLabelStyle : String = "flex:1;min-width:0;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"
+
+///|
+/// Checked rows read at the secondary tone; unchecked rows sink to the
+/// disabled tone until hovered into selection.
+fn hitl_label_style(checked : Bool) -> String {
+  if checked {
+    HitlLabelStyle + ";color:var(--sumi-text-secondary,rgba(255,255,255,0.7))"
+  } else {
+    HitlLabelStyle + ";color:var(--sumi-text-disabled,rgba(255,255,255,0.2))"
+  }
+}
 
 ///|
 const HitlCostStyle : String = "display:flex;flex:none;align-items:center;gap:2px;color:var(--sumi-text-placeholder,rgba(255,255,255,0.35))"
@@ -48,7 +59,8 @@ const HitlButtonStyle : String = "height:36px;min-height:36px;max-height:36px;mi
 
 ///|
 /// A row's checkbox: a 16px outline box inside a 20px hit cell, with the
-/// 12px tick overlaid while checked.
+/// 12px tick overlaid while checked. The outline drops from full white to
+/// the 0.7 secondary tone while unchecked.
 fn hitl_checkbox(checked : Bool) -> @html.Html {
   let tick : @html.Html = if checked {
     @html.span(
@@ -60,6 +72,11 @@ fn hitl_checkbox(checked : Bool) -> @html.Html {
   } else {
     @html.nothing
   }
+  let box_border = if checked {
+    "border:1px solid var(--sumi-text,#ffffff)"
+  } else {
+    "border:1px solid var(--sumi-text-secondary,rgba(255,255,255,0.7))"
+  }
   @html.span(
     style=["position:relative;display:block;width:20px;height:20px;flex:none"],
     attrs=@html.Attrs::build()
@@ -69,7 +86,9 @@ fn hitl_checkbox(checked : Bool) -> @html.Html {
     [
       @html.span(
         style=[
-          "position:absolute;inset:10%;border:1px solid var(--sumi-text,#ffffff);border-radius:4px",
+          @internal.SumiTransition,
+          "position:absolute;inset:10%;border-radius:4px",
+          box_border,
         ],
         ([] : Array[@html.Html]),
       ),
@@ -144,17 +163,40 @@ pub fn hitl_card(
     if item.thumbnails.length() > 0 {
       row_children.push(
         @html.span(
-          style=["display:flex;flex:none;align-items:center;gap:6px"],
+          style=[
+            @internal.SumiTransition,
+            "display:flex;flex:none;align-items:center;gap:6px",
+            if item.checked {
+              ""
+            } else {
+              "opacity:0.5"
+            },
+          ],
           attrs=@html.Attrs::build().data_set("slot", "hitl-card-thumbs"),
           item.thumbnails.map(hitl_thumb),
         ),
       )
     }
-    row_children.push(@html.p(style=[HitlLabelStyle], [@html.text(item.label)]))
+    row_children.push(
+      @html.p(
+        style=[@internal.SumiTransition, hitl_label_style(item.checked)],
+        [@html.text(item.label)],
+      ),
+    )
     if item.cost > 0 {
       row_children.push(
         @html.span(
-          style=[HitlCostStyle],
+          style=[
+            @internal.SumiTransition,
+            HitlCostStyle,
+            if item.checked {
+              ""
+            } else {
+              // Unchecked rows hide the cost but keep its width so the
+              // row's trailing edge stays put while toggling.
+              "opacity:0"
+            },
+          ],
           attrs=@html.Attrs::build().data_set("slot", "hitl-card-cost"),
           [
             @primitives.icon_sparkle_fill(size=16),

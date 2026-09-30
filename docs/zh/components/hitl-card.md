@@ -51,6 +51,6 @@
 | label | `String` | — |  |
 | cost | `Int` | 0 | 额度消耗；大于 0 时显示 |
 | thumbnails | `Array[String]` | [] | 参考缩略图（每种模态一张） |
-| checked | `Bool` | true | 是否勾选参与本次生成 |
+| checked | `Bool` | true | 是否勾选参与本次生成；未勾选行下沉（0.2 标签、缩略图半透、消耗隐藏） |
 
 \* 必填（标签）参数——其余均为可选。
