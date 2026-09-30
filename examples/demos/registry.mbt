@@ -356,6 +356,12 @@ pub fn demos() -> Array[Demo] {
       build: demo_task_list,
     },
     {
+      key: "skill-chips",
+      group: "Chat",
+      title: "Skill chips",
+      build: demo_skill_chips,
+    },
+    {
       key: "theme-light",
       group: "Theming",
       title: "Light palette",

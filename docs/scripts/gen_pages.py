@@ -87,7 +87,7 @@ def parse_enum(src, name):
 
 PKG_FILES = {
     "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "media_tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt", "favorite_toggle.mbt", "add_tile.mbt"],
-    "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "attachment_strip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt", "agent_input.mbt", "hitl_card.mbt"],
+    "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "attachment_strip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt", "agent_input.mbt", "hitl_card.mbt", "skill_chip.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt", "shimmer_text.mbt", "tool_call_row.mbt"],
     "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt", "chat_bubble.mbt", "session.mbt", "task_card.mbt"],
@@ -1560,6 +1560,49 @@ items=[
                 "fade": ("Bottom fade height in px (default 44; 0 disables)", "底部渐隐高度 px（默认 44；0 关闭）"),
             }),
         ],
+    ),
+    page(
+        "skill-chip", "forms", "Skill Chip", "Skill Chip 技能标签",
+        "The skill pill of the agent's picker — a 36px radius-40 chip with a hairline border, an optional leading icon and New/Hot mark, plus a \"More\" trigger variant — and the frosted wrap panel that sheets skill chips or quick-action buttons above the input.",
+        "Agent 选择器的技能胶囊：36px 圆角 40 描边芯片，可选前导图标与 New/Hot 标记，含 More 触发变体；另有磨砂换行面板，将技能芯片或快捷操作按钮浮于输入区上方。",
+        [
+            demo("skill-chips", "Picker & sheets", "选择行与面板", """
+@sumi.skill_chip(label="Storyboard", icon=@sumi.icon_draw(size=16), mark=@sumi.New)
+@sumi.skill_chip(label="Style Frame", mark=@sumi.Hot)
+@sumi.skill_chip(label="More", more=true)
+
+@sumi.chip_panel(children=[
+  @sumi.action_chip(label="Storyboard"),
+  @sumi.action_chip(label="Shot List"),
+])
+
+@sumi.chip_panel(children=[
+  @sumi.skill_chip(label="Storyboard", mark=@sumi.Hot),
+  @sumi.skill_chip(label="Quick Cut"),
+])"""),
+        ],
+        [
+            api("skill_chip", params={
+                "label": ("12/20 chip label", "12/20 芯片标签"),
+                "icon": ("Optional 16px leading icon", "可选 16px 前导图标"),
+                "mark": ("Optional `SkillMark` corner tag (`New` / `Hot`)", "可选 `SkillMark` 角标（`New` / `Hot`）"),
+                "mark_label": ("Overrides the mark text", "覆盖角标文案"),
+                "more": ("\"More\" trigger: gap 4, pr 12, trailing chevron", "More 触发器：间距 4、右 padding 12、尾部箭头"),
+                "on_click": ("Click command", "点击命令"),
+            }),
+            api("action_chip", params={
+                "label": ("13/22 Regular centered label", "13/22 Regular 居中标签"),
+                "on_click": ("Click command", "点击命令"),
+            }),
+            api("chip_panel", params={
+                "children": ("`skill_chip` / `action_chip` entries", "`skill_chip` / `action_chip` 子项"),
+                "width": ("Panel width in px (default 338)", "面板宽度 px（默认 338）"),
+            }),
+        ],
+        [enum("SkillMark", "forms", {
+            "New": ("Brand-blue \"new skill\" tag", "品牌蓝“新技能”角标"),
+            "Hot": ("Orange \"trending skill\" tag", "橙色“热门技能”角标"),
+        })],
     ),
     page(
         "credits", "primitives", "Credits", "Credits 额度",

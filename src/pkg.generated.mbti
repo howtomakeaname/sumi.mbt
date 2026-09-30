@@ -12,6 +12,8 @@ import {
 }
 
 // Values
+pub fn action_chip(label~ : String, on_click? : @cmd.Cmd, disabled? : Bool, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn add_tile(on_click? : @cmd.Cmd, disabled? : Bool, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn agent_input(value? : String, placeholder? : String, rows? : Int, on_input? : @cmd.Emit[String], on_send? : @cmd.Cmd, on_stop? : @cmd.Cmd, send_disabled? : Bool, send_loading? : Bool, generating? : Bool, disabled? : Bool, autofocus? : Bool, actions? : Array[@html.Html], children? : Array[@html.Html], aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
@@ -39,6 +41,8 @@ pub fn checkbox(checked~ : Bool, label? : String, indeterminate? : Bool, on_chan
 pub fn checkbox_menu(groups~ : Array[@overlays.CheckboxMenuGroup], on_toggle? : @cmd.Emit[String], width? : Int, max_height? : Int, footer_label? : String, footer_icon? : @html.Html, on_footer? : @cmd.Cmd, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn chip(String, selected? : Bool, on_click? : @cmd.Cmd, disabled? : Bool, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
+pub fn chip_panel(children~ : Array[@html.Html], width? : Int, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn[C : @html.IsChildren] context_menu(entries~ : Array[@overlays.MenuEntry], open~ : Bool, on_open_change? : @cmd.Emit[Bool], selected? : String, on_select? : @cmd.Emit[String], id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String], menu_style? : Array[String], C) -> @html.Html
 
@@ -236,6 +240,8 @@ pub fn skeleton_lines(count? : Int, style? : Array[String]) -> @html.Html
 
 pub fn skeleton_tile(width? : String, height? : String, style? : Array[String]) -> @html.Html
 
+pub fn skill_chip(label~ : String, icon? : @html.Html, mark? : @forms.SkillMark, mark_label? : String, more? : Bool, on_click? : @cmd.Cmd, disabled? : Bool, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn slider(value~ : Int, min? : Int, max? : Int, step? : Int, on_input? : @cmd.Emit[Int], on_commit? : @cmd.Emit[Int], disabled? : Bool, show_value? : Bool, value_tooltip? : Bool, suffix? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn slider_field(value~ : Int, min? : Int, max? : Int, step? : Int, label? : String, unit? : String, ticks? : Array[Int], auto? : Bool, auto_label? : String, on_auto_change? : @cmd.Emit[Bool], on_input? : @cmd.Emit[Int], on_commit? : @cmd.Emit[Int], disabled? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
@@ -319,6 +325,8 @@ pub using @layout {type SessionStatus}
 pub using @layout {type ShortcutItem}
 
 pub using @layout {type ShortcutSection}
+
+pub using @forms {type SkillMark}
 
 pub using @feedback {type StatusBadgeState}
 

@@ -353,3 +353,60 @@ fn demo_task_list(mode : @sumi.ThemeMode?) -> Val[Html] {
     ]),
   )
 }
+
+///|
+/// Skill chips and the "more actions" sheet: a picker row (leading icon,
+/// New/Hot marks, More trigger) above two wrap panels — one of quick-action
+/// buttons, one of skill chips.
+fn demo_skill_chips(mode : @sumi.ThemeMode?) -> Val[Html] {
+  Val::constant(
+    stage_mode(mode, [
+      @html.div(
+        style=[
+          "display:flex;flex-direction:column;align-items:center;gap:24px;width:100%",
+        ],
+        [
+          @html.div(
+            style=[
+              "display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:520px",
+            ],
+            [
+              @sumi.skill_chip(
+                label="Storyboard",
+                icon=@sumi.icon_draw(size=16),
+                mark=New,
+                on_click=@cmd.none,
+              ),
+              @sumi.skill_chip(
+                label="Style Frame",
+                icon=@sumi.icon_sparkle_fill(size=16),
+                mark=Hot,
+                on_click=@cmd.none,
+              ),
+              @sumi.skill_chip(label="Quick Cut", on_click=@cmd.none),
+              @sumi.skill_chip(label="More", more=true, on_click=@cmd.none),
+            ],
+          ),
+          @sumi.chip_panel(children=[
+            @sumi.action_chip(label="Storyboard", on_click=@cmd.none),
+            @sumi.action_chip(label="Narrative Cut", on_click=@cmd.none),
+            @sumi.action_chip(label="Shot List", on_click=@cmd.none),
+            @sumi.action_chip(label="Script Draft", on_click=@cmd.none),
+            @sumi.action_chip(label="Scene Split", on_click=@cmd.none),
+            @sumi.action_chip(label="Poster Frame", on_click=@cmd.none),
+            @sumi.action_chip(label="Brand Kit", on_click=@cmd.none),
+          ]),
+          @sumi.chip_panel(children=[
+            @sumi.skill_chip(label="Storyboard", mark=Hot, on_click=@cmd.none),
+            @sumi.skill_chip(label="Narrative Cut", on_click=@cmd.none),
+            @sumi.skill_chip(label="Shot List", on_click=@cmd.none),
+            @sumi.skill_chip(label="Script Draft", on_click=@cmd.none),
+            @sumi.skill_chip(label="Scene Split", on_click=@cmd.none),
+            @sumi.skill_chip(label="Poster Frame", on_click=@cmd.none),
+            @sumi.skill_chip(label="Brand Kit", on_click=@cmd.none),
+          ]),
+        ],
+      ),
+    ]),
+  )
+}

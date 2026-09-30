@@ -154,6 +154,12 @@ const SumiInteractionCss : String =
   #|  [data-slot="session-title"]:not(:disabled):not([aria-disabled="true"]):active {
   #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12)) !important;
   #|  }
+  #|  [data-slot="skill-chip"]:not(:disabled):not([data-disabled="true"]):hover {
+  #|    background:var(--sumi-block,rgba(255,255,255,0.08)) !important;
+  #|  }
+  #|  [data-slot="action-chip"]:not(:disabled):not([data-disabled="true"]):hover {
+  #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12)) !important;
+  #|  }
   #|  [data-slot="select-trigger"][data-variant="form"]:not(:disabled):not([aria-disabled="true"]):hover {
   #|    background:var(--sumi-block-hover,rgba(255,255,255,0.12)) !important;
   #|  }
@@ -462,6 +468,8 @@ const SumiInteractionCss : String =
   #|  [data-slot="session-item"],
   #|  [data-slot="session-item-action"],
   #|  [data-slot="session-title"],
+  #|  [data-slot="skill-chip"],
+  #|  [data-slot="action-chip"],
   #|  [data-slot="segmented-item"],
   #|  [data-slot="chip"],
   #|  [data-slot="media-tag"],

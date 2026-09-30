@@ -140,13 +140,16 @@ pub using @forms {
   attachment_strip,
   hitl_card,
   editable_text,
+  action_chip,
   checkbox,
   chip,
+  chip_panel,
   input,
   prompt_box,
   segmented,
   select,
   send_button,
+  skill_chip,
   slider,
   slider_field,
   stepper,
@@ -157,6 +160,7 @@ pub using @forms {
   type HitlItem,
   type SegmentedItem,
   type SelectVariant,
+  type SkillMark,
 }
 
 ///|
