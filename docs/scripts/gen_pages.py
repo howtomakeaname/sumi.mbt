@@ -90,7 +90,7 @@ PKG_FILES = {
     "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "attachment_strip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt", "agent_input.mbt", "hitl_card.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt", "shimmer_text.mbt", "tool_call_row.mbt"],
-    "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt", "chat_bubble.mbt", "session.mbt"],
+    "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt", "chat_bubble.mbt", "session.mbt", "task_card.mbt"],
 }
 
 def pkg_src(pkg):
@@ -1529,6 +1529,36 @@ items=[
             }),
             api("session_divider", desc_en="The 4px-tall hairline separator between row groups.",
                 desc_zh="分组之间的 4px 高细分隔线。", params={}),
+        ],
+    ),
+    page(
+        "task-card", "layout", "Task Card", "Task Card 任务卡片",
+        "A submitted-task bubble and its scrollable feed: a frosted card with a Medium title, an optional generation status, and a two-line summary (or a rich body such as a tool call row), stacked in a list that fades out at the bottom under the thin blue scrollbar.",
+        "已提交任务的气泡卡片与滚动列表：磨砂卡片含 Medium 标题、可选生成状态与两行摘要（或工具调用行等富文本正文）；列表底部渐隐，配细蓝色滚动条。",
+        [
+            demo("task-list", "The feed", "任务流", """
+@sumi.task_list(height=400, children=[
+  @sumi.task_card(title="Autumn Forest Drone Shot", status=@sumi.Pending("Review"), summary=text),
+  @sumi.task_card(title="Neon Harbor Nights", status=@sumi.Generating, summary=text),
+  @sumi.task_card(title="Orbital Station Flythrough", status=@sumi.Generating, children=[
+    @sumi.tool_call_row(label="Working on the canvas", icon=@sumi.icon_draw(size=16), expandable=true),
+  ]),
+  @sumi.task_card(title="City Rain Loop", status=@sumi.Done, summary=long_text),
+])"""),
+        ],
+        [
+            api("task_card", params={
+                "title": ("14/24 Medium title (ellipsized)", "14/24 Medium 标题（溢出省略）"),
+                "status": ("Optional `SessionStatus` after the title", "标题后的可选 `SessionStatus` 状态"),
+                "summary": ("Two-line clamped body text (14/24 secondary)", "两行截断的正文（14/24 次要色）"),
+                "children": ("Rich body replacing the summary", "替代摘要的富文本正文"),
+                "on_click": ("Card click command", "卡片点击命令"),
+            }),
+            api("task_list", params={
+                "children": ("`task_card` bubbles", "`task_card` 气泡"),
+                "height": ("Feed height in px (default 400)", "列表高度 px（默认 400）"),
+                "fade": ("Bottom fade height in px (default 44; 0 disables)", "底部渐隐高度 px（默认 44；0 关闭）"),
+            }),
         ],
     ),
     page(

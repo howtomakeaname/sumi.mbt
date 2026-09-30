@@ -350,6 +350,12 @@ pub fn demos() -> Array[Demo] {
       build: demo_session_menu,
     },
     {
+      key: "task-list",
+      group: "Chat",
+      title: "Task list",
+      build: demo_task_list,
+    },
+    {
       key: "theme-light",
       group: "Theming",
       title: "Light palette",

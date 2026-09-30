@@ -301,3 +301,55 @@ fn demo_session_menu(mode : @sumi.ThemeMode?) -> Val[Html] {
     ])
   })
 }
+
+///|
+/// The task-card feed: six submitted-task bubbles covering every status
+/// kind (review pill, spinner, tick, count, partial failure) plus a rich
+/// body composed from a tool call row, scrolling under the bottom fade.
+fn demo_task_list(mode : @sumi.ThemeMode?) -> Val[Html] {
+  Val::constant(
+    stage_mode(mode, [
+      @html.div(style=["width:416px"], [
+        @sumi.task_list(height=400, children=[
+          @sumi.task_card(
+            title="Autumn Forest Drone Shot",
+            status=Pending("Review"),
+            summary=ChatSampleShort,
+          ),
+          @sumi.task_card(
+            title="Neon Harbor Nights",
+            status=Generating,
+            summary=ChatSampleShort,
+          ),
+          @sumi.task_card(
+            title="Orbital Station Flythrough",
+            status=Generating,
+            children=[
+              @sumi.tool_call_row(
+                label="Working on the canvas",
+                icon=@sumi.icon_draw(size=16),
+                expandable=true,
+                on_toggle=@cmd.none,
+              ),
+            ],
+          ),
+          @sumi.task_card(
+            title="City Rain Loop",
+            status=Done,
+            summary=ChatSampleLong,
+          ),
+          @sumi.task_card(
+            title="Desert Mirage Expedition",
+            status=Count(3),
+            summary=ChatSampleShort,
+          ),
+          @sumi.task_card(
+            title="Underwater Cave",
+            status=Partial,
+            summary=ChatSampleShort,
+          ),
+        ]),
+      ]),
+    ]),
+  )
+}

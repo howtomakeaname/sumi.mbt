@@ -252,6 +252,10 @@ pub fn tabs(items~ : Array[@layout.TabEntry], selected~ : String, on_select? : @
 
 pub fn[C : @html.IsChildren] tag(variant? : @primitives.TagVariant, on_remove? : @cmd.Cmd, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String], C) -> @html.Html
 
+pub fn task_card(title~ : String, status? : @layout.SessionStatus, summary? : String, children? : Array[@html.Html], on_click? : @cmd.Cmd, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
+pub fn task_list(children~ : Array[@html.Html], height? : Int, fade? : Int, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn textarea(value~ : String, placeholder? : String, rows? : Int, on_input? : @cmd.Emit[String], on_change? : @cmd.Emit[String], disabled? : Bool, read_only? : Bool, name? : String, maxlength? : Int, autofocus? : Bool, id? : String, class? : String, title? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn[C : @html.IsChildren] theme(mode? : ThemeMode, id? : String, class? : String, title? : String, attrs? : @html.Attrs, style? : Array[String], C) -> @html.Html

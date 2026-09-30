@@ -123,6 +123,8 @@ pub using @layout {
   session_title,
   shortcuts_panel,
   tabs,
+  task_card,
+  task_list,
   toolbar,
   toolbar_divider,
   type SessionStatus,
