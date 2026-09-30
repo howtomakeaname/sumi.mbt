@@ -90,7 +90,7 @@ PKG_FILES = {
     "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "attachment_strip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt", "agent_input.mbt", "hitl_card.mbt", "skill_chip.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt", "shimmer_text.mbt", "tool_call_row.mbt"],
-    "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt", "chat_bubble.mbt", "session.mbt", "task_card.mbt"],
+    "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt", "chat_bubble.mbt", "session.mbt", "task_card.mbt", "md_text.mbt"],
 }
 
 def pkg_src(pkg):
@@ -1626,6 +1626,30 @@ items=[
         [enum("ResultChipSize", "primitives", {
             "Small": ("13/19.5 tertiary label over a 6px backdrop blur", "13/19.5 三级色标签，6px 背景模糊"),
             "Medium": ("14/24 secondary label without blur", "14/24 次要色标签，无模糊"),
+        })],
+    ),
+    page(
+        "md-text", "layout", "Markdown Text", "Markdown 文本",
+        "The MD 基础组件 type scale for answer bodies: semantic H2–H4 headings and body paragraphs in the design's sizes — H2 16/24 Medium, H3/H4 14/22 Medium with 12px vertical padding, body 14/22 Regular — all at the primary text tone.",
+        "回答正文的 MD 基础组件字阶：语义化 H2–H4 标题与正文段落 —— H2 16/24 Medium，H3/H4 14/22 Medium 带上下 12px 留白，正文 14/22 Regular —— 均为主文本色。",
+        [
+            demo("md-text", "The scale", "字阶", """
+@sumi.md_text(kind=@sumi.H2, text="Story beats")
+@sumi.md_text(kind=@sumi.Body, text=sample)
+@sumi.md_text(kind=@sumi.H3, text="Opening shot")
+@sumi.md_text(kind=@sumi.Body, text=sample)"""),
+        ],
+        [
+            api("md_text", params={
+                "text": ("Block text content", "块文本内容"),
+                "kind": ("`H2` / `H3` / `H4` heading or `Body` paragraph", "`H2` / `H3` / `H4` 标题或 `Body` 正文"),
+            }),
+        ],
+        [enum("MdTextKind", "layout", {
+            "H2": ("16/24 Medium section head, py 12", "16/24 Medium 章节标题，上下留白 12"),
+            "H3": ("14/22 Medium sub-head, py 12", "14/22 Medium 次级标题，上下留白 12"),
+            "H4": ("14/22 Medium minor head, py 12", "14/22 Medium 小标题，上下留白 12"),
+            "Body": ("14/22 Regular paragraph, no padding", "14/22 Regular 正文段落，无留白"),
         })],
     ),
     page(

@@ -368,6 +368,12 @@ pub fn demos() -> Array[Demo] {
       build: demo_result_chips,
     },
     {
+      key: "md-text",
+      group: "Chat",
+      title: "Markdown text",
+      build: demo_md_text,
+    },
+    {
       key: "theme-light",
       group: "Theming",
       title: "Light palette",

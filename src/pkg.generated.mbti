@@ -200,6 +200,8 @@ pub fn input(value~ : String, placeholder? : String, input_type? : @html.InputTy
 
 pub fn kbd(String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
+pub fn md_text(text~ : String, kind? : @layout.MdTextKind, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn media_tag(kind~ : @primitives.MediaTagKind, label? : String, state? : @primitives.MediaTagState, variant? : @primitives.MediaTagVariant, thumbnail? : String, on_click? : @cmd.Cmd, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn menu_chevron(size? : Int) -> @html.Html
@@ -303,6 +305,8 @@ pub using @overlays {type CheckboxMenuGroup}
 pub using @overlays {type CheckboxMenuItem}
 
 pub using @forms {type HitlItem}
+
+pub using @layout {type MdTextKind}
 
 pub using @primitives {type MediaTagKind}
 

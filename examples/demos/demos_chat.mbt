@@ -464,3 +464,27 @@ fn demo_result_chips(mode : @sumi.ThemeMode?) -> Val[Html] {
     ]),
   )
 }
+
+///|
+/// The MD 基础组件 type scale: an H2 section head, H3/H4 sub-heads, and
+/// body paragraphs, stacked as a chat answer body.
+fn demo_md_text(mode : @sumi.ThemeMode?) -> Val[Html] {
+  Val::constant(
+    stage_mode(mode, [
+      @html.div(style=["width:377px;display:flex;flex-direction:column"], [
+        @sumi.md_text(kind=H2, text="Story beats"),
+        @sumi.md_text(kind=Body, text=ChatSampleShort),
+        @sumi.md_text(kind=H3, text="Opening shot"),
+        @sumi.md_text(
+          kind=Body,
+          text="A slow drift over the quiet bay at dusk, fog pooling against the harbor lights.",
+        ),
+        @sumi.md_text(kind=H4, text="Camera notes"),
+        @sumi.md_text(
+          kind=Body,
+          text="Hold the horizon low; let the lantern reflections lead the eye into the frame.",
+        ),
+      ]),
+    ]),
+  )
+}
