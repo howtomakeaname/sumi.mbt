@@ -90,7 +90,7 @@ PKG_FILES = {
     "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "attachment_strip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt", "agent_input.mbt", "hitl_card.mbt", "skill_chip.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt", "shimmer_text.mbt", "tool_call_row.mbt"],
-    "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt", "chat_bubble.mbt", "session.mbt", "task_card.mbt", "md_text.mbt"],
+    "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt", "chat_bubble.mbt", "session.mbt", "task_card.mbt", "md_text.mbt", "generation_meta.mbt"],
 }
 
 def pkg_src(pkg):
@@ -1651,6 +1651,25 @@ items=[
             "H4": ("14/22 Medium minor head, py 12", "14/22 Medium 小标题，上下留白 12"),
             "Body": ("14/22 Regular paragraph, no padding", "14/22 Regular 正文段落，无留白"),
         })],
+    ),
+    page(
+        "generation-meta", "layout", "Generation Meta", "Generation Meta 生成信息",
+        "The info-and-actions block under a generation result: a 14/22 tertiary disclaimer line (the content notice, the credits spent) with a bare copy action below.",
+        "生成结果下方的信息与操作区：14/22 三级色声明行（内容提示、已用额度），下方一个无底色复制操作。",
+        [
+            demo("generation-meta", "With copy action", "含复制操作", """
+@sumi.generation_meta(
+  text="AI-generated content | 0 credits used",
+  on_copy=emit(CopyResult),
+)"""),
+        ],
+        [
+            api("generation_meta", params={
+                "text": ("14/22 tertiary disclaimer line", "14/22 三级色声明行"),
+                "on_copy": ("Renders the copy action when given", "传入后渲染复制操作"),
+                "copy_label": ("Action aria label / title (default \"Copy\")", "操作的无障碍标签与提示（默认 \"Copy\"）"),
+            }),
+        ],
     ),
     page(
         "credits", "primitives", "Credits", "Credits 额度",

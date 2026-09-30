@@ -488,3 +488,19 @@ fn demo_md_text(mode : @sumi.ThemeMode?) -> Val[Html] {
     ]),
   )
 }
+
+///|
+/// The info-and-actions block under a generation result: the disclaimer
+/// line plus a bare copy action.
+fn demo_generation_meta(mode : @sumi.ThemeMode?) -> Val[Html] {
+  Val::constant(
+    stage_mode(mode, [
+      @html.div(style=["width:360px"], [
+        @sumi.generation_meta(
+          text="AI-generated content | 0 credits used",
+          on_copy=@cmd.none,
+        ),
+      ]),
+    ]),
+  )
+}

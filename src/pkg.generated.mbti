@@ -60,6 +60,8 @@ pub fn empty_state(title_text~ : String, description? : String, icon? : @html.Ht
 
 pub fn favorite_toggle(checked~ : Bool, on_change? : @cmd.Emit[Bool], disabled? : Bool, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
+pub fn generation_meta(text~ : String, on_copy? : @cmd.Cmd, copy_label? : String, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn hitl_card(title~ : String, items~ : Array[@forms.HitlItem], on_toggle? : @cmd.Emit[Int], confirmed? : Bool, on_cancel? : @cmd.Cmd, on_confirm? : @cmd.Cmd, cancel_label? : String, confirm_label? : String, max_height? : Int, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn icon(String, size? : Int, stroke_width? : Int, style? : Array[String]) -> @html.Html

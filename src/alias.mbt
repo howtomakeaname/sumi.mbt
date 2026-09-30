@@ -124,6 +124,7 @@ pub using @layout {
   session_status,
   session_title,
   md_text,
+  generation_meta,
   shortcuts_panel,
   tabs,
   task_card,

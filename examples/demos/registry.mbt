@@ -374,6 +374,12 @@ pub fn demos() -> Array[Demo] {
       build: demo_md_text,
     },
     {
+      key: "generation-meta",
+      group: "Chat",
+      title: "Generation meta",
+      build: demo_generation_meta,
+    },
+    {
       key: "theme-light",
       group: "Theming",
       title: "Light palette",
