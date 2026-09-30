@@ -1,6 +1,8 @@
 ///|
-/// An indeterminate loading spinner. Rotation comes from the interaction
-/// sheet emitted by `theme` and respects `prefers-reduced-motion`.
+/// An indeterminate loading spinner: a single arc that sweeps the ring while
+/// growing and shrinking, per the design's loading asset. Ring geometry is
+/// radius `size/3` with a `size*5/48` stroke; the arc motion comes from the
+/// interaction sheet emitted by `theme` and respects `prefers-reduced-motion`.
 pub fn spinner(
   size? : Int = 16,
   id? : String,
@@ -8,7 +10,10 @@ pub fn spinner(
   style? : Array[String] = [],
 ) -> @html.Html {
   let half = size / 2
-  let radius = half - 1
+  // The circle's path is normalized to 360 units (`pathLength`) so the
+  // stylesheet can sweep the arc in degrees. The dash/offset attributes below
+  // are the 0% keyframe: they keep a resting arc visible when animations are
+  // disabled (reduced motion), while `sumi-spin` overrides them during play.
   @html.span(
     style=["display:inline-flex;color:inherit"],
     attrs=@html.Attrs::build().role("status").aria_label("Loading"),
@@ -24,21 +29,14 @@ pub fn spinner(
         @svg.circle(
           cx=half,
           cy=half,
-          r=radius,
+          r=size / 3,
           fill="none",
           stroke="currentColor",
-          stroke_width=2,
-          attrs=@svg.Attrs::build().stroke_opacity("0.25"),
-        ),
-        @svg.circle(
-          cx=half,
-          cy=half,
-          r=radius,
-          fill="none",
-          stroke="currentColor",
-          stroke_width=2,
+          stroke_width=(size * 5 + 24) / 48,
           attrs=@svg.Attrs::build()
-            .stroke_dasharray("\{radius * 2 * 314 / 1000}")
+            .path_length("360")
+            .stroke_dasharray("54 666")
+            .stroke_dashoffset("474")
             .stroke_linecap("round"),
         ),
       ],

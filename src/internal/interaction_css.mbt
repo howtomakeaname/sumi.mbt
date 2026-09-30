@@ -12,7 +12,22 @@
 /// would outrank the unlayered reduced-motion block below.
 const SumiInteractionCss : String =
   #|@keyframes sumi-spin {
-  #|  to { transform:rotate(360deg); }
+  #|  /* Loading sweep, keyframed from the design asset (960ms loop): the arc
+  #|     grows 54°→194° over ~59% of the cycle, then shrinks back. Circles are
+  #|     normalized with pathLength="360", and the gap keeps the dash period at
+  #|     720 = 2×360 so pattern repetitions overlap into one arc that wraps the
+  #|     0° seam seamlessly. Offsets track the arc tail: 246°→348°→606°. */
+  #|  0% { stroke-dasharray:54 666; stroke-dashoffset:474; }
+  #|  12.5% { stroke-dasharray:85 635; stroke-dashoffset:452; }
+  #|  25% { stroke-dasharray:114 606; stroke-dashoffset:431; }
+  #|  37.5% { stroke-dasharray:143 577; stroke-dashoffset:410; }
+  #|  50% { stroke-dasharray:171 549; stroke-dashoffset:388; }
+  #|  59.375% { stroke-dasharray:194 526; stroke-dashoffset:372; }
+  #|  68.75% { stroke-dasharray:171 549; stroke-dashoffset:320; }
+  #|  78.125% { stroke-dasharray:134 586; stroke-dashoffset:257; }
+  #|  87.5% { stroke-dasharray:98 622; stroke-dashoffset:194; }
+  #|  96.875% { stroke-dasharray:64 656; stroke-dashoffset:133; }
+  #|  100% { stroke-dasharray:54 666; stroke-dashoffset:114; }
   #|}
   #|@keyframes sumi-shimmer {
   #|  from { background-position:200% 0; }
@@ -423,8 +438,8 @@ const SumiInteractionCss : String =
   #|  [data-slot="dropdown"][data-state="open"] [data-slot="menu-chevron"] {
   #|    transform:rotate(180deg);
   #|  }
-  #|  [data-slot="spinner"] {
-  #|    animation:sumi-spin 0.8s linear infinite;
+  #|  [data-slot="spinner"] circle {
+  #|    animation:sumi-spin 0.96s linear infinite;
   #|  }
   #|  [data-slot="skeleton"] {
   #|    background:linear-gradient(100deg,transparent 40%,var(--sumi-shimmer,rgba(255,255,255,0.06)) 50%,transparent 60%) no-repeat, var(--sumi-block,rgba(255,255,255,0.08));
@@ -487,7 +502,7 @@ const SumiInteractionCss : String =
   #|  [data-slot="switch"],
   #|  [data-slot="dialog"][open],
   #|  [data-slot="dialog"][open]::backdrop,
-  #|  [data-slot="spinner"],
+  #|  [data-slot="spinner"] circle,
   #|  [data-slot="shimmer-text"],
   #|  [data-slot="skeleton"] {
   #|    transition:none !important;
