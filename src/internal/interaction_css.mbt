@@ -13,21 +13,14 @@
 const SumiInteractionCss : String =
   #|@keyframes sumi-spin {
   #|  /* Loading sweep, keyframed from the design asset (960ms loop): the arc
-  #|     grows 54°→194° over ~59% of the cycle, then shrinks back. Circles are
-  #|     normalized with pathLength="360", and the gap keeps the dash period at
-  #|     720 = 2×360 so pattern repetitions overlap into one arc that wraps the
-  #|     0° seam seamlessly. Offsets track the arc tail: 246°→348°→606°. */
-  #|  0% { stroke-dasharray:54 666; stroke-dashoffset:474; }
-  #|  12.5% { stroke-dasharray:85 635; stroke-dashoffset:452; }
-  #|  25% { stroke-dasharray:114 606; stroke-dashoffset:431; }
-  #|  37.5% { stroke-dasharray:143 577; stroke-dashoffset:410; }
-  #|  50% { stroke-dasharray:171 549; stroke-dashoffset:388; }
-  #|  59.375% { stroke-dasharray:194 526; stroke-dashoffset:372; }
-  #|  68.75% { stroke-dasharray:171 549; stroke-dashoffset:320; }
-  #|  78.125% { stroke-dasharray:134 586; stroke-dashoffset:257; }
-  #|  87.5% { stroke-dasharray:98 622; stroke-dashoffset:194; }
-  #|  96.875% { stroke-dasharray:64 656; stroke-dashoffset:133; }
-  #|  100% { stroke-dasharray:54 666; stroke-dashoffset:114; }
+  #|     grows 54°→194° over ~59% of the cycle, then shrinks back. The dash
+  #|     stays anchored at path start (dasharray only; dashoffset is never
+  #|     animated — offsets past the path end clip instead of wrapping), and a
+  #|     counter-rotation of the circle itself carries the arc around: tail
+  #|     246°→348°→606°. Circles are normalized with pathLength="360". */
+  #|  0% { transform:rotate(246deg); stroke-dasharray:54 666; }
+  #|  59.375% { transform:rotate(348deg); stroke-dasharray:194 526; }
+  #|  100% { transform:rotate(606deg); stroke-dasharray:54 666; }
   #|}
   #|@keyframes sumi-shimmer {
   #|  from { background-position:200% 0; }
@@ -439,6 +432,9 @@ const SumiInteractionCss : String =
   #|    transform:rotate(180deg);
   #|  }
   #|  [data-slot="spinner"] circle {
+  #|    transform-box:fill-box;
+  #|    transform-origin:center;
+  #|    transform:rotate(246deg);
   #|    animation:sumi-spin 0.96s linear infinite;
   #|  }
   #|  [data-slot="skeleton"] {

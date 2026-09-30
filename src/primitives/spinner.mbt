@@ -11,9 +11,11 @@ pub fn spinner(
 ) -> @html.Html {
   let half = size / 2
   // The circle's path is normalized to 360 units (`pathLength`) so the
-  // stylesheet can sweep the arc in degrees. The dash/offset attributes below
-  // are the 0% keyframe: they keep a resting arc visible when animations are
-  // disabled (reduced motion), while `sumi-spin` overrides them during play.
+  // stylesheet can sweep the arc in degrees. The dash attributes below are
+  // the resting state (a 54° arc, kept visible when animations are disabled);
+  // during play the `sumi-spin` keyframes override the dash and rotate the
+  // circle — the dash itself stays anchored at path start, since dash
+  // patterns clip at the path end instead of wrapping.
   @html.span(
     style=["display:inline-flex;color:inherit"],
     attrs=@html.Attrs::build().role("status").aria_label("Loading"),
@@ -36,7 +38,6 @@ pub fn spinner(
           attrs=@svg.Attrs::build()
             .path_length("360")
             .stroke_dasharray("54 666")
-            .stroke_dashoffset("474")
             .stroke_linecap("round"),
         ),
       ],
