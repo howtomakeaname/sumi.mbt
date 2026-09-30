@@ -1,5 +1,21 @@
 import { defineConfig } from 'vitepress'
+import { createHash } from 'node:crypto'
+import { readFileSync } from 'node:fs'
 import moonbitGrammar from './grammars/moonbit.tmLanguage.json' with { type: 'json' }
+
+// Cache-buster for the self-hydrating demo bundle: its URL is fixed, so a
+// stale browser cache would keep serving the previous deploy's bundle and
+// newly added demos would never mount. Hash the bundle at build time and
+// append it to the script URL as a query (see theme/SumiDemo.vue).
+let demosBundleHash = 'dev'
+try {
+  demosBundleHash = createHash('md5')
+    .update(readFileSync(new URL('../public/demos/sumi-demos.js', import.meta.url)))
+    .digest('hex')
+    .slice(0, 10)
+} catch {
+  // Local dev without a built bundle keeps the placeholder.
+}
 
 const componentsSidebar = [
   {
@@ -175,6 +191,12 @@ export default defineConfig({
   title: 'Sumi',
   description: 'A UI component library for MoonBit web apps',
   cleanUrls: true,
+
+  vite: {
+    define: {
+      __SUMI_DEMOS_HASH__: JSON.stringify(demosBundleHash),
+    },
+  },
 
   markdown: {
     // Shiki has no bundled MoonBit grammar; load the official TextMate one.

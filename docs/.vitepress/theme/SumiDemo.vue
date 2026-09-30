@@ -2,6 +2,10 @@
 import { onMounted, ref } from 'vue'
 import { withBase } from 'vitepress'
 
+// Injected by vite.define in .vitepress/config.mts: a content hash of the
+// demo bundle, so deploys bust the browser cache for its fixed URL.
+declare const __SUMI_DEMOS_HASH__: string
+
 const props = defineProps<{ name: string }>()
 const root = ref<HTMLElement>()
 
@@ -13,7 +17,7 @@ onMounted(() => {
     const s = document.createElement('script')
     s.type = 'module'
     s.setAttribute('data-sumi-demos', '')
-    s.src = withBase('/demos/sumi-demos.js')
+    s.src = `${withBase('/demos/sumi-demos.js')}?v=${__SUMI_DEMOS_HASH__}`
     document.head.appendChild(s)
   }
   // The stage is appended outside Vue's virtual DOM on purpose: the Sumi
