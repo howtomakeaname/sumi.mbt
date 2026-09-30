@@ -82,6 +82,7 @@ pub using @primitives {
   icon_x_fill,
   kbd,
   media_tag,
+  result_chip,
   spinner,
   tag,
   type ButtonSize,
@@ -89,6 +90,7 @@ pub using @primitives {
   type MediaTagKind,
   type MediaTagState,
   type MediaTagVariant,
+  type ResultChipSize,
   type TagVariant,
 }
 

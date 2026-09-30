@@ -362,6 +362,12 @@ pub fn demos() -> Array[Demo] {
       build: demo_skill_chips,
     },
     {
+      key: "result-chips",
+      group: "Chat",
+      title: "Result chips",
+      build: demo_result_chips,
+    },
+    {
       key: "theme-light",
       group: "Theming",
       title: "Light palette",

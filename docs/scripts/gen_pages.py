@@ -86,7 +86,7 @@ def parse_enum(src, name):
     return variants
 
 PKG_FILES = {
-    "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "media_tag.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt", "favorite_toggle.mbt", "add_tile.mbt"],
+    "primitives": ["button.mbt", "icon.mbt", "tag.mbt", "media_tag.mbt", "result_chip.mbt", "badge.mbt", "kbd.mbt", "avatar.mbt", "credits.mbt", "favorite_toggle.mbt", "add_tile.mbt"],
     "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "attachment_strip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt", "agent_input.mbt", "hitl_card.mbt", "skill_chip.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt", "shimmer_text.mbt", "tool_call_row.mbt"],
@@ -1602,6 +1602,30 @@ items=[
         [enum("SkillMark", "forms", {
             "New": ("Brand-blue \"new skill\" tag", "品牌蓝“新技能”角标"),
             "Hot": ("Orange \"trending skill\" tag", "橙色“热门技能”角标"),
+        })],
+    ),
+    page(
+        "result-chip", "primitives", "Result Chip", "Result Chip 结果标签",
+        "A 24px rich-text reference tag of generation results: a rounded block fill holding a 16px thumbnail and a short label. The Small size blurs its backdrop to float over generated imagery; Medium steps the label up to 14/24 secondary for inline chat result rows.",
+        "生成结果的 24px 富文本引用标签：圆角块面承载 16px 缩略图与短标签。Small 尺寸带 6px 背景模糊，浮于生成图之上；Medium 去掉模糊并将标签升为 14/24 次要色，用于对话内联结果行。",
+        [
+            demo("result-chips", "Two sizes", "两种尺寸", """
+// Small — floating over generated imagery (backdrop blur 6)
+@sumi.result_chip(label="Harbor Dusk", thumbnail=ref_url)
+
+// Medium — inline chat result row (14/24 secondary)
+@sumi.result_chip(label="Image", thumbnail=ref_url, size=@sumi.Medium)"""),
+        ],
+        [
+            api("result_chip", params={
+                "label": ("Short chip label", "短标签文案"),
+                "thumbnail": ("Optional 16px rounded reference image URL", "可选 16px 圆角参考图 URL"),
+                "size": ("`Small` (13/19.5 tertiary + blur) or `Medium` (14/24 secondary)", "`Small`（13/19.5 三级色+模糊）或 `Medium`（14/24 次要色）"),
+            }),
+        ],
+        [enum("ResultChipSize", "primitives", {
+            "Small": ("13/19.5 tertiary label over a 6px backdrop blur", "13/19.5 三级色标签，6px 背景模糊"),
+            "Medium": ("14/24 secondary label without blur", "14/24 次要色标签，无模糊"),
         })],
     ),
     page(

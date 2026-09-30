@@ -410,3 +410,57 @@ fn demo_skill_chips(mode : @sumi.ThemeMode?) -> Val[Html] {
     ]),
   )
 }
+
+///|
+/// Result reference chips: the blurred Small variant floating over
+/// generated imagery, and the Medium variant of an inline chat result row.
+fn demo_result_chips(mode : @sumi.ThemeMode?) -> Val[Html] {
+  Val::constant(
+    stage_mode(mode, [
+      @html.div(
+        style=[
+          "display:flex;flex-direction:column;align-items:flex-start;gap:24px;width:100%;max-width:480px",
+        ],
+        [
+          @html.div(
+            style=[
+              "position:relative;width:320px;height:180px;border-radius:12px;overflow:hidden",
+            ],
+            [
+              @html.img(src=attachment_thumb(8), alt="", style=[
+                "position:absolute;inset:0;width:100%;height:100%;object-fit:cover",
+              ]),
+              @html.div(
+                style=[
+                  "position:absolute;left:8px;bottom:8px;display:flex;gap:8px",
+                ],
+                [
+                  @sumi.result_chip(
+                    label="Harbor Dusk",
+                    thumbnail=attachment_thumb(3),
+                  ),
+                  @sumi.result_chip(
+                    label="Canyon Fog",
+                    thumbnail=attachment_thumb(11),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          @html.div(style=["display:flex;flex-wrap:wrap;gap:4px"], [
+            @sumi.result_chip(
+              label="Image",
+              thumbnail=attachment_thumb(5),
+              size=Medium,
+            ),
+            @sumi.result_chip(
+              label="Draft A",
+              thumbnail=attachment_thumb(6),
+              size=Medium,
+            ),
+          ]),
+        ],
+      ),
+    ]),
+  )
+}

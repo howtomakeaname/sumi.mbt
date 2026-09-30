@@ -212,6 +212,8 @@ pub fn progress(value~ : Int, max? : Int, show_value? : Bool, id? : String, clas
 
 pub fn prompt_box(value~ : String, placeholder? : String, rows? : Int, on_input? : @cmd.Emit[String], on_send? : @cmd.Cmd, send_disabled? : Bool, send_loading? : Bool, disabled? : Bool, maxlength? : Int, show_count? : Bool, autofocus? : Bool, actions? : @html.Html, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
+pub fn result_chip(label~ : String, thumbnail? : String, size? : @primitives.ResultChipSize, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn segmented(items~ : Array[@forms.SegmentedItem], selected~ : String, stacked? : Bool, on_select? : @cmd.Emit[String], id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn select(options~ : Array[@overlays.MenuItem], value~ : String, placeholder? : String, open~ : Bool, on_open_change? : @cmd.Emit[Bool], on_select? : @cmd.Emit[String], variant? : @forms.SelectVariant, on_clear? : @cmd.Cmd, disabled? : Bool, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
@@ -315,6 +317,8 @@ pub using @overlays {type MenuEntry}
 pub using @overlays {type MenuItem}
 
 pub using @overlays {type MenuSide}
+
+pub using @primitives {type ResultChipSize}
 
 pub using @forms {type SegmentedItem}
 
