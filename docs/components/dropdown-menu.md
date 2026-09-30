@@ -11,14 +11,14 @@ A trigger-anchored menu with compact or rich items, section labels, separators a
 ```moonbit
 @sumi.dropdown_menu(
   trigger=@sumi.button(variant=@sumi.Secondary, [
-    @html.text("Enhance"),
+    @html.text("Polish"),
     @sumi.menu_chevron(),
   ]),
   items=[
     @sumi.SectionLabel("QUALITY"),
     @sumi.Item(@sumi.MenuItem::new(
       "standard", "Standard",
-      description="Balanced clarity for everyday images",
+      description="Balanced wording for everyday drafts",
       icon=@sumi.icon_sparkle(size=16),
     )),
   ],

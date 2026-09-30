@@ -21,8 +21,8 @@ fn demo_shimmer_text(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       @sumi.shimmer_text("Working on it…"),
-      @sumi.shimmer_text("Generating the image…"),
-      @sumi.shimmer_text("Reading the canvas…"),
+      @sumi.shimmer_text("Drafting the summary…"),
+      @sumi.shimmer_text("Reading the files…"),
     ]),
   )
 }
@@ -68,7 +68,7 @@ fn demo_empty_state_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
       @sumi.card(style=["width:320px"], [
         @sumi.empty_state(
           title_text="No versions yet",
-          description="Generated results will appear here.",
+          description="Results will appear here.",
           icon=@sumi.icon_image(size=24),
           action=@sumi.button(variant=Secondary, size=Sm, "New Version"),
         ),

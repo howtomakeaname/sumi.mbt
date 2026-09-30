@@ -309,10 +309,10 @@ pub fn session_divider(
 ///
 /// ```moonbit nocheck
 /// session_list(max_height=320, [
-///   session_item(label="Neon Harbor Nights", active=true),
-///   session_item(label="Alpine Sunrise Timelapse", status=Generating),
+///   session_item(label="Weekly Sync Notes", active=true),
+///   session_item(label="API Migration Draft", status=Generating),
 ///   session_divider(),
-///   session_item(label="Archived Storyboards", disabled=true),
+///   session_item(label="Archived Threads", disabled=true),
 /// ])
 /// ```
 pub fn session_list(

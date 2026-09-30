@@ -16,7 +16,7 @@ The 48px add tile: a quiet bordered square with a centered plus. Compose it as a
       icon=@sumi.icon_upload_fill())),
     Item(@sumi.MenuItem::new("assets", "Select from assets",
       icon=@sumi.icon_folder())),
-    Item(@sumi.MenuItem::new("canvas", "Select from canvas",
+    Item(@sumi.MenuItem::new("project", "Select from project",
       icon=@sumi.icon_target())),
   ],
   open=is_open,

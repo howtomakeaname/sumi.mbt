@@ -32,7 +32,7 @@ fn result_chip_label_style(size : ResultChipSize) -> String {
 /// and steps the label up to 14/24 secondary for inline chat rows.
 ///
 /// ```moonbit nocheck
-/// result_chip(label="Harbor Dusk", thumbnail=ref_url)
+/// result_chip(label="Cover Draft", thumbnail=ref_url)
 /// result_chip(label="Image", thumbnail=ref_url, size=Medium)
 /// ```
 pub fn result_chip(

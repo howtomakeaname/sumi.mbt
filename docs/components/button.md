@@ -10,7 +10,7 @@ Triggers an action with a click. Three variants, two text sizes, and built-in di
 
 ```moonbit
 @sumi.button(variant=@sumi.Primary, "Generate")
-@sumi.button(variant=@sumi.Secondary, "HD Enhance")
+@sumi.button(variant=@sumi.Secondary, "Export")
 @sumi.button(variant=@sumi.Ghost, [
   @sumi.icon_sparkle(),
   @html.text("AI Edit"),

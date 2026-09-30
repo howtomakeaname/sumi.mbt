@@ -18,7 +18,7 @@ const ContextMenuContainerStyle : String = "position:fixed;left:var(--sumi-ctx-x
 ///   open=ctx_open,
 ///   on_open_change=set_ctx_open.map(v => _ => v),
 ///   on_select=set_action.map(v => _ => v),
-///   [canvas_card],
+///   [project_card],
 /// )
 /// ```
 pub fn[C : @html.IsChildren] context_menu(

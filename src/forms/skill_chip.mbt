@@ -145,7 +145,7 @@ const ActionChipStyle : String = "display:inline-flex;align-items:center;justify
 /// minimum width, wrapping alongside its siblings inside a `chip_panel`.
 ///
 /// ```moonbit nocheck
-/// action_chip(label="Storyboard", on_click=emit.map(Run("storyboard")))
+/// action_chip(label="Summarize", on_click=emit.map(Run("summarize")))
 /// ```
 pub fn action_chip(
   label~ : String,
@@ -200,8 +200,8 @@ pub fn action_chip(
 ///
 /// ```moonbit nocheck
 /// chip_panel(children=[
-///   skill_chip(label="Storyboard", mark=Hot),
-///   skill_chip(label="Quick Cut"),
+///   skill_chip(label="Brainstorm", mark=Hot),
+///   skill_chip(label="Outline"),
 /// ])
 /// ```
 pub fn chip_panel(

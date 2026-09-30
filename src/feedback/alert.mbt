@@ -21,7 +21,7 @@ const AlertTextStyle : String = "flex:1 1 0;min-width:0;font-size:12px;line-heig
 
 ///|
 /// An inline note for validation and status messages inside a panel or a
-/// node — an icon followed by wrapping copy. `Solid` sits on the canvas,
+/// node — an icon followed by wrapping copy. `Solid` sits over media backdrops,
 /// `Subtle` on an already-filled surface. The default icon is
 /// `icon_important`; pass `icon=` to replace it.
 pub fn alert(

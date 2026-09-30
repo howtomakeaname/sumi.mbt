@@ -10,13 +10,13 @@
 
 ```moonbit
 @sumi.hitl_card(
-  title="Generate the following 5 shots",
+  title="Generate the following 5 drafts",
   items=plan,
   on_toggle=set_plan.map(i => c => flip_at(c, i)),
   on_cancel=emit(Dismiss),
   on_confirm=emit(ConfirmAll),
 )
-@sumi.hitl_card(title="Generated the following 3 shots", items=done, confirmed=true)
+@sumi.hitl_card(title="Generated the following 3 drafts", items=done, confirmed=true)
 ```
 
 </SumiDemo>

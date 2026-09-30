@@ -54,7 +54,7 @@ fn segmented_item_style(selected : Bool, disabled : Bool) -> String {
 }
 
 ///|
-/// A segmented single-choice control (aspect-ratio / resolution pickers in
+/// A segmented single-choice control (size / preset pickers in
 /// the design). Controlled: the caller owns the selected value.
 ///
 /// `stacked=true` renders tall items with the icon above the label — the

@@ -124,7 +124,7 @@ fn hitl_thumb(src : String) -> @html.Html {
 ///
 /// ```moonbit nocheck
 /// hitl_card(
-///   title="Generate the following 4 videos",
+///   title="Generate the following 4 drafts",
 ///   items=plan,
 ///   on_toggle=emit.map(ToggleRow),
 ///   on_cancel=emit(Dismiss),

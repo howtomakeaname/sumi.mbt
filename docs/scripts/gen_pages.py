@@ -157,7 +157,7 @@ PAGES = [
         [
             demo("button-basic", "Variants & states", "变体与状态", """
 @sumi.button(variant=@sumi.Primary, "Generate")
-@sumi.button(variant=@sumi.Secondary, "HD Enhance")
+@sumi.button(variant=@sumi.Secondary, "Export")
 @sumi.button(variant=@sumi.Ghost, [
   @sumi.icon_sparkle(),
   @html.text("AI Edit"),
@@ -257,7 +257,7 @@ PAGES = [
       icon=@sumi.icon_upload_fill())),
     Item(@sumi.MenuItem::new("assets", "Select from assets",
       icon=@sumi.icon_folder())),
-    Item(@sumi.MenuItem::new("canvas", "Select from canvas",
+    Item(@sumi.MenuItem::new("project", "Select from project",
       icon=@sumi.icon_target())),
   ],
   open=is_open,
@@ -544,8 +544,8 @@ PAGES = [
         "单个可选药丸片。两种状态下文字均为全白，选中态仅通过块填充体现。将多个 chip 绑定到同一个值即可组成单选行。",
         [
             demo("chip-row", "Quality row", "质量选项行", """
-@sumi.chip("720P", selected=quality == "720P",
-  on_click=set_quality(_ => "720P"))
+@sumi.chip("M", selected=size == "m",
+  on_click=set_size(_ => "m"))
 @sumi.chip("8K", disabled=true)"""),
         ],
         [
@@ -728,13 +728,13 @@ PAGES = [
         [
             demo("hitl-card", "Confirm and receipt", "确认与回执", """
 @sumi.hitl_card(
-  title="Generate the following 5 shots",
+  title="Generate the following 5 drafts",
   items=plan,
   on_toggle=set_plan.map(i => c => flip_at(c, i)),
   on_cancel=emit(Dismiss),
   on_confirm=emit(ConfirmAll),
 )
-@sumi.hitl_card(title="Generated the following 3 shots", items=done, confirmed=true)"""),
+@sumi.hitl_card(title="Generated the following 3 drafts", items=done, confirmed=true)"""),
         ],
         [
             api("hitl_card", params={
@@ -761,10 +761,10 @@ PAGES = [
             demo("editable-text-basic", "Click to rename", "点击重命名", """
 @sumi.editable_text(
   value=current,
-  placeholder="Enter a canvas name",
+  placeholder="Enter a project name",
   on_change=set_title.map(v => _ => v),
 )
-@sumi.editable_text(value="", placeholder="Enter a canvas name")"""),
+@sumi.editable_text(value="", placeholder="Enter a project name")"""),
         ],
         [
             api("editable_text", params={
@@ -783,14 +783,14 @@ PAGES = [
             demo("dropdown-menu-basic", "Rich items", "富文本项", """
 @sumi.dropdown_menu(
   trigger=@sumi.button(variant=@sumi.Secondary, [
-    @html.text("Enhance"),
+    @html.text("Polish"),
     @sumi.menu_chevron(),
   ]),
   items=[
     @sumi.SectionLabel("QUALITY"),
     @sumi.Item(@sumi.MenuItem::new(
       "standard", "Standard",
-      description="Balanced clarity for everyday images",
+      description="Balanced wording for everyday drafts",
       icon=@sumi.icon_sparkle(size=16),
     )),
   ],
@@ -943,7 +943,7 @@ items=[
         "悬停或聚焦时出现在任意触发器旁的气泡，从锚定边缘缩放进入。四个方向。",
         [
             demo("tooltip-basic", "Four sides", "四个方向", """
-@sumi.tooltip(content="Export the current canvas",
+@sumi.tooltip(content="Export the current project",
   @sumi.icon_button(@sumi.icon_upload(), aria_label="Export"))
 @sumi.tooltip(content="More actions", side=@sumi.Bottom,
   @sumi.icon_button(@sumi.icon_more(), aria_label="More"))"""),
@@ -1060,7 +1060,7 @@ items=[
             demo("shimmer-text", "Status lines", "状态文案", """
 @sumi.shimmer_text("Working on it…")
 @sumi.shimmer_text("Generating the image…")
-@sumi.shimmer_text("Reading the canvas…")"""),
+@sumi.shimmer_text("Reading the files…")"""),
         ],
         [
             api("shimmer_text", params={
@@ -1171,7 +1171,7 @@ items=[
             demo("empty-state-basic", "Inside a card", "置于卡片内", """
 @sumi.empty_state(
   title_text="No versions yet",
-  description="Generated results will appear here.",
+  description="Results will appear here.",
   icon=@sumi.icon_image(size=24),
   action=@sumi.button(variant=@sumi.Secondary, size=@sumi.Sm, "New Version"),
 )"""),
@@ -1202,13 +1202,13 @@ items=[
         [
             api("alert", params={
                 "message": ("Note text; wraps to multiple lines", "提示文案；可多行换行"),
-                "variant": ("`Solid` on the canvas, `Subtle` on a filled surface", "`Solid` 用于画布，`Subtle` 用于已有填充的表面"),
+                "variant": ("`Solid` over media backdrops, `Subtle` on a filled surface", "`Solid` 用于媒体底色之上，`Subtle` 用于已有填充的表面"),
                 "icon": ("Leading glyph (defaults to `icon_important`)", "前置图标（默认为 `icon_important`）"),
             }),
         ],
         [
             enum("AlertVariant", "feedback", {
-                "Solid": "Tooltip-dark fill for notes sitting on the canvas",
+                "Solid": "Tooltip-dark fill for notes sitting over media",
                 "Subtle": "Barely-there fill for notes on an already-filled surface",
             }),
         ],
@@ -1490,10 +1490,10 @@ items=[
 )
 @sumi.session_list(max_height=280, children=[
   @sumi.session_item(label="Desert Mirage Expedition", active=true),
-  @sumi.session_item(label="Neon Harbor Nights", status=@sumi.Generating),
-  @sumi.session_item(label="Alpine Sunrise Timelapse", status=@sumi.Done),
+  @sumi.session_item(label="Weekly Sync Notes", status=@sumi.Generating),
+  @sumi.session_item(label="API Migration Draft", status=@sumi.Done),
   @sumi.session_divider(),
-  @sumi.session_item(label="Archived Storyboards", disabled=true),
+  @sumi.session_item(label="Archived Threads", disabled=true),
 ])"""),
         ],
         [
@@ -1538,8 +1538,8 @@ items=[
         [
             demo("task-list", "The feed", "任务流", """
 @sumi.task_list(height=400, children=[
-  @sumi.task_card(title="Autumn Forest Drone Shot", status=@sumi.Pending("Review"), summary=text),
-  @sumi.task_card(title="Neon Harbor Nights", status=@sumi.Generating, summary=text),
+  @sumi.task_card(title="Weekly Sync Notes", status=@sumi.Pending("Review"), summary=text),
+  @sumi.task_card(title="API Migration Draft", status=@sumi.Generating, summary=text),
   @sumi.task_card(title="Orbital Station Flythrough", status=@sumi.Generating, children=[
     @sumi.tool_call_row(label="Working on the canvas", icon=@sumi.icon_draw(size=16), expandable=true),
   ]),
@@ -1568,17 +1568,17 @@ items=[
         [
             demo("skill-chips", "Picker & sheets", "选择行与面板", """
 @sumi.skill_chip(label="Storyboard", icon=@sumi.icon_draw(size=16), mark=@sumi.New)
-@sumi.skill_chip(label="Style Frame", mark=@sumi.Hot)
+@sumi.skill_chip(label="Translate", mark=@sumi.Hot)
 @sumi.skill_chip(label="More", more=true)
 
 @sumi.chip_panel(children=[
-  @sumi.action_chip(label="Storyboard"),
-  @sumi.action_chip(label="Shot List"),
+  @sumi.action_chip(label="Summarize"),
+  @sumi.action_chip(label="Outline"),
 ])
 
 @sumi.chip_panel(children=[
-  @sumi.skill_chip(label="Storyboard", mark=@sumi.Hot),
-  @sumi.skill_chip(label="Quick Cut"),
+  @sumi.skill_chip(label="Brainstorm", mark=@sumi.Hot),
+  @sumi.skill_chip(label="Outline"),
 ])"""),
         ],
         [
@@ -1611,7 +1611,7 @@ items=[
         [
             demo("result-chips", "Two sizes", "两种尺寸", """
 // Small — floating over generated imagery (backdrop blur 6)
-@sumi.result_chip(label="Harbor Dusk", thumbnail=ref_url)
+@sumi.result_chip(label="Cover Draft", thumbnail=ref_url)
 
 // Medium — inline chat result row (14/24 secondary)
 @sumi.result_chip(label="Image", thumbnail=ref_url, size=@sumi.Medium)"""),
@@ -1634,9 +1634,9 @@ items=[
         "回答正文的 MD 基础组件字阶：语义化 H2–H4 标题与正文段落 —— H2 16/24 Medium，H3/H4 14/22 Medium 带上下 12px 留白，正文 14/22 Regular —— 均为主文本色。",
         [
             demo("md-text", "The scale", "字阶", """
-@sumi.md_text(kind=@sumi.H2, text="Story beats")
+@sumi.md_text(kind=@sumi.H2, text="Launch plan")
 @sumi.md_text(kind=@sumi.Body, text=sample)
-@sumi.md_text(kind=@sumi.H3, text="Opening shot")
+@sumi.md_text(kind=@sumi.H3, text="Timeline")
 @sumi.md_text(kind=@sumi.Body, text=sample)"""),
         ],
         [

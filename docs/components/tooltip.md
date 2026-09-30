@@ -9,7 +9,7 @@ A hover/focus bubble on any trigger, scaling in from the anchored edge. Four sid
 <SumiDemo name="tooltip-basic">
 
 ```moonbit
-@sumi.tooltip(content="Export the current canvas",
+@sumi.tooltip(content="Export the current project",
   @sumi.icon_button(@sumi.icon_upload(), aria_label="Export"))
 @sumi.tooltip(content="More actions", side=@sumi.Bottom,
   @sumi.icon_button(@sumi.icon_more(), aria_label="More"))

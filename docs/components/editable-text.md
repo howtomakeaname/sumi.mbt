@@ -11,10 +11,10 @@ A title that reads as plain text and becomes an input on click; Enter or blur co
 ```moonbit
 @sumi.editable_text(
   value=current,
-  placeholder="Enter a canvas name",
+  placeholder="Enter a project name",
   on_change=set_title.map(v => _ => v),
 )
-@sumi.editable_text(value="", placeholder="Enter a canvas name")
+@sumi.editable_text(value="", placeholder="Enter a project name")
 ```
 
 </SumiDemo>

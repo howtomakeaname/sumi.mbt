@@ -11,7 +11,7 @@ An icon + title + description placeholder with an optional action, for empty pan
 ```moonbit
 @sumi.empty_state(
   title_text="No versions yet",
-  description="Generated results will appear here.",
+  description="Results will appear here.",
   icon=@sumi.icon_image(size=24),
   action=@sumi.button(variant=@sumi.Secondary, size=@sumi.Sm, "New Version"),
 )

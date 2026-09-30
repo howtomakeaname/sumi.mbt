@@ -18,8 +18,8 @@ pub extend MdTextKind with Eq::{equal, not_equal}
 /// text tone; headings pad 12px above and below, the body pads none.
 ///
 /// ```moonbit nocheck
-/// md_text(kind=H2, text="Story beats")
-/// md_text(kind=Body, text="The opening shot drifts over the quiet bay.")
+/// md_text(kind=H2, text="Launch plan")
+/// md_text(kind=Body, text="The opening section drafts the launch timeline.")
 /// ```
 pub fn md_text(
   text~ : String,

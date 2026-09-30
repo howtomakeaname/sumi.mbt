@@ -11,7 +11,7 @@
 ```moonbit
 @sumi.shimmer_text("Working on it…")
 @sumi.shimmer_text("Generating the image…")
-@sumi.shimmer_text("Reading the canvas…")
+@sumi.shimmer_text("Reading the files…")
 ```
 
 </SumiDemo>

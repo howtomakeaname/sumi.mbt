@@ -10,7 +10,7 @@
 
 ```moonbit
 // Small — floating over generated imagery (backdrop blur 6)
-@sumi.result_chip(label="Harbor Dusk", thumbnail=ref_url)
+@sumi.result_chip(label="Cover Draft", thumbnail=ref_url)
 
 // Medium — inline chat result row (14/24 secondary)
 @sumi.result_chip(label="Image", thumbnail=ref_url, size=@sumi.Medium)

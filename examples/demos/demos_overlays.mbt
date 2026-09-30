@@ -6,24 +6,24 @@ fn demo_dropdown_menu_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
     stage_mode(mode, [
       @sumi.dropdown_menu(
         trigger=@sumi.button(variant=Secondary, [
-          @html.text("Enhance"),
+          @html.text("Model"),
           @sumi.menu_chevron(),
         ]),
         items=[
-          SectionLabel("QUALITY"),
+          SectionLabel("TIER"),
           Item(
             @sumi.MenuItem::new(
               "standard",
               "Standard",
-              description="Balanced clarity for everyday images",
+              description="Fast drafts for everyday tasks",
               icon=@sumi.icon_sparkle(size=16),
             ),
           ),
           Item(
             @sumi.MenuItem::new(
-              "fidelity",
-              "High Fidelity",
-              description="Maximum detail for final renders",
+              "pro",
+              "Pro",
+              description="Deeper reasoning for final versions",
               icon=@sumi.icon_sparkle(size=16),
             ),
           ),
@@ -250,7 +250,7 @@ fn demo_tooltip_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       @sumi.tooltip(
-        content="Export the current canvas",
+        content="Export the current project",
         @sumi.icon_button(@sumi.icon_upload(), aria_label="Export"),
       ),
       @sumi.tooltip(

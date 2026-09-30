@@ -27,7 +27,7 @@
 | 名称 | 类型 | 默认值 | 说明 |
 |---|---|---|---|
 | message **\*** | `String` | — | 提示文案；可多行换行 |
-| variant | `AlertVariant` | Solid | `Solid` 用于画布，`Subtle` 用于已有填充的表面 |
+| variant | `AlertVariant` | Solid | `Solid` 用于媒体底色之上，`Subtle` 用于已有填充的表面 |
 | icon | `Html` | — | 前置图标（默认为 `icon_important`） |
 | id | `String` | — | 元素 id |
 | class | `String` | — | 附加 class 名 |

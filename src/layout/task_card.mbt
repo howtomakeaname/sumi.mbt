@@ -15,7 +15,7 @@ const TaskCardSummaryStyle : String = "margin:0;font-size:14px;line-height:24px;
 ///
 /// ```moonbit nocheck
 /// task_card(
-///   title="Neon Harbor Nights",
+///   title="API Migration Draft",
 ///   status=Generating,
 ///   summary="I will first break down the brief into its core elements.",
 /// )

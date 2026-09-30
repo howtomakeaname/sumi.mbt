@@ -5,7 +5,7 @@ fn demo_theme_light(_mode : @sumi.ThemeMode?) -> Val[Html] {
   on.view(fn(is_on) {
     stage_mode(Some(@sumi.Light), [
       @sumi.button(variant=Primary, "Generate"),
-      @sumi.button(variant=Secondary, "HD Enhance"),
+      @sumi.button(variant=Secondary, "Export"),
       @sumi.switch(checked=is_on, on_change=set_on.map(v => _ => v)),
       @sumi.tag(variant=Brand, [@sumi.icon_sparkle(size=12), @html.text("AI")]),
       @sumi.badge(value=5),

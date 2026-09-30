@@ -9,9 +9,9 @@ The MD 基础组件 type scale for answer bodies: semantic H2–H4 headings and 
 <SumiDemo name="md-text">
 
 ```moonbit
-@sumi.md_text(kind=@sumi.H2, text="Story beats")
+@sumi.md_text(kind=@sumi.H2, text="Launch plan")
 @sumi.md_text(kind=@sumi.Body, text=sample)
-@sumi.md_text(kind=@sumi.H3, text="Opening shot")
+@sumi.md_text(kind=@sumi.H3, text="Timeline")
 @sumi.md_text(kind=@sumi.Body, text=sample)
 ```
 

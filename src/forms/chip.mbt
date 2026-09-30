@@ -21,13 +21,13 @@ fn chip_style(selected : Bool, disabled : Bool) -> String {
 }
 
 ///|
-/// A single selectable pill — the resolution/quality option in the design.
-/// Text stays full-white in both states; selection shows only through the
-/// block fill. Fully controlled — the caller owns `selected`; group several
-/// chips under one value to build a radio-like row.
+/// A single selectable pill for one-choice option rows. Text stays
+/// full-white in both states; selection shows only through the block fill.
+/// Fully controlled — the caller owns `selected`; group several chips
+/// under one value to build a radio-like row.
 ///
 /// ```moonbit nocheck
-/// chip("720P", selected=quality == "720p", on_click=set_quality.map(v => _ => "720p"))
+/// chip("M", selected=size == "m", on_click=set_size.map(v => _ => "m"))
 /// ```
 pub fn chip(
   label : String,

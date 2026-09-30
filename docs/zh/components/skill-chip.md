@@ -10,17 +10,17 @@ Agent 选择器的技能胶囊：36px 圆角 40 描边芯片，可选前导图�
 
 ```moonbit
 @sumi.skill_chip(label="Storyboard", icon=@sumi.icon_draw(size=16), mark=@sumi.New)
-@sumi.skill_chip(label="Style Frame", mark=@sumi.Hot)
+@sumi.skill_chip(label="Translate", mark=@sumi.Hot)
 @sumi.skill_chip(label="More", more=true)
 
 @sumi.chip_panel(children=[
-  @sumi.action_chip(label="Storyboard"),
-  @sumi.action_chip(label="Shot List"),
+  @sumi.action_chip(label="Summarize"),
+  @sumi.action_chip(label="Outline"),
 ])
 
 @sumi.chip_panel(children=[
-  @sumi.skill_chip(label="Storyboard", mark=@sumi.Hot),
-  @sumi.skill_chip(label="Quick Cut"),
+  @sumi.skill_chip(label="Brainstorm", mark=@sumi.Hot),
+  @sumi.skill_chip(label="Outline"),
 ])
 ```
 

@@ -231,13 +231,13 @@ fn demo_slider_field(mode : @sumi.ThemeMode?) -> Val[Html] {
 
 ///|
 fn demo_chip_row(mode : @sumi.ThemeMode?) -> Val[Html] {
-  let (quality, set_quality) = @rabbita.create_variable("720P")
+  let (quality, set_quality) = @rabbita.create_variable("M")
   quality.view(fn(current) {
-    let options = ["360P", "720P", "1080P", "4K"]
+    let options = ["S", "M", "L", "XL"]
     let chips : Array[Html] = options.map(opt => {
       @sumi.chip(opt, selected=current == opt, on_click=set_quality(_ => opt))
     })
-    chips.push(@sumi.chip("8K", disabled=true))
+    chips.push(@sumi.chip("XXL", disabled=true))
     stage_mode(mode, chips)
   })
 }
@@ -311,24 +311,14 @@ fn demo_attachment_strip(mode : @sumi.ThemeMode?) -> Val[Html] {
 
 ///|
 fn demo_segmented_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
-  let (res, set_res) = @rabbita.create_variable("4k")
+  let (res, set_res) = @rabbita.create_variable("m")
   res.view(fn(current) {
     stage_mode(mode, [
       @sumi.segmented(
         items=[
-          @sumi.SegmentedItem::new("2k", "2K", numeric=true),
-          @sumi.SegmentedItem::new(
-            "4k",
-            "4K",
-            numeric=true,
-            trailing=sparkle_marker(),
-          ),
-          @sumi.SegmentedItem::new(
-            "8k",
-            "8K",
-            numeric=true,
-            trailing=sparkle_marker(),
-          ),
+          @sumi.SegmentedItem::new("s", "S"),
+          @sumi.SegmentedItem::new("m", "M", trailing=sparkle_marker()),
+          @sumi.SegmentedItem::new("l", "L", trailing=sparkle_marker()),
         ],
         selected=current,
         on_select=set_res.map(v => _ => v),
@@ -339,45 +329,40 @@ fn demo_segmented_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
 
 ///|
 fn demo_segmented_stacked(mode : @sumi.ThemeMode?) -> Val[Html] {
-  let (ratio, set_ratio) = @rabbita.create_variable("16:9")
-  ratio.view(fn(current) {
+  let (preset, set_preset) = @rabbita.create_variable("wide")
+  preset.view(fn(current) {
     stage_mode(mode, [
       @sumi.segmented(
         stacked=true,
         items=[
           @sumi.SegmentedItem::new(
-            "21:9",
-            "21:9",
-            numeric=true,
+            "ultrawide",
+            "Ultra-wide",
             icon=@sumi.icon_ratio(width=21, height=9),
           ),
           @sumi.SegmentedItem::new(
-            "16:9",
-            "16:9",
-            numeric=true,
+            "wide",
+            "Wide",
             icon=@sumi.icon_ratio(width=16, height=9),
           ),
           @sumi.SegmentedItem::new(
-            "4:3",
-            "4:3",
-            numeric=true,
+            "classic",
+            "Classic",
             icon=@sumi.icon_ratio(width=4, height=3),
           ),
           @sumi.SegmentedItem::new(
-            "1:1",
-            "1:1",
-            numeric=true,
+            "square",
+            "Square",
             icon=@sumi.icon_ratio(width=1, height=1),
           ),
           @sumi.SegmentedItem::new(
-            "9:16",
-            "9:16",
-            numeric=true,
+            "tall",
+            "Tall",
             icon=@sumi.icon_ratio(width=9, height=16),
           ),
         ],
         selected=current,
-        on_select=set_ratio.map(v => _ => v),
+        on_select=set_preset.map(v => _ => v),
       ),
     ])
   })
@@ -441,7 +426,7 @@ fn demo_prompt_box_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
 ///|
 fn demo_prompt_box_count(mode : @sumi.ThemeMode?) -> Val[Html] {
   let (prompt, set_prompt) = @rabbita.create_variable(
-    "A quiet harbor at dusk, fishing boats with warm lantern light",
+    "Summarize the Q3 planning notes into three short paragraphs",
   )
   prompt.view(fn(current) {
     stage_mode(mode, [
@@ -474,11 +459,11 @@ fn demo_editable_text_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
         row([
           @sumi.editable_text(
             value=current,
-            placeholder="Enter a canvas name",
+            placeholder="Enter a project name",
             on_change=set_title.map(v => _ => v),
           ),
         ]),
-        @sumi.editable_text(value="", placeholder="Enter a canvas name"),
+        @sumi.editable_text(value="", placeholder="Enter a project name"),
       ]),
     ])
   })

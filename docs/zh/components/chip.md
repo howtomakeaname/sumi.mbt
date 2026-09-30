@@ -9,8 +9,8 @@
 <SumiDemo name="chip-row">
 
 ```moonbit
-@sumi.chip("720P", selected=quality == "720P",
-  on_click=set_quality(_ => "720P"))
+@sumi.chip("M", selected=size == "m",
+  on_click=set_size(_ => "m"))
 @sumi.chip("8K", disabled=true)
 ```
 

@@ -10,8 +10,8 @@
 
 ```moonbit
 @sumi.task_list(height=400, children=[
-  @sumi.task_card(title="Autumn Forest Drone Shot", status=@sumi.Pending("Review"), summary=text),
-  @sumi.task_card(title="Neon Harbor Nights", status=@sumi.Generating, summary=text),
+  @sumi.task_card(title="Weekly Sync Notes", status=@sumi.Pending("Review"), summary=text),
+  @sumi.task_card(title="API Migration Draft", status=@sumi.Generating, summary=text),
   @sumi.task_card(title="Orbital Station Flythrough", status=@sumi.Generating, children=[
     @sumi.tool_call_row(label="Working on the canvas", icon=@sumi.icon_draw(size=16), expandable=true),
   ]),

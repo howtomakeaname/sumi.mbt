@@ -1,9 +1,9 @@
 ///|
 /// One round of brief-breakdown copy, long enough to clamp when repeated.
-const ChatSampleShort : String = "I will first break down the brief into its core elements — setting, characters, visual tone, and pacing. Then I will shape those into a working document that can anchor the image and video drafts."
+const ChatSampleShort : String = "I will first break the request into smaller steps — gather the context, outline the structure, and draft the wording. Then I will refine the flow so the final version reads cleanly end to end."
 
 ///|
-const ChatSampleLong : String = "I will first break down the brief into its core elements — setting, characters, visual tone, and pacing. Then I will shape those into a working document that can anchor the image and video drafts. Once the draft reads well, I will trim repetition and tighten the transitions so the final version flows end to end. I will first break down the brief into its core elements — setting, characters, visual tone, and pacing. Then I will shape those into a working document that can anchor the image and video drafts."
+const ChatSampleLong : String = "I will first break the request into smaller steps — gather the context, outline the structure, and draft the wording. Then I will refine the flow so the final version reads cleanly end to end. Once the draft reads well, I will trim repetition and tighten the transitions. I will first break the request into smaller steps — gather the context, outline the structure, and draft the wording. Then I will refine the flow so the final version reads cleanly end to end."
 
 ///|
 /// Sent-message bubbles: single line, wrapped plain text, rich inline
@@ -24,7 +24,7 @@ fn demo_chat_bubble(mode : @sumi.ThemeMode?) -> Val[Html] {
               variant=Inline,
               thumbnail=attachment_thumb(2),
             ),
-            @html.text("Add more detail, like a film concept sheet."),
+            @html.text("Add more detail, like a full project brief."),
           ]),
           @sumi.chat_bubble(
             text=ChatSampleLong,
@@ -57,17 +57,17 @@ fn demo_tool_call_row(mode : @sumi.ThemeMode?) -> Val[Html] {
           ),
           @sumi.tool_call_row(
             icon=@sumi.icon_image(size=16),
-            label="(0/1) Image generating…",
+            label="(0/1) Draft generating…",
           ),
           @sumi.tool_call_row(
             icon=@sumi.icon_image(size=16),
             state=Done,
-            label="(1/1) Image generation completed",
+            label="(1/1) Draft generation completed",
           ),
           @sumi.tool_call_row(
             icon=@sumi.icon_image(size=16),
             state=Done,
-            label="(1/1) Image generation completed, 1 item failed",
+            label="(1/1) Draft generation completed, 1 item failed",
           ),
           @sumi.tool_call_row(label="Thinking"),
           @sumi.tool_call_row(
@@ -128,7 +128,7 @@ fn demo_agent_input(mode : @sumi.ThemeMode?) -> Val[Html] {
             actions=toolbar(),
           ),
           @sumi.agent_input(
-            value="Extend the canyon shot into a slow tracking move",
+            value="Extend the intro with a three-point summary of the Q3 goals",
             generating=running,
             on_stop=set_live(v => !v),
             on_send=@cmd.none,
@@ -140,13 +140,13 @@ fn demo_agent_input(mode : @sumi.ThemeMode?) -> Val[Html] {
               variant=Inline,
               thumbnail=attachment_thumb(5),
             ),
-            @html.text("Using this frame, "),
+            @html.text("Using this draft, "),
             @sumi.media_tag(
               kind=Video,
               variant=Inline,
               thumbnail=attachment_thumb(9),
             ),
-            @html.text("match the camera drift and keep the cold lighting."),
+            @html.text("match the tone and keep the concise structure."),
           ]),
         ],
       ),
@@ -172,31 +172,15 @@ fn demo_hitl_card(mode : @sumi.ThemeMode?) -> Val[Html] {
   ])
   marks.view(fn(checked) {
     let rows = [
+      ("Summarize the weekly sync notes", 100, [attachment_thumb(3)]),
+      ("Draft the launch announcement email", 300, [attachment_thumb(6)]),
+      ("Outline the onboarding guide", 120, [attachment_thumb(8)]),
       (
-        "Wide shot: harbor lanterns coming on at dusk",
-        100,
-        [attachment_thumb(3)],
-      ),
-      (
-        "Tracking shot: crossing the stone steps into the canyon",
-        300,
-        [attachment_thumb(6)],
-      ),
-      (
-        "Close-up: weathered hands resting on the rudder",
-        120,
-        [attachment_thumb(8)],
-      ),
-      (
-        "Aerial shot: fog pooling over the quiet bay",
+        "Compare the three vendor quotes",
         120,
         [attachment_thumb(11), attachment_thumb(5)],
       ),
-      (
-        "Insert shot: lantern light rippling on dark water",
-        120,
-        [attachment_thumb(14)],
-      ),
+      ("Write the customer follow-up", 120, [attachment_thumb(14)]),
     ]
     let items = []
     for i, row in rows {
@@ -210,30 +194,27 @@ fn demo_hitl_card(mode : @sumi.ThemeMode?) -> Val[Html] {
         style=["width:400px;display:flex;flex-direction:column;gap:16px"],
         [
           @sumi.hitl_card(
-            title="Generate the following 5 shots",
+            title="Generate the following 5 drafts",
             items~,
             on_toggle=set_marks.map(i => c => bool_flip_at(c, i)),
             on_cancel=@cmd.none,
             on_confirm=@cmd.none,
           ),
           @sumi.hitl_card(
-            title="Generated the following 3 shots",
+            title="Generated the following 3 drafts",
             items=[
+              @sumi.HitlItem::new("Summarize the weekly sync notes", cost=100, thumbnails=[
+                attachment_thumb(3),
+              ]),
               @sumi.HitlItem::new(
-                "Wide shot: harbor lanterns coming on at dusk",
-                cost=100,
-                thumbnails=[attachment_thumb(3)],
-              ),
-              @sumi.HitlItem::new(
-                "Tracking shot: crossing the stone steps into the canyon",
+                "Draft the launch announcement email",
                 cost=300,
                 thumbnails=[attachment_thumb(6)],
               ),
-              @sumi.HitlItem::new(
-                "Aerial shot: fog pooling over the quiet bay",
-                cost=120,
-                thumbnails=[attachment_thumb(11), attachment_thumb(5)],
-              ),
+              @sumi.HitlItem::new("Compare the three vendor quotes", cost=120, thumbnails=[
+                attachment_thumb(11),
+                attachment_thumb(5),
+              ]),
             ],
             confirmed=true,
           ),
@@ -252,9 +233,8 @@ fn demo_session_menu(mode : @sumi.ThemeMode?) -> Val[Html] {
   let (current, set_current) = @rabbita.create_variable(0)
   current.view(fn(cur) {
     let titles = [
-      "Desert Mirage Expedition", "Neon Harbor Nights", "Alpine Sunrise Timelapse",
-      "Orbital Station Flythrough", "Autumn Forest Drone Shot", "City Rain Loop",
-      "Underwater Cave",
+      "Q3 Launch Plan", "Weekly Sync Notes", "API Migration Draft", "Marketing Calendar",
+      "Bug Triage Summary", "Travel Itinerary", "Team Offsite Agenda",
     ]
     let statuses : Array[@sumi.SessionStatus?] = [
       None,
@@ -279,7 +259,7 @@ fn demo_session_menu(mode : @sumi.ThemeMode?) -> Val[Html] {
       )
     }
     rows.push(@sumi.session_divider())
-    rows.push(@sumi.session_item(label="Archived Storyboards", disabled=true))
+    rows.push(@sumi.session_item(label="Archived Threads", disabled=true))
     stage_mode(mode, [
       @html.div(
         style=[
@@ -312,39 +292,35 @@ fn demo_task_list(mode : @sumi.ThemeMode?) -> Val[Html] {
       @html.div(style=["width:416px"], [
         @sumi.task_list(height=400, children=[
           @sumi.task_card(
-            title="Autumn Forest Drone Shot",
+            title="Weekly Sync Notes",
             status=Pending("Review"),
             summary=ChatSampleShort,
           ),
           @sumi.task_card(
-            title="Neon Harbor Nights",
+            title="API Migration Draft",
             status=Generating,
             summary=ChatSampleShort,
           ),
+          @sumi.task_card(title="Marketing Calendar", status=Generating, children=[
+            @sumi.tool_call_row(
+              label="Reading the project brief",
+              icon=@sumi.icon_draw(size=16),
+              expandable=true,
+              on_toggle=@cmd.none,
+            ),
+          ]),
           @sumi.task_card(
-            title="Orbital Station Flythrough",
-            status=Generating,
-            children=[
-              @sumi.tool_call_row(
-                label="Working on the canvas",
-                icon=@sumi.icon_draw(size=16),
-                expandable=true,
-                on_toggle=@cmd.none,
-              ),
-            ],
-          ),
-          @sumi.task_card(
-            title="City Rain Loop",
+            title="Bug Triage Summary",
             status=Done,
             summary=ChatSampleLong,
           ),
           @sumi.task_card(
-            title="Desert Mirage Expedition",
+            title="Q3 Launch Plan",
             status=Count(3),
             summary=ChatSampleShort,
           ),
           @sumi.task_card(
-            title="Underwater Cave",
+            title="Team Offsite Agenda",
             status=Partial,
             summary=ChatSampleShort,
           ),
@@ -372,38 +348,33 @@ fn demo_skill_chips(mode : @sumi.ThemeMode?) -> Val[Html] {
             ],
             [
               @sumi.skill_chip(
-                label="Storyboard",
-                icon=@sumi.icon_draw(size=16),
+                label="Summarize",
+                icon=@sumi.icon_sparkle_fill(size=16),
                 mark=New,
                 on_click=@cmd.none,
               ),
-              @sumi.skill_chip(
-                label="Style Frame",
-                icon=@sumi.icon_sparkle_fill(size=16),
-                mark=Hot,
-                on_click=@cmd.none,
-              ),
-              @sumi.skill_chip(label="Quick Cut", on_click=@cmd.none),
+              @sumi.skill_chip(label="Translate", mark=Hot, on_click=@cmd.none),
+              @sumi.skill_chip(label="Outline", on_click=@cmd.none),
               @sumi.skill_chip(label="More", more=true, on_click=@cmd.none),
             ],
           ),
           @sumi.chip_panel(children=[
-            @sumi.action_chip(label="Storyboard", on_click=@cmd.none),
-            @sumi.action_chip(label="Narrative Cut", on_click=@cmd.none),
-            @sumi.action_chip(label="Shot List", on_click=@cmd.none),
-            @sumi.action_chip(label="Script Draft", on_click=@cmd.none),
-            @sumi.action_chip(label="Scene Split", on_click=@cmd.none),
-            @sumi.action_chip(label="Poster Frame", on_click=@cmd.none),
-            @sumi.action_chip(label="Brand Kit", on_click=@cmd.none),
+            @sumi.action_chip(label="Summarize", on_click=@cmd.none),
+            @sumi.action_chip(label="Translate", on_click=@cmd.none),
+            @sumi.action_chip(label="Outline", on_click=@cmd.none),
+            @sumi.action_chip(label="Brainstorm", on_click=@cmd.none),
+            @sumi.action_chip(label="Proofread", on_click=@cmd.none),
+            @sumi.action_chip(label="Schedule", on_click=@cmd.none),
+            @sumi.action_chip(label="Analyze", on_click=@cmd.none),
           ]),
           @sumi.chip_panel(children=[
-            @sumi.skill_chip(label="Storyboard", mark=Hot, on_click=@cmd.none),
-            @sumi.skill_chip(label="Narrative Cut", on_click=@cmd.none),
-            @sumi.skill_chip(label="Shot List", on_click=@cmd.none),
-            @sumi.skill_chip(label="Script Draft", on_click=@cmd.none),
-            @sumi.skill_chip(label="Scene Split", on_click=@cmd.none),
-            @sumi.skill_chip(label="Poster Frame", on_click=@cmd.none),
-            @sumi.skill_chip(label="Brand Kit", on_click=@cmd.none),
+            @sumi.skill_chip(label="Brainstorm", mark=Hot, on_click=@cmd.none),
+            @sumi.skill_chip(label="Summarize", on_click=@cmd.none),
+            @sumi.skill_chip(label="Translate", on_click=@cmd.none),
+            @sumi.skill_chip(label="Outline", on_click=@cmd.none),
+            @sumi.skill_chip(label="Proofread", on_click=@cmd.none),
+            @sumi.skill_chip(label="Schedule", on_click=@cmd.none),
+            @sumi.skill_chip(label="Analyze", on_click=@cmd.none),
           ]),
         ],
       ),
@@ -436,11 +407,11 @@ fn demo_result_chips(mode : @sumi.ThemeMode?) -> Val[Html] {
                 ],
                 [
                   @sumi.result_chip(
-                    label="Harbor Dusk",
+                    label="Cover Draft",
                     thumbnail=attachment_thumb(3),
                   ),
                   @sumi.result_chip(
-                    label="Canyon Fog",
+                    label="Chart v2",
                     thumbnail=attachment_thumb(11),
                   ),
                 ],
@@ -472,17 +443,17 @@ fn demo_md_text(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       @html.div(style=["width:377px;display:flex;flex-direction:column"], [
-        @sumi.md_text(kind=H2, text="Story beats"),
+        @sumi.md_text(kind=H2, text="Launch plan"),
         @sumi.md_text(kind=Body, text=ChatSampleShort),
-        @sumi.md_text(kind=H3, text="Opening shot"),
+        @sumi.md_text(kind=H3, text="Timeline"),
         @sumi.md_text(
           kind=Body,
-          text="A slow drift over the quiet bay at dusk, fog pooling against the harbor lights.",
+          text="Week one focuses on discovery; weeks two and three cover drafting and review.",
         ),
-        @sumi.md_text(kind=H4, text="Camera notes"),
+        @sumi.md_text(kind=H4, text="Open questions"),
         @sumi.md_text(
           kind=Body,
-          text="Hold the horizon low; let the lantern reflections lead the eye into the frame.",
+          text="Which metrics matter most, and who signs off on the final summary?",
         ),
       ]),
     ]),

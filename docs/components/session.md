@@ -18,10 +18,10 @@ The chat-window session chrome: a header with the current-session pill plus new/
 )
 @sumi.session_list(max_height=280, children=[
   @sumi.session_item(label="Desert Mirage Expedition", active=true),
-  @sumi.session_item(label="Neon Harbor Nights", status=@sumi.Generating),
-  @sumi.session_item(label="Alpine Sunrise Timelapse", status=@sumi.Done),
+  @sumi.session_item(label="Weekly Sync Notes", status=@sumi.Generating),
+  @sumi.session_item(label="API Migration Draft", status=@sumi.Done),
   @sumi.session_divider(),
-  @sumi.session_item(label="Archived Storyboards", disabled=true),
+  @sumi.session_item(label="Archived Threads", disabled=true),
 ])
 ```
 

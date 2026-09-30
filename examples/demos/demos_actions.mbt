@@ -3,7 +3,7 @@ fn demo_button_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   Val::constant(
     stage_mode(mode, [
       @sumi.button(variant=Primary, "Generate"),
-      @sumi.button(variant=Secondary, "HD Enhance"),
+      @sumi.button(variant=Secondary, "Export"),
       @sumi.button(variant=Ghost, [@sumi.icon_sparkle(), @html.text("AI Edit")]),
       @sumi.button(variant=Primary, disabled=true, "Generate"),
       @sumi.button(variant=Primary, loading=true, "Generate"),
@@ -76,8 +76,8 @@ fn demo_add_tile_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
           ),
           Item(
             @sumi.MenuItem::new(
-              "canvas",
-              "Select from canvas",
+              "project",
+              "Select from project",
               icon=@sumi.icon_target(),
             ),
           ),
@@ -98,7 +98,7 @@ fn demo_toolbar_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
   let (enhance, set_enhance) = @rabbita.create_variable("standard")
   let (detail_open, set_detail_open) = @rabbita.create_variable(false)
   let (detail, set_detail) = @rabbita.create_variable("moderate")
-  let (res, set_res) = @rabbita.create_variable("4k")
+  let (res, set_res) = @rabbita.create_variable("m")
   enhance_open.view5(enhance, detail_open, detail, res, fn(
     enhance_is_open,
     current_enhance,
@@ -111,19 +111,19 @@ fn demo_toolbar_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
         @sumi.dropdown_menu(
           trigger=@sumi.button(variant=Ghost, [
             @sumi.icon_sparkle(),
-            @html.text("Enhance"),
+            @html.text("Polish"),
             @sumi.menu_chevron(),
           ]),
           items=@sumi.MenuEntry::items([
             @sumi.MenuItem::new(
               "standard",
               "Standard",
-              description="Balanced clarity for everyday images",
+              description="Balanced wording for everyday drafts",
             ),
             @sumi.MenuItem::new(
-              "fidelity",
-              "High Fidelity",
-              description="Maximum detail for final renders",
+              "thorough",
+              "Thorough",
+              description="A deeper pass for final versions",
             ),
           ]),
           open=enhance_is_open,
@@ -134,13 +134,13 @@ fn demo_toolbar_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
         @sumi.toolbar_divider(),
         @sumi.dropdown_menu(
           trigger=@sumi.button(variant=Ghost, [
-            @html.text("Detail"),
+            @html.text("Length"),
             @sumi.menu_chevron(),
           ]),
           items=@sumi.MenuEntry::items([
-            @sumi.MenuItem::new("subtle", "Subtle"),
-            @sumi.MenuItem::new("moderate", "Moderate"),
-            @sumi.MenuItem::new("strong", "Strong"),
+            @sumi.MenuItem::new("short", "Short"),
+            @sumi.MenuItem::new("medium", "Medium"),
+            @sumi.MenuItem::new("long", "Long"),
           ]),
           open=detail_is_open,
           on_open_change=set_detail_open.map(v => _ => v),
@@ -150,19 +150,9 @@ fn demo_toolbar_basic(mode : @sumi.ThemeMode?) -> Val[Html] {
         @sumi.toolbar_divider(),
         @sumi.segmented(
           items=[
-            @sumi.SegmentedItem::new("2k", "2K", numeric=true),
-            @sumi.SegmentedItem::new(
-              "4k",
-              "4K",
-              numeric=true,
-              trailing=sparkle_marker(),
-            ),
-            @sumi.SegmentedItem::new(
-              "8k",
-              "8K",
-              numeric=true,
-              trailing=sparkle_marker(),
-            ),
+            @sumi.SegmentedItem::new("s", "S"),
+            @sumi.SegmentedItem::new("m", "M", trailing=sparkle_marker()),
+            @sumi.SegmentedItem::new("l", "L", trailing=sparkle_marker()),
           ],
           selected=current_res,
           on_select=set_res.map(v => _ => v),

@@ -90,15 +90,15 @@ fn demo_shortcuts_panel(mode : @sumi.ThemeMode?) -> Val[Html] {
             @sumi.ShortcutItem::new("Toggle sidebar", "Cmd /"),
             @sumi.ShortcutItem::new("Send message", "Enter"),
           ]),
-          @sumi.ShortcutSection::new("Canvas & objects", [
-            @sumi.ShortcutItem::new("Add file", "Cmd O"),
-            @sumi.ShortcutItem::new("Add board", "F"),
-            @sumi.ShortcutItem::new("Add text", "T"),
-            @sumi.ShortcutItem::new("Deselect", "Esc"),
+          @sumi.ShortcutSection::new("Navigation", [
+            @sumi.ShortcutItem::new("Open file", "Cmd O"),
+            @sumi.ShortcutItem::new("New tab", "T"),
+            @sumi.ShortcutItem::new("Quick find", "F"),
+            @sumi.ShortcutItem::new("Close panel", "Esc"),
             @sumi.ShortcutItem::new("Zoom in", "⌘ +"),
             @sumi.ShortcutItem::new("Zoom out", "⌘ -"),
-            @sumi.ShortcutItem::new("Fit to content", "Cmd 0"),
-            @sumi.ShortcutItem::new("Pan canvas", "Space+Drag"),
+            @sumi.ShortcutItem::new("Reset zoom", "Cmd 0"),
+            @sumi.ShortcutItem::new("Drag to scroll", "Space+Drag"),
           ]),
           @sumi.ShortcutSection::new("Editing", [
             @sumi.ShortcutItem::new("Select all", "⌘ A"),
