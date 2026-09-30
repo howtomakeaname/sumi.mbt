@@ -40,9 +40,13 @@ pub fn icon_button(@html.Html, variant? : ButtonVariant, size? : ButtonSize, dis
 
 pub fn icon_caret_down(size? : Int) -> @html.Html
 
+pub fn icon_chat_history(size? : Int) -> @html.Html
+
 pub fn icon_check(size? : Int) -> @html.Html
 
 pub fn icon_check_fill(size? : Int) -> @html.Html
+
+pub fn icon_check_fill_large(size? : Int) -> @html.Html
 
 pub fn icon_chevron_down(size? : Int) -> @html.Html
 
@@ -66,13 +70,21 @@ pub fn icon_copy(size? : Int) -> @html.Html
 
 pub fn icon_crop(size? : Int) -> @html.Html
 
+pub fn icon_delete(size? : Int) -> @html.Html
+
 pub fn icon_download(size? : Int) -> @html.Html
+
+pub fn icon_draw(size? : Int) -> @html.Html
+
+pub fn icon_edit(size? : Int) -> @html.Html
 
 pub fn icon_element(size? : Int) -> @html.Html
 
 pub fn icon_expand(size? : Int) -> @html.Html
 
 pub fn icon_folder(size? : Int) -> @html.Html
+
+pub fn icon_fullscreen_alt(size? : Int) -> @html.Html
 
 pub fn icon_grid(size? : Int) -> @html.Html
 
@@ -91,6 +103,8 @@ pub fn icon_layers(size? : Int) -> @html.Html
 pub fn icon_minus(size? : Int) -> @html.Html
 
 pub fn icon_more(size? : Int) -> @html.Html
+
+pub fn icon_new_conversation(size? : Int) -> @html.Html
 
 pub fn icon_play(size? : Int) -> @html.Html
 

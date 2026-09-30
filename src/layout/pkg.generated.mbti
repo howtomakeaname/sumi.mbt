@@ -17,6 +17,18 @@ pub fn divider(id? : String, class? : String, attrs? : @html.Attrs, style? : Arr
 
 pub fn pagination(page~ : Int, total~ : Int, on_change? : @cmd.Emit[Int], id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
+pub fn session_divider(id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
+pub fn session_header(title~ : String, status? : SessionStatus, on_title? : @cmd.Cmd, on_new? : @cmd.Cmd, on_collapse? : @cmd.Cmd, new_label? : String, collapse_label? : String, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
+pub fn session_item(label~ : String, active? : Bool, disabled? : Bool, status? : SessionStatus, on_click? : @cmd.Cmd, on_edit? : @cmd.Cmd, on_delete? : @cmd.Cmd, edit_label? : String, delete_label? : String, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
+pub fn session_list(children~ : Array[@html.Html], width? : Int, max_height? : Int, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
+pub fn session_status(kind~ : SessionStatus, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
+pub fn session_title(label~ : String, status? : SessionStatus, on_click? : @cmd.Cmd, disabled? : Bool, aria_label? : String, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
+
 pub fn shortcuts_panel(sections~ : Array[ShortcutSection], title? : String, on_close? : @cmd.Cmd, width? : Int, max_height? : Int, id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
 
 pub fn tabs(items~ : Array[TabEntry], selected~ : String, on_select? : @cmd.Emit[String], id? : String, class? : String, attrs? : @html.Attrs, style? : Array[String]) -> @html.Html
@@ -28,6 +40,17 @@ pub fn toolbar_divider(style? : Array[String]) -> @html.Html
 // Errors
 
 // Types and methods
+pub(all) enum SessionStatus {
+  Generating
+  Count(Int)
+  Done
+  Dot
+  Pending(String)
+  Partial
+} derive(Eq)
+pub fn SessionStatus::equal(Self, Self) -> Bool
+pub fn SessionStatus::not_equal(Self, Self) -> Bool
+
 pub(all) struct ShortcutItem {
   label : String
   keys : String

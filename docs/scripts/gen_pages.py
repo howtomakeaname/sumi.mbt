@@ -90,7 +90,7 @@ PKG_FILES = {
     "forms": ["input.mbt", "textarea.mbt", "select.mbt", "stepper.mbt", "switch.mbt", "checkbox.mbt", "chip.mbt", "attachment_strip.mbt", "slider.mbt", "slider_field.mbt", "segmented.mbt", "prompt_box.mbt", "agent_input.mbt", "hitl_card.mbt"],
     "overlays": ["checkbox_menu.mbt", "dropdown_menu.mbt", "context_menu.mbt", "popover.mbt", "tooltip.mbt", "dialog.mbt", "toast.mbt", "menu.mbt"],
     "feedback": ["progress.mbt", "skeleton.mbt", "empty_state.mbt", "alert.mbt", "status_badge.mbt", "shimmer_text.mbt", "tool_call_row.mbt"],
-    "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt", "chat_bubble.mbt"],
+    "layout": ["card.mbt", "toolbar.mbt", "tabs.mbt", "divider.mbt", "pagination.mbt", "shortcuts_panel.mbt", "chat_bubble.mbt", "session.mbt"],
 }
 
 def pkg_src(pkg):
@@ -1474,6 +1474,62 @@ items=[
             }),
         ],
         [],
+    ),
+    page(
+        "session", "layout", "Session Menu", "Session 会话管理",
+        "The chat-window session chrome: a header with the current-session pill plus new/collapse actions, and the floating session-list panel whose rows show generation statuses and reveal rename/delete actions on hover.",
+        "聊天窗口的会话界面元素：头部为当前会话胶囊与新建/收起按钮；浮层会话列表的行展示生成状态，悬停时显示重命名/删除操作。",
+        [
+            demo("session-menu", "Header & list panel", "头部与列表面板", """
+@sumi.session_header(
+  title="Desert Mirage Expedition",
+  status=@sumi.Done,
+  on_title=toggle_menu,
+  on_new=new_chat,
+  on_collapse=collapse,
+)
+@sumi.session_list(max_height=280, children=[
+  @sumi.session_item(label="Desert Mirage Expedition", active=true),
+  @sumi.session_item(label="Neon Harbor Nights", status=@sumi.Generating),
+  @sumi.session_item(label="Alpine Sunrise Timelapse", status=@sumi.Done),
+  @sumi.session_divider(),
+  @sumi.session_item(label="Archived Storyboards", disabled=true),
+])"""),
+        ],
+        [
+            api("session_header", params={
+                "title": ("Current session name (14/22, ellipsized)", "当前会话名（14/22，溢出省略）"),
+                "status": ("Optional `SessionStatus` next to the title", "标题旁的可选 `SessionStatus` 状态"),
+                "on_title": ("Title pill click (usually toggles the list)", "标题胶囊点击（通常用于开合列表）"),
+                "on_new": ("New-conversation icon button", "新建会话图标按钮"),
+                "on_collapse": ("Collapse icon button", "收起图标按钮"),
+                "new_label": ("Aria label of the new button", "新建按钮的无障碍标签"),
+                "collapse_label": ("Aria label of the collapse button", "收起按钮的无障碍标签"),
+            }),
+            api("session_list", params={
+                "children": ("`session_item` rows and `session_divider` separators", "`session_item` 行与 `session_divider` 分隔线"),
+                "width": ("Panel width in px (default 280)", "面板宽度 px（默认 280）"),
+                "max_height": ("Scroll cap in px; enables the thin scrollbar", "滚动限高 px；启用细滚动条"),
+            }),
+            api("session_item", params={
+                "label": ("13/22 row text (ellipsized)", "13/22 行文本（溢出省略）"),
+                "active": ("Shows the trailing check + `aria-current`", "显示尾部对勾并标记 `aria-current`"),
+                "status": ("Trailing generation status (hidden on hover)", "尾部生成状态（悬停时隐藏）"),
+                "on_edit": ("Reveals the rename action on hover", "悬停时显示重命名操作"),
+                "on_delete": ("Reveals the delete action on hover", "悬停时显示删除操作"),
+                "edit_label": ("Rename action aria/tooltip (default \"Rename\")", "重命名操作的无障碍标签/提示（默认 \"Rename\"）"),
+                "delete_label": ("Delete action aria/tooltip (default \"Delete\")", "删除操作的无障碍标签/提示（默认 \"Delete\"）"),
+            }),
+            api("session_status", params={
+                "kind": ("`Generating | Count(Int) | Done | Dot | Pending(String) | Partial`", "`Generating | Count(Int) | Done | Dot | Pending(String) | Partial`"),
+            }),
+            api("session_title", params={
+                "label": ("14/22 pill text (ellipsized)", "14/22 胶囊文本（溢出省略）"),
+                "status": ("Optional status before the chevron", "箭头前的可选状态"),
+            }),
+            api("session_divider", desc_en="The 4px-tall hairline separator between row groups.",
+                desc_zh="分组之间的 4px 高细分隔线。", params={}),
+        ],
     ),
     page(
         "credits", "primitives", "Credits", "Credits 额度",

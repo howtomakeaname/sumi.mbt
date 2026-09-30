@@ -242,3 +242,62 @@ fn demo_hitl_card(mode : @sumi.ThemeMode?) -> Val[Html] {
     ])
   })
 }
+
+///|
+/// Session management: the chat-window header bound to the active row of
+/// the session-list panel. Rows carry every generation status (spinner,
+/// count, tick, unread dot, review pill, partial-failure mark); clicking a
+/// row moves the active check, hovering reveals rename/delete actions.
+fn demo_session_menu(mode : @sumi.ThemeMode?) -> Val[Html] {
+  let (current, set_current) = @rabbita.create_variable(0)
+  current.view(fn(cur) {
+    let titles = [
+      "Desert Mirage Expedition", "Neon Harbor Nights", "Alpine Sunrise Timelapse",
+      "Orbital Station Flythrough", "Autumn Forest Drone Shot", "City Rain Loop",
+      "Underwater Cave",
+    ]
+    let statuses : Array[@sumi.SessionStatus?] = [
+      None,
+      Some(Generating),
+      Some(Done),
+      Some(Count(5)),
+      Some(Pending("Review")),
+      Some(Dot),
+      Some(Partial),
+    ]
+    let rows : Array[Html] = []
+    for i, title in titles {
+      rows.push(
+        @sumi.session_item(
+          label=title,
+          active=cur == i,
+          status?=statuses[i],
+          on_click=set_current(_ => i),
+          on_edit=@cmd.none,
+          on_delete=@cmd.none,
+        ),
+      )
+    }
+    rows.push(@sumi.session_divider())
+    rows.push(@sumi.session_item(label="Archived Storyboards", disabled=true))
+    stage_mode(mode, [
+      @html.div(
+        style=[
+          "display:flex;flex-direction:column;gap:24px;align-items:flex-start",
+        ],
+        [
+          @html.div(style=["width:376px"], [
+            @sumi.session_header(
+              title=titles[cur],
+              status?=statuses[cur],
+              on_title=@cmd.none,
+              on_new=@cmd.none,
+              on_collapse=@cmd.none,
+            ),
+          ]),
+          @sumi.session_list(max_height=280, children=rows),
+        ],
+      ),
+    ])
+  })
+}

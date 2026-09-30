@@ -344,6 +344,12 @@ pub fn demos() -> Array[Demo] {
       build: demo_hitl_card,
     },
     {
+      key: "session-menu",
+      group: "Chat",
+      title: "Session menu",
+      build: demo_session_menu,
+    },
+    {
       key: "theme-light",
       group: "Theming",
       title: "Light palette",
