@@ -7,7 +7,8 @@ properties.
 
 ## Features
 
-- **40+ components** — actions, forms, overlays, feedback, display
+- **55+ components** — actions, forms, overlays, feedback, display and an
+  agent chat tier
 - **Dark & light palettes** — one token set, two themes; `System` follows
   the OS setting live via `prefers-color-scheme`
 - **Overlay motion built in** — menus, tooltips, dialogs and toasts animate
@@ -84,10 +85,11 @@ Wrap the app root once with `theme(mode=…)`:
 | Group | Components |
 |---|---|
 | Actions | `button` · `icon_button` · `favorite_toggle` · `add_tile` · `toolbar` |
-| Forms | `input` · `textarea` · `select` · `stepper` · `switch` · `checkbox` · `chip` · `attachment_strip` · `slider` · `segmented` · `prompt_box` · `editable_text` · `send_button` |
+| Forms | `input` · `textarea` · `select` · `stepper` · `switch` · `checkbox` · `chip` · `attachment_strip` · `slider` · `slider_field` · `segmented` · `prompt_box` · `editable_text` · `send_button` |
 | Overlays | `dropdown_menu` · `checkbox_menu` · `context_menu` · `popover` · `tooltip` · `dialog` · `toast` |
-| Feedback | `spinner` · `status_badge` · `progress` · `skeleton` · `badge` · `empty_state` · `alert` |
-| Display | `avatar` · `tag` · `kbd` · `card` · `tabs` · `pagination` · `shortcuts_panel` · `credits` · icon set |
+| Feedback | `spinner` · `status_badge` · `shimmer_text` · `progress` · `skeleton` · `badge` · `empty_state` · `alert` |
+| Display | `avatar` · `tag` · `media_tag` · `kbd` · `card` · `tabs` · `pagination` · `shortcuts_panel` · `credits` · icon set |
+| Chat | `chat_bubble` · `tool_call_row` · `agent_input` · `hitl_card` · `session_list` · `task_card` · `skill_chip` · `result_chip` · `md_text` · `generation_meta` |
 
 ## Documentation
 
