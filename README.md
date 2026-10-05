@@ -1,5 +1,9 @@
 # Sumi · 墨
 
+<p align="center">
+  <img src="docs/public/banner.png" alt="sumi.mbt — a MoonBit component library" width="1280">
+</p>
+
 A UI component library for MoonBit web apps. Dark & light themes, tuned
 overlay motion, and zero build configuration — components are plain
 functions returning HTML, styled through design tokens on CSS custom
