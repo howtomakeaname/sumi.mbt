@@ -2,5 +2,6 @@ members = [
   "src",
   "examples/demos",
   "examples/gallery",
+  "examples/banner",
   "docs/demos",
 ]
